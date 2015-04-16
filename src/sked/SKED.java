@@ -7,13 +7,12 @@ package sked;
 
 /**
  *
- * @author 12bcookj
+ * @author dvanterve
  */
 public class SKED {
 
     /**
-     * 
-     * Julia has edited this code
+     * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
