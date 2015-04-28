@@ -8,14 +8,23 @@ package sked;
 /**
  *
  * @author dvanterve
+ * Julia edited this code
+ * on April 17th, 2015
  */
+import java.util.*;
+
 public class SKED {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        String name;
+        Scanner in = new Scanner(System.in);
+        System.out.println("Please enter your name: ");
+        name = in.nextLine();
+        System.out.println("Your name is: " + name);
+       
     }
     
 }
