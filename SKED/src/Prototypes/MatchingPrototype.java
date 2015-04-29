@@ -10,7 +10,6 @@ import java.util.*;
 /**
  *
  * @author TonyChen
- * Julia edited this part of the code on 04.28.15
  */
 public class MatchingPrototype {
 
