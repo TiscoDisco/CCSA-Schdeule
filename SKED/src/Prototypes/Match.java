@@ -8,7 +8,6 @@ package Prototypes;
 /**
  *
  * @author TonyChen
- * Julia edited this
  */
 public class Match {
     Team teamA;
