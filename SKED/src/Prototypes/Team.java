@@ -8,7 +8,6 @@ package Prototypes;
 /**
  *
  * @author TonyChen
- * Julia also edited this
  */
 
 public class Team {
