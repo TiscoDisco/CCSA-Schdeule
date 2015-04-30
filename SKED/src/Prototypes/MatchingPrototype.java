@@ -38,28 +38,28 @@ public class MatchingPrototype {
         for (int i = 0; i < numTeams; i++) { //add and churches to the list
             System.out.println("Church name " + i);
             String church = in.nextLine();
-            if (churchList.contains(church)) {
+            if (!churchList.contains(church)) {
                 churchList.add(church);
             }
             System.out.println("Team name " + i);
             String team = in.nextLine();
             teamList.add(new Team(team, church));
         }
-        for(Team thisTeam:teamList){
-            System.out.println(thisTeam.name);
-        }
+//        for(Team thisTeam:teamList){
+//            System.out.println(thisTeam.name);
+//        }
 
         Random rand = new Random(); //randomize churches list
         while (!churchList.isEmpty()) {
-            String selectedChurch = churchList.get(rand.nextInt(churchList.size()));
-            newChurchList.add(selectedChurch);
-            churchList.remove(selectedChurch);
+            int i = rand.nextInt(churchList.size());
+            newChurchList.add(churchList.get(i));
+            churchList.remove(i);
         }
 
         while (teamList.size() > 0) { //randomize team list
-            Team selectedTeam = teamList.get(rand.nextInt(teamList.size()));
-            newTeamList.add(selectedTeam);
-            teamList.remove(selectedTeam);
+            int i = rand.nextInt(teamList.size());
+            newTeamList.add(teamList.get(i));
+            teamList.remove(i);
         }
         for (String thisChurch : newChurchList) {
             for (Team thisTeam : newTeamList) {
@@ -82,10 +82,15 @@ public class MatchingPrototype {
         for (int i = 0; i < sortedTeamList.size(); i++) {
             for (int j = 1; j <= (noplay / 2); j++) {
                 Match currentMatch = new Match(sortedTeamList.get(i), sortedTeamList.get(j));
-                if (!noPlayList.contains(currentMatch)) {
+                boolean contains = false;
+                for(Match checkMatch: noPlayList){
+                    if(checkMatch.equals(currentMatch)){
+                        contains = true;
+                    }
+                }
+                if (!contains) {
                     noPlayList.add(currentMatch);
                 }
-                noPlayList.add(currentMatch);
             }
             for (int k = -1; k >= (-noplay / 2); k--) {
                 int pick = i + k;
