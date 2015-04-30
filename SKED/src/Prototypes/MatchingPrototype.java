@@ -29,7 +29,6 @@ public class MatchingPrototype {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-
         System.out.println("How many teams?");
         numTeams = Integer.parseInt(in.nextLine());
         System.out.println("How many games are played by each team?");
@@ -61,7 +60,8 @@ public class MatchingPrototype {
             newTeamList.add(teamList.get(i));
             teamList.remove(i);
         }
-        for (String thisChurch : newChurchList) {
+
+        for (String thisChurch : newChurchList) { //sorts teams from the same church together
             for (Team thisTeam : newTeamList) {
                 if (thisTeam.getChurch().equals(thisChurch)) {
                     sortedTeamList.add(thisTeam);
@@ -69,7 +69,7 @@ public class MatchingPrototype {
             }
         }
 
-        for (int i = 0; i < sortedTeamList.size(); i++) {
+        for (int i = 0; i < sortedTeamList.size(); i++) { // creates an array of all possible matches
             for (int j = i + 1; j < sortedTeamList.size(); j++) {
                 playList.add(new Match(sortedTeamList.get(i), sortedTeamList.get(j)));
             }
@@ -79,12 +79,16 @@ public class MatchingPrototype {
             System.out.println(show.getTeamA().getName() + "vs" + show.getTeamB().getName());
         }
 
-        for (int i = 0; i < sortedTeamList.size(); i++) {
-            for (int j = 1; j <= (noplay / 2); j++) {
-                Match currentMatch = new Match(sortedTeamList.get(i), sortedTeamList.get(j));
+        for (int i = 0; i < sortedTeamList.size(); i++) { //create an array of matches not to be played
+            for (int j = 1; j <= (noplay / 2); j++) {//matches forward
+                int pick = i + j;
+                if (pick >= sortedTeamList.size()) {
+                    pick -= sortedTeamList.size();
+                }
+                Match currentMatch = new Match(sortedTeamList.get(i), sortedTeamList.get(i + j));
                 boolean contains = false;
-                for(Match checkMatch: noPlayList){
-                    if(checkMatch.equals(currentMatch)){
+                for (Match checkMatch : noPlayList) {
+                    if (checkMatch.equals(currentMatch)) {
                         contains = true;
                     }
                 }
@@ -92,17 +96,23 @@ public class MatchingPrototype {
                     noPlayList.add(currentMatch);
                 }
             }
-            for (int k = -1; k >= (-noplay / 2); k--) {
-                int pick = i + k;
+            for (int k = 1; k >= noplay / 2; k++) {//matches backwards
+                int pick = i - k;
                 if (pick < 0) {
                     pick += sortedTeamList.size();
                 }
                 Match currentMatch = new Match(sortedTeamList.get(i), sortedTeamList.get(pick));
-                if (!noPlayList.contains(currentMatch)) {
+                boolean contains = false;
+                for (Match checkMatch : noPlayList) {
+                    if (checkMatch.equals(currentMatch)) {
+                        contains = true;
+                    }
+                }
+                if (!contains) {
                     noPlayList.add(currentMatch);
                 }
             }
-            if (noplay % 2 > 0) {
+            if (noplay % 2 > 0) { //matches the odd match
                 int pick;
                 if (i % 2 > 0) {
                     pick = i + (noplay / 2) + 1;
@@ -113,18 +123,31 @@ public class MatchingPrototype {
                     pick += sortedTeamList.size();
                 }
                 Match currentMatch = new Match(sortedTeamList.get(i), sortedTeamList.get(pick));
-                if (!noPlayList.contains(currentMatch)) {
+                boolean contains = false;
+                for (Match checkMatch : noPlayList) {
+                    if (checkMatch.equals(currentMatch)) {
+                        contains = true;
+                    }
+                }
+                if (!contains) {
                     noPlayList.add(currentMatch);
                 }
             }
         }
 
-        //remove overlaps
-        for (Match clear : noPlayList) {
-            playList.remove(clear);
+        for (int i = 0; i < playList.size(); i++) { //remove matches not to be played
+            boolean contains = false;
+            for (int j = 0; j < noPlayList.size(); i++) {
+                if (playList.get(i).equals(noPlayList.get(j))) {
+                    contains = true;
+                }
+            }
+            if (!contains) {
+                noPlayList.remove(i);
+            }
         }
         for (Match show : playList) {
-            System.out.println(show.getTeamA().getName() + show.getTeamB().getName());
+            System.out.println(show.getTeamA().getName() + " vs " + show.getTeamB().getName());
         }
     }
 }
