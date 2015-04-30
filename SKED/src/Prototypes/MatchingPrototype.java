@@ -76,16 +76,16 @@ public class MatchingPrototype {
         }
 
         for (Match show : playList) {
-            System.out.println(show.getTeamA().getName() + "vs" + show.getTeamB().getName());
+            System.out.println(show.getTeamA().getName() + " v " + show.getTeamB().getName());
         }
 
         for (int i = 0; i < sortedTeamList.size(); i++) { //create an array of matches not to be played
-            for (int j = 1; j <= (noplay / 2); j++) {//matches forward
+            for (int j = 1; j <= noplay / 2; j++) {//matches forward
                 int pick = i + j;
                 if (pick >= sortedTeamList.size()) {
                     pick -= sortedTeamList.size();
                 }
-                Match currentMatch = new Match(sortedTeamList.get(i), sortedTeamList.get(i + j));
+                Match currentMatch = new Match(sortedTeamList.get(i), sortedTeamList.get(pick));
                 boolean contains = false;
                 for (Match checkMatch : noPlayList) {
                     if (checkMatch.equals(currentMatch)) {
@@ -96,7 +96,7 @@ public class MatchingPrototype {
                     noPlayList.add(currentMatch);
                 }
             }
-            for (int k = 1; k >= noplay / 2; k++) {//matches backwards
+            for (int k = 1; k <= noplay / 2; k++) {//matches backwards
                 int pick = i - k;
                 if (pick < 0) {
                     pick += sortedTeamList.size();
@@ -122,6 +122,9 @@ public class MatchingPrototype {
                 if (pick < 0) {
                     pick += sortedTeamList.size();
                 }
+                if (pick >= sortedTeamList.size()) {
+                    pick -= sortedTeamList.size();
+                }
                 Match currentMatch = new Match(sortedTeamList.get(i), sortedTeamList.get(pick));
                 boolean contains = false;
                 for (Match checkMatch : noPlayList) {
@@ -137,17 +140,20 @@ public class MatchingPrototype {
 
         for (int i = 0; i < playList.size(); i++) { //remove matches not to be played
             boolean contains = false;
-            for (int j = 0; j < noPlayList.size(); i++) {
+            for (int j = 0; j < noPlayList.size(); j++) {
                 if (playList.get(i).equals(noPlayList.get(j))) {
                     contains = true;
                 }
             }
-            if (!contains) {
-                noPlayList.remove(i);
+            if (contains) {
+                playList.remove(i);
+                i--;
             }
         }
+        
         for (Match show : playList) {
             System.out.println(show.getTeamA().getName() + " vs " + show.getTeamB().getName());
         }
+        
     }
 }
