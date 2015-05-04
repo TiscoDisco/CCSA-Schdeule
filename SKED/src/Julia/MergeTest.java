@@ -17,7 +17,7 @@ public class MergeTest {
         Scanner in = new Scanner(System.in);
         String name;
         int times;
-        System.out.println("Enter your name: ");
+        System.out.println("Trent Myers is da bomb and Naomi is not");
         name = in.nextLine();
         // Takes the user's name
         System.out.println("How many times?");
