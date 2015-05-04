@@ -25,6 +25,7 @@ public class MergeTest {
         
         for (int i=0; i<times; i++) {
             System.out.println(name + (i-5));
+            System.out.println(name + (i-4));
             // Shows the name with its number
         }
     }
