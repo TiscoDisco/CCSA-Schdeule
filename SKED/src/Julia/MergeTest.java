@@ -24,7 +24,8 @@ public class MergeTest {
         times = Integer.parseInt(in.nextLine());
         
         for (int i=0; i<times; i++) {
-            System.out.println(name);
+            System.out.println(name + (i-1));
+            // Shows the name with its number
         }
     }
     
