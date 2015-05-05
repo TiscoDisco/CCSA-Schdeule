@@ -9,10 +9,12 @@ package classes;
  *
  * @author 12akimr
  */
+import java.util.*;
 public class Team {
 
     String church;
     String name;
+    ArrayList<Date> noPlays = new ArrayList<>();
 
     public Team(String n, String c) { // constructor
         name = n;
