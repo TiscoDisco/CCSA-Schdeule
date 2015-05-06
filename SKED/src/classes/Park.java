@@ -9,6 +9,14 @@ package classes;
  *
  * @author TonyChen
  */
+import java.util.*;
+
 public class Park {
-    
+
+    String name;
+    ArrayList<Date> noPlays = new ArrayList<>();
+
+    public Park(String n) {
+        name = n;
+    }
 }
