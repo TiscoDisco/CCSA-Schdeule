@@ -11,8 +11,9 @@ package classes;
  */
 import java.util.*;
 public class ScheduleProtoTony {
-    public static void main(String[] args){
+    public static void main(Division d){
         //get the list of matches
+        matches = d.matches;
         //scheduling
         /*check availability after each of the following steps
         pick park
@@ -25,7 +26,8 @@ public class ScheduleProtoTony {
         pick match with one of the two teams
         pick match with another one of the two teams
         */
-        /*Possible Matchings
+        /*
+        Possible Matchings
         Most Optimal
             AB AC CD
             EF EG GH

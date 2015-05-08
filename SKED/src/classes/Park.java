@@ -19,4 +19,7 @@ public class Park {
     public Park(String n) {
         name = n;
     }
+    public void addNoPlay(Date d){
+        
+    }
 }
