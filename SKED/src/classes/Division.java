@@ -8,32 +8,36 @@ package classes;
 /**
  *
  * @author TonyChen
- */ 
+ */
 /*teams,match, league, parks, 
-*/ 
+ */
+import java.util.*;
+
 public class Division {
-    Team[] teamList;
-    Match[] matchList;
+
+    ArrayList<Team> teamList = new ArrayList<>();
+    ArrayList<Match> matchList = new ArrayList<>();
+    ArrayList<Park> parkList = new ArrayList<>();
     String league;
-    Park[] parkList;
-    
-    public Division(Team[] a, Match[] b, Park[] c, String d){
-        teamList = a;
-        matchList = b;
+
+    public Division(String d) {
         league = d;
-        parkList = c;
     }
-    public Team[] getTeamList(){
+
+    public ArrayList<Team> getTeamList() {
         return teamList;
     }
-    public Match[] getMatchList(){
+
+    public ArrayList<Match> getMatchList() {
         return matchList;
     }
-    public Park[] getParkList(){
+
+    public ArrayList<Park> getParkList() {
         return parkList;
     }
-    public String getLeague(){
+
+    public String getLeague() {
         return league;
     }
-    
+
 }

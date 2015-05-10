@@ -19,4 +19,7 @@ public class SoftDate extends Date {
         super(y, m, d);
         weekNum = w;
     }
+    public boolean equals(SoftDate d){
+        return false;
+    }
 }
