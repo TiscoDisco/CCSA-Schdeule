@@ -10,6 +10,7 @@ import java.util.*;
 /**
  *
  * @author TonyChen
+ * comments by Trent and Naomi
  */
 public class MatchingPrototype {
 
@@ -34,13 +35,13 @@ public class MatchingPrototype {
         System.out.println("How many games are played by each team?");
         play = Integer.parseInt(in.nextLine());
         noplay = numTeams - play - 1;
-        for (int i = 0; i < numTeams; i++) { //add and churches to the list
+        for (int i = 0; i < numTeams; i++) { //store list of churches
             System.out.println("Church name " + i);
             String church = in.nextLine();
             if (!churchList.contains(church)) {
                 churchList.add(church);
             }
-            System.out.println("Team name " + i);
+            System.out.println("Team name " + i); //store list of teams 
             String team = in.nextLine();
             teamList.add(new Team(team, church));
         }
@@ -48,20 +49,20 @@ public class MatchingPrototype {
 //            System.out.println(thisTeam.name);
 //        }
 
-        Random rand = new Random(); //randomize churches list
+        Random rand = new Random(); //randomize list of churches
         while (!churchList.isEmpty()) {
             int i = rand.nextInt(churchList.size());
             newChurchList.add(churchList.get(i));
             churchList.remove(i);
         }
 
-        while (teamList.size() > 0) { //randomize team list
+        while (teamList.size() > 0) { //randomize list of teams
             int i = rand.nextInt(teamList.size());
             newTeamList.add(teamList.get(i));
             teamList.remove(i);
         }
 
-        for (String thisChurch : newChurchList) { //sorts teams from the same church together
+        for (String thisChurch : newChurchList) { //sort teams from the same church together
             for (Team thisTeam : newTeamList) {
                 if (thisTeam.getChurch().equals(thisChurch)) {
                     sortedTeamList.add(thisTeam);
@@ -69,7 +70,7 @@ public class MatchingPrototype {
             }
         }
 
-        for (int i = 0; i < sortedTeamList.size(); i++) { // creates an array of all possible matches
+        for (int i = 0; i < sortedTeamList.size(); i++) { // create an array including all possible match ups
             for (int j = i + 1; j < sortedTeamList.size(); j++) {
                 playList.add(new Match(sortedTeamList.get(i), sortedTeamList.get(j)));
             }
@@ -79,8 +80,8 @@ public class MatchingPrototype {
             System.out.println(show.getTeamA().getName() + " v " + show.getTeamB().getName());
         }
 
-        for (int i = 0; i < sortedTeamList.size(); i++) { //create an array of matches not to be played
-            for (int j = 1; j <= noplay / 2; j++) {//matches forward
+        for (int i = 0; i < sortedTeamList.size(); i++) { //create an array of match ups that will not be played
+            for (int j = 1; j <= noplay / 2; j++) {//count the match ups not played forwards in the array
                 int pick = i + j;
                 if (pick >= sortedTeamList.size()) {
                     pick -= sortedTeamList.size();
@@ -96,12 +97,12 @@ public class MatchingPrototype {
                     noPlayList.add(currentMatch);
                 }
             }
-            for (int k = 1; k <= noplay / 2; k++) {//matches backwards
+            for (int k = 1; k <= noplay / 2; k++) {//count the match ups not played backwards in the array
                 int pick = i - k;
                 if (pick < 0) {
                     pick += sortedTeamList.size();
                 }
-                Match currentMatch = new Match(sortedTeamList.get(i), sortedTeamList.get(pick));
+                Match currentMatch = new Match(sortedTeamList.get(i), sortedTeamList.get(pick)); //test possible match up
                 boolean contains = false;
                 for (Match checkMatch : noPlayList) {
                     if (checkMatch.equals(currentMatch)) {
@@ -109,7 +110,7 @@ public class MatchingPrototype {
                     }
                 }
                 if (!contains) {
-                    noPlayList.add(currentMatch);
+                    noPlayList.add(currentMatch); //if false, add match up to noPlayList array
                 }
             }
             if (noplay % 2 > 0) { //matches the odd match
