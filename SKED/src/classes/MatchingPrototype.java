@@ -150,10 +150,10 @@ public class MatchingPrototype {
                 i--;
             }
         }
-        
+
         for (Match show : playList) {
             System.out.println(show.getTeamA().getName() + " vs " + show.getTeamB().getName());
         }
-        
+
     }
 }
