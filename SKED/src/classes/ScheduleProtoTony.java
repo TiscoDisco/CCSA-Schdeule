@@ -18,7 +18,7 @@ public class ScheduleProtoTony {
         ArrayList<Match> matches = new ArrayList(d.matchList);
         ArrayList<Team> teams = new ArrayList(d.teamList);
         //scheduling
-        while(d.)
+       // while(d.)
         /*check availability after each of the following steps
          pick park
          saturday
