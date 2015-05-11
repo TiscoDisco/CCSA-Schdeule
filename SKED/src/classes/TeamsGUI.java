@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package classes;
 
 /**
  *
  * @author tim
  */
-public class Teams extends javax.swing.JFrame {
+public class TeamsGUI extends javax.swing.JFrame {
 
     /**
      * Creates new form Teams
      */
-    public Teams() {
+    public TeamsGUI() {
         initComponents();
     }
 
@@ -331,11 +331,16 @@ public class Teams extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField8ActionPerformed
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
+        String teamName = txtfieldTeamname.getText();
+        String churchName = txtfieldChurch.getText();
+        Team a = new Team(teamName,churchName);
+        
+        
         
     }//GEN-LAST:event_btnEnterActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        Home h =new Home();
+        HomeGUI h =new HomeGUI();
         h.main(null);
         this.dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
@@ -361,20 +366,21 @@ public class Teams extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Teams.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TeamsGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Teams.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TeamsGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Teams.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TeamsGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Teams.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TeamsGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Teams().setVisible(true);
+                new TeamsGUI().setVisible(true);
             }
         });
     }
