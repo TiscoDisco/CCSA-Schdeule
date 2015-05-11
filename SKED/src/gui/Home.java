@@ -42,6 +42,11 @@ public class Home extends javax.swing.JFrame {
         });
 
         btnParks.setText("Parks");
+        btnParks.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnParksActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -72,6 +77,12 @@ public class Home extends javax.swing.JFrame {
        t.main(null);
         this.dispose();
     }//GEN-LAST:event_btnTeamActionPerformed
+
+    private void btnParksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnParksActionPerformed
+        Parks p =new Parks();
+       p.main(null);
+        this.dispose();
+    }//GEN-LAST:event_btnParksActionPerformed
 
     /**
      * @param args the command line arguments
