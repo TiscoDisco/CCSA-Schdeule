@@ -9,9 +9,17 @@ package classes;
  *
  * @author TonyChen
  */
-public class Date {
+import java.util.*;
+
+public class SoftDate extends Date {
+
     private int weekNum;
-    public Date(int w){
+
+    public SoftDate(int w, int y, int m, int d) {
+        super(y, m, d);
         weekNum = w;
+    }
+    public boolean equals(SoftDate d){
+        return false;
     }
 }
