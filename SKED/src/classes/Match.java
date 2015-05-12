@@ -47,4 +47,8 @@ public class Match {
         }
         return true;
     }
+
+    public boolean hasTeam(Team) {
+        return true;
+    }
 }

@@ -39,5 +39,14 @@ public class Division {
     public String getLeague() {
         return league;
     }
+    
+    public boolean hasNotScheduled(){
+        for(Match m:matchList){
+            if(!m.isScheduled()){
+                return false;
+            }
+        }
+        return true;
+    }
 
 }
