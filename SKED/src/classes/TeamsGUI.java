@@ -330,6 +330,11 @@ public class TeamsGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField8ActionPerformed
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
+        String teamName = txtfieldTeamname.getText();
+        String churchName = txtfieldChurch.getText();
+        Team a = new Team(teamName,churchName);
+        
+        
         
     }//GEN-LAST:event_btnEnterActionPerformed
 
