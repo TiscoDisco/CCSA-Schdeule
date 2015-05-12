@@ -48,7 +48,8 @@ public class Match {
         return true;
     }
 
-    public boolean hasTeam(Team) {
+    public boolean hasTeam(Team t){
+        
         return true;
     }
 }
