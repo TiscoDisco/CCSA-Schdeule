@@ -14,7 +14,10 @@ import java.util.*;
 public class SoftDate extends Date {
 
     private int weekNum;
-
+    private Match match1;
+    private Match match2;
+    private Match match3;
+    
     public SoftDate(int w, int y, int m, int d) {
         super(y, m, d);
         weekNum = w;
@@ -22,4 +25,7 @@ public class SoftDate extends Date {
     public boolean equals(SoftDate d){
         return false;
     }
+    
+    public int getWeek
+    
 }
