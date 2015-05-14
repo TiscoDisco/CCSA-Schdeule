@@ -23,9 +23,12 @@ public class SoftDate extends Date {
         weekNum = w;
     }
     public boolean equals(SoftDate d){
+        if()
         return false;
     }
     
-    public int getWeek
+    public int getWeek(){
+        return weekNum;
+    }
     
 }
