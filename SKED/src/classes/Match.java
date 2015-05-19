@@ -1,4 +1,3 @@
-
 package classes;
 
 /**
@@ -9,7 +8,7 @@ public class Match {
 
     Team teamA;
     Team teamB;
-    SoftDate play;
+    SoftDate play = null;
 
     public Match(Team a, Team b) { //constructor
         teamA = a;
@@ -25,7 +24,7 @@ public class Match {
     }
 
     public boolean equals(Match m) { //tells if the match is the same
-        if (m.getTeamA().equals(teamA) && m.getTeamB().equals(teamB) || m.getTeamB().equals(teamA) && m.getTeamA().equals(teamB)) {
+        if (hasTeam(m.getTeamA()) && hasTeam(m.getTeamB())) {
             return true;
         } else {
             return false;
@@ -39,8 +38,8 @@ public class Match {
         return true;
     }
 
-    public boolean hasTeam(Team t){
-        
+    public boolean hasTeam(Team t) {
+
         return true;
     }
 }
