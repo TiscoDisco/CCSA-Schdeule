@@ -14,11 +14,6 @@ public class Division {
     ArrayList<Team> teamList = new ArrayList<>();
     ArrayList<Match> matchList = new ArrayList<>();
     ArrayList<Park> parkList = new ArrayList<>();
-    String league;
-    
-    public Division(String d) {
-        league = d;
-    }
     
     public ArrayList<Team> getTeamList() {
         return teamList;

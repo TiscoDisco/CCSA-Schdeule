@@ -11,7 +11,6 @@ public class SoftDate extends Date {
     
     private int weekNum;
     
-    
     public SoftDate(int w, long t) {
         super(t);
         weekNum = w;
