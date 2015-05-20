@@ -1,4 +1,3 @@
-
 package classes;
 
 /**
@@ -6,11 +5,12 @@ package classes;
  * @author 12akimr
  */
 import java.util.*;
+
 public class Team {
 
     String church;
     String name;
-    ArrayList<Date> noPlays = new ArrayList<>();
+    ArrayList<SoftDate> noPlays = new ArrayList<>();
 
     public Team(String n, String c) { // constructor
         name = n;
@@ -31,5 +31,14 @@ public class Team {
         } else {
             return false;
         }
+    }
+
+    public boolean hasPlayDate(SoftDate d) {
+        for (SoftDate a : noPlays) {
+            if (a.equals(d)) {
+                return false;
+            }
+        }
+        return true;
     }
 }

@@ -28,6 +28,7 @@ public class ScheduleProtoTony {
          pick match with one of the two teams
          pick match with another one of the two teams
          */
+            
         /*
          Possible Matchings
          Most Optimal
@@ -36,6 +37,12 @@ public class ScheduleProtoTony {
          least optimal
          AB CD EF
          GH IJ LM
+        
+        day 1
+        AB 
+        AC or BC or CD
+        CD or CD or DE or EF
+        
          */
         //umpiring schedule
         /*

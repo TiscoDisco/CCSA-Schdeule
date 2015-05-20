@@ -17,10 +17,7 @@ public class SoftDate extends Date {
     }
     
     public boolean equals(SoftDate d){
-        if(d.toString().equals(super.toString())){
-            return true;
-        }
-        return false;
+        return d.toString().equals(super.toString());
     }
     
     public int getWeek(){
