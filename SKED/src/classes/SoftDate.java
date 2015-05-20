@@ -11,10 +11,11 @@ public class SoftDate extends Date {
     
     private int weekNum;
     
-    public SoftDate(int w, long t) {
+    public SoftDate(long t) {
         super(t);
-        weekNum = w;
+        
     }
+    
     public boolean equals(SoftDate d){
         if(d.toString().equals(super.toString())){
             return true;
