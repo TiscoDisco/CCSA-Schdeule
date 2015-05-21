@@ -360,14 +360,14 @@ public class ParksGUI extends javax.swing.JFrame {
                     .addComponent(lblParkName)
                     .addComponent(txtParkNameDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDeletePark))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelParksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelParksActionPerformed
-        HomeGUI h =new HomeGUI();
+        HomeGUI h = new HomeGUI();
         h.main(null);
         this.dispose();
     }//GEN-LAST:event_btnCancelParksActionPerformed

@@ -70,6 +70,11 @@ public class HomeGUI extends javax.swing.JFrame {
         lblLine1.setText("_________________________________________________________");
 
         btnCreate.setText("Create Schedule");
+        btnCreate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,6 +137,10 @@ public class HomeGUI extends javax.swing.JFrame {
         p.main(null);
         this.dispose();
     }//GEN-LAST:event_btnParksActionPerformed
+
+    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCreateActionPerformed
 
     /**
      * @param args the command line arguments
