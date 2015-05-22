@@ -49,7 +49,7 @@ public class Division {
         return thisCal.getTimeInMillis();
     }
 
-    public void schedule() {
+    public void schedule(ArrayList<Park> pList) {
         while (hasNotScheduled()) {
             
         }

@@ -14,6 +14,9 @@ public class Main {
     ArrayList<Division> juniorDivs = new ArrayList<>();
     ArrayList<Division> seniorDivs = new ArrayList<>();
     ArrayList<Division> varsityDivs = new ArrayList<>();
+    ArrayList<Park> juniorParkList = new ArrayList<>();
+    ArrayList<Park> seniorParkList = new ArrayList<>();
+    ArrayList<Park> varsityParkList = new ArrayList<>();
 
     public static void main(String[] args) {
         //list of playable days
