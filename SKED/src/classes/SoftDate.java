@@ -10,6 +10,9 @@ import java.util.*;
 public class SoftDate extends Date {
     
     private int weekNum;
+    private Match slot1;
+    private Match slot2;
+    private Match slot3;
     
     public SoftDate(long t) {
         super(t);

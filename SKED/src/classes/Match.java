@@ -23,20 +23,22 @@ public class Match {
     public Team getTeamB() { // return team B
         return teamB;
     }
+    
+    public int getSlot(){
+        return slot;
+    }
+    
+    public void setDate(int s, SoftDate d){
+        slot = s;
+        play = d;
+    }
 
     public boolean equals(Match m) { //tells if the match is the same
-        if (hasTeam(m.getTeamA()) && hasTeam(m.getTeamB())) {
-            return true;
-        } else {
-            return false;
-        }
+        return hasTeam(m.getTeamA()) && hasTeam(m.getTeamB());
     }
 
     public boolean isScheduled() {
-        if (play == null) {
-            return false;
-        }
-        return true;
+        return play != null;
     }
 
     public boolean hasTeam(Team t) {
