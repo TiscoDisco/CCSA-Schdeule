@@ -26,11 +26,7 @@ public class Team {
     }
 
     public boolean equals(Team t) { // tells if the teams are the same
-        if (t.getChurch().equals(church) && t.getName().equals(name)) {
-            return true;
-        } else {
-            return false;
-        }
+        return t.getChurch().equals(church) && t.getName().equals(name);
     }
 
     public boolean hasPlayDate(SoftDate d) {

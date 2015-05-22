@@ -42,7 +42,6 @@ public class Match {
     }
 
     public boolean hasTeam(Team t) {
-
-        return true;
+        return (t.equals(teamB) || t.equals(teamA));
     }
 }
