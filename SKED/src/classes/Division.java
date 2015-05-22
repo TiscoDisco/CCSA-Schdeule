@@ -6,7 +6,7 @@ package classes;
  */
 /*teams,match, league, parks, 
  */
-import static classes.MatchingPrototype.churchList;
+
 import java.util.*;
 
 public class Division {
