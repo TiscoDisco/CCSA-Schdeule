@@ -10,12 +10,12 @@ import java.util.*;
 
 public class Division {
 
-    SoftDate startDate;
-    SoftDate endDate;
-    ArrayList<Team> teamList = new ArrayList<>();
-    ArrayList<Match> matchList = new ArrayList<>();
-    ArrayList<Park> parkList = new ArrayList<>();
-    ArrayList<SoftDate> dateList = new ArrayList<>();
+    private SoftDate startDate;
+    private SoftDate endDate;
+    private ArrayList<Team> teamList = new ArrayList<>();
+    private ArrayList<Match> matchList = new ArrayList<>();
+    private ArrayList<Park> parkList = new ArrayList<>();
+    private ArrayList<SoftDate> dateList = new ArrayList<>();
 
     public Division(SoftDate s, SoftDate e) {
         startDate = s;

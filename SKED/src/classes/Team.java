@@ -8,9 +8,9 @@ import java.util.*;
 
 public class Team {
 
-    String church;
-    String name;
-    ArrayList<SoftDate> noPlays = new ArrayList<>();
+    private String church;
+    private String name;
+    private ArrayList<SoftDate> noPlays = new ArrayList<>();
 
     public Team(String n, String c) { // constructor
         name = n;

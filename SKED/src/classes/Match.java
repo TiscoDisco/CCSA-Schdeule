@@ -6,10 +6,10 @@ package classes;
  */
 public class Match {
 
-    Team teamA;
-    Team teamB;
-    SoftDate play = null;
-    int slot;
+    private Team teamA;
+    private Team teamB;
+    private SoftDate play = null;
+    private int slot;
 
     public Match(Team a, Team b) { //constructor
         teamA = a;

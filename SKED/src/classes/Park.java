@@ -8,9 +8,9 @@ package classes;
 import java.util.*;
 
 public class Park {
-    Division division;
-    String name;
-    ArrayList<Date> noPlays = new ArrayList<>();
+    private Division division;
+    private String name;
+    private ArrayList<Date> noPlays = new ArrayList<>();
     
     public Park(String n, Division m) {
         name = n;
