@@ -60,7 +60,7 @@ public class Division {
 
         for (int i = 0; i < sortedTeamList.size(); i++) { // create an array including all possible match ups. The match ups are put into the playList array
             for (int j = i + 1; j < sortedTeamList.size(); j++) {
-                playList.add(new Match(sortedTeamList.get(i), sortedTeamList.get(j)));
+                matchList.add(new Match(sortedTeamList.get(i), sortedTeamList.get(j)));
             }
         }
 
@@ -133,15 +133,15 @@ public class Division {
             }
         }
 
-        for (int i = 0; i < playList.size(); i++) { //checking if an index of the noPlayList array is equal to an index of the playList array
+        for (int i = 0; i < matchList.size(); i++) { //checking if an index of the noPlayList array is equal to an index of the playList array
             boolean contains = false;
             for (int j = 0; j < noPlayList.size(); j++) {
-                if (playList.get(i).equals(noPlayList.get(j))) {
+                if (matchList.get(i).equals(noPlayList.get(j))) {
                     contains = true;
                 }
             }
             if (contains) {
-                playList.remove(i);//if they are the same at a certain index then remove that match up from the playList array
+                matchList.remove(i);//if they are the same at a certain index then remove that match up from the playList array
                 i--;
             }
         }
