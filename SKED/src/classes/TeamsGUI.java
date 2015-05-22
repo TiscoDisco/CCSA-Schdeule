@@ -291,7 +291,21 @@ public class TeamsGUI extends javax.swing.JFrame {
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
         String teamName = txtfieldTeamname.getText();
         String churchName = txtfieldChurch.getText();
-        Team a = new Team(teamName,churchName);
+        String teamCode = jTextField11.getText();
+        String league;
+        if (jTextField12.getText().length()>0)
+        {
+            league = jTextField12.getText();
+        }
+        else if (jTextField13.getText().length()>0)
+        {
+            league = jTextField13.getText();
+        }
+        else
+        {
+            league = jTextField14.getText();
+        }
+        Team a = new Team(teamName,churchName,league,teamCode);
         
         
         
