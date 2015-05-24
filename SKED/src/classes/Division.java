@@ -6,7 +6,6 @@ package classes;
  */
 /*teams,match, league, parks, 
  */
-
 import java.util.*;
 
 public class Division {
@@ -15,14 +14,8 @@ public class Division {
     private SoftDate endDate;
     private ArrayList<Team> teamList = new ArrayList<>();
     private ArrayList<Match> matchList = new ArrayList<>();
-    //private ArrayList<Park> parkList = new ArrayList<>();
     private ArrayList<SoftDate> dateList = new ArrayList<>();
-    private ArrayList<String> churchList = new ArrayList<>();
-    static ArrayList<String> newChurchList = new ArrayList<>();
-    static ArrayList<Team> newTeamList = new ArrayList<>();
-    static ArrayList<Team> sortedTeamList = new ArrayList<>();
-    static ArrayList<Match> noPlayList = new ArrayList<>();
-    
+
     public Division(SoftDate s, SoftDate e) {
         startDate = s;
         endDate = e;
@@ -35,16 +28,30 @@ public class Division {
     public ArrayList<Match> getMatchList() {
         return matchList;
     }
-    
-    public void matching(){
+
+    public void matching() {
+        ArrayList<Team> matchTeamList = new ArrayList<>();
+        matchTeamList.addAll(teamList);
+        ArrayList<String> churchList = new ArrayList<>();
+        for (Team t : matchTeamList) {
+            churchList.add(t.getChurch());
+        }
+        ArrayList<Match> matchMatchList = new ArrayList<>();
+        ArrayList<String> newChurchList = new ArrayList<>();
+        ArrayList<Team> newTeamList = new ArrayList<>();
+        ArrayList<Team> sortedTeamList = new ArrayList<>();
+        ArrayList<Match> noPlayList = new ArrayList<>();
+        int noplay = teamList.size() - 11;
         Random rand = new Random(); //randomize list of churches that are in the churchList array. The randomized churches are put into a new array called newChurchList
+
         while (!churchList.isEmpty()) {
             int i = rand.nextInt(churchList.size());
             newChurchList.add(churchList.get(i));
             churchList.remove(i);
         }
 
-        while (teamList.size() > 0) { //randomize list of teams that are in the teamList array. The randomized teams are put into a new array called newTeamList
+        while (teamList.size() > 0) {
+            //randomize list of teams that are in the teamList array. The randomized teams are put into a new array called newTeamList
             int i = rand.nextInt(teamList.size());
             newTeamList.add(teamList.get(i));
             teamList.remove(i);
@@ -58,25 +65,27 @@ public class Division {
             }
         }
 
-        for (int i = 0; i < sortedTeamList.size(); i++) { // create an array including all possible match ups. The match ups are put into the playList array
+        for (int i = 0;
+                i < sortedTeamList.size();
+                i++) { // create an array including all possible match ups. The match ups are put into the playList array
             for (int j = i + 1; j < sortedTeamList.size(); j++) {
-                matchList.add(new Match(sortedTeamList.get(i), sortedTeamList.get(j)));
+                matchMatchList.add(new Match(sortedTeamList.get(i), sortedTeamList.get(j)));
             }
         }
 
 //        for (Match show : playList) {
 //            System.out.println(show.getTeamA().getName() + " v " + show.getTeamB().getName());// used for testing purposes. Displays all possible matches.
 //        }
-
-        for (int i = 0; i < sortedTeamList.size(); i++) { //create an array of match ups that will not be played
+        for (int i = 0;
+                i < sortedTeamList.size();
+                i++) { //create an array of match ups that will not be played
             for (int j = 1; j <= noplay / 2; j++) {//count the match ups not played in the forwards direction of the array
                 int pick = i + j;
                 if (pick >= sortedTeamList.size()) {
                     pick -= sortedTeamList.size();
                 }
-                
+
                 //Match ups for a league with an even number of teams
-                
                 Match currentMatch = new Match(sortedTeamList.get(i), sortedTeamList.get(pick));
                 boolean contains = false;
                 for (Match checkMatch : noPlayList) {
@@ -104,9 +113,8 @@ public class Division {
                     noPlayList.add(currentMatch); //if the match is not already in the array then it is added to the noPlayList array
                 }
             }
-            
+
             //Match ups for a league with an odd number of teams
-            
             if (noplay % 2 > 0) { // creates matches for a league with an odd number of teams
                 int pick;
                 if (i % 2 > 0) {
@@ -133,18 +141,21 @@ public class Division {
             }
         }
 
-        for (int i = 0; i < matchList.size(); i++) { //checking if an index of the noPlayList array is equal to an index of the playList array
+        for (int i = 0;
+                i < matchMatchList.size();
+                i++) { //checking if an index of the noPlayList array is equal to an index of the playList array
             boolean contains = false;
             for (int j = 0; j < noPlayList.size(); j++) {
-                if (matchList.get(i).equals(noPlayList.get(j))) {
+                if (matchMatchList.get(i).equals(noPlayList.get(j))) {
                     contains = true;
                 }
             }
             if (contains) {
-                matchList.remove(i);//if they are the same at a certain index then remove that match up from the playList array
+                matchMatchList.remove(i);//if they are the same at a certain index then remove that match up from the playList array
                 i--;
             }
         }
+
     }
 
     public boolean hasNotScheduled() {
