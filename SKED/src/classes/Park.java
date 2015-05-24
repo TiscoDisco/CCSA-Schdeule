@@ -8,13 +8,11 @@ package classes;
 import java.util.*;
 
 public class Park {
-    private Division division;
     private String name;
     private ArrayList<SoftDate> noPlays = new ArrayList<>();
     
     public Park(String n, Division m) {
         name = n;
-        division = m;
     }
     
     public void addNoPlay(SoftDate d){
@@ -23,9 +21,6 @@ public class Park {
     
     public String getName(){
         return name;
-    }
-    public Division getDivision(){
-        return division;
     }
     
     
