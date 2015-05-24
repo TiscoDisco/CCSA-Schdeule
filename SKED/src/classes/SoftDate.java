@@ -16,7 +16,6 @@ public class SoftDate extends Date {
     
     public SoftDate(long t) {
         super(t);
-        
     }
     
     public boolean equals(SoftDate d){

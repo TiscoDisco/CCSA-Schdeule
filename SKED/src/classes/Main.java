@@ -9,7 +9,7 @@ import java.util.*;
 public class Main {
 
     static SoftDate startDate;
-    SoftDate endDate;
+    static SoftDate endDate;
     
     ArrayList<Division> juniorDivs = new ArrayList<>();
     ArrayList<Division> seniorDivs = new ArrayList<>();
@@ -40,5 +40,8 @@ public class Main {
         startDate = new SoftDate(thisCal.getTimeInMillis());
         
         //create list of days
+        for(){
+            
+        }
     }
 }
