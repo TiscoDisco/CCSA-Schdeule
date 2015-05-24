@@ -175,7 +175,7 @@ public class Division {
 
     public void schedule(ArrayList<Park> pList) {
         while (hasNotScheduled()) {
-            
+
             /*check availability after each of the following steps
              pick park
              saturday
@@ -258,5 +258,4 @@ public class Division {
 
     }
 
-}
 }
