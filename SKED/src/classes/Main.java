@@ -7,6 +7,7 @@ package classes;
 import java.util.*;
 
 public class Main {
+
     static int year;
     static SoftDate startDate;
     static SoftDate endDate;
@@ -19,16 +20,32 @@ public class Main {
     ArrayList<Park> varsityParkList = new ArrayList<>();
 
     public static void main(String[] args) {
-        //list of playable days
+        //list of playable day
         Scanner in = new Scanner(System.in);
+        System.out.println("Enter year");
+        year = Integer.parseInt(in.nextLine());
         Calendar juniorCal = Calendar.getInstance();
         juniorCal.clear();
         juniorCal.set(Calendar.YEAR, year);
-        juniorCal.set(Calendar.MONTH, Calendar.JUNE);
-        juniorCal.set(Calendar.DAY_OF_MONTH, juniorCal.get(Calendar.));
+        juniorCal.set(Calendar.MONTH, Calendar.JULY);
+        juniorCal.set(Calendar.DAY_OF_MONTH, 1);
+        juniorCal.add(Calendar.DAY_OF_YEAR, -7);
         Calendar seniorCal = Calendar.getInstance();
-        Calendar VarsityCal = Calendar.getInstance();
-        
+        seniorCal.set(Calendar.YEAR, year);
+        seniorCal.set(Calendar.MONTH, Calendar.JUNE);
+        seniorCal.set(Calendar.DAY_OF_MONTH, 1);
+        seniorCal.add(Calendar.DAY_OF_YEAR, -7);
+        Calendar varsityCal = Calendar.getInstance();
+        varsityCal.set(Calendar.YEAR, year);
+        varsityCal.set(Calendar.MONTH, Calendar.JULY);
+        varsityCal.set(Calendar.DAY_OF_MONTH, 1);
+        varsityCal.add(Calendar.DAY_OF_YEAR, -7);
+        Calendar endCal = Calendar.getInstance();
+        endCal.clear();
+        endCal.set(Calendar.YEAR, year);
+        endCal.set(Calendar.MONTH, Calendar.SEPTEMBER);
+        endCal.set(Calendar.WEEK_OF_MONTH, 1);
+        endCal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
 //        Calendar startCal = Calendar.getInstance();
 //        startCal.clear();
 //        System.out.println("start year");
@@ -51,14 +68,14 @@ public class Main {
 //        startDate = new SoftDate(endCal.getTimeInMillis());
 
         //create list of days
-        Calendar doCal = Calendar.getInstance();
-        doCal.clear();
-        doCal.set(sy, sm, sd);
-        while (doCal.compareTo(endCal) <= 0) {
-            if (doCal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || doCal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
-
-            }
-        }
+//        Calendar doCal = Calendar.getInstance();
+//        doCal.clear();
+//        doCal.set(sy, sm, sd);
+//        while (doCal.compareTo(endCal) <= 0) {
+//            if (doCal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || doCal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+//
+//            }
+//        }
     }
 
     public void addDivision(String l) {

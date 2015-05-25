@@ -24,19 +24,12 @@ public class Division {
         if (dc.length() == 1) {
             dc = "0" + dc;
         }
-        Calendar doCal = Calendar.getInstance();
-        doCal.clear();
-        doCal.setTime(startDate);
-        while (doCal.getTime().getTime()<= endDate.getTime()) {
-            if (doCal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || doCal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
 
-            }
-        }
     }
 //    public Division(){}
 
     public void addTeam(String n, String c, String d) {
-        
+
     }
 
     public ArrayList<Team> getTeamList() {
@@ -186,38 +179,30 @@ public class Division {
     }
 
     public void schedule(ArrayList<Park> pList) {
-        while (hasNotScheduled()) 
-        {
-            for (int i = 0; i <=5; i++)
-            {
-                if (i == 0)
-                {
-                                    
+        while (hasNotScheduled()) {
+            for (int i = 0; i <= 5; i++) {
+                if (i == 0) {
+
                 }
-                if (i == 1)
-                {
-                                    
+                if (i == 1) {
+
                 }
-                if (i == 2)
-                {
-                                    
+                if (i == 2) {
+
                 }
-                if (i == 3)
-                {
-                                    
+                if (i == 3) {
+
                 }
-                if (i == 4)
-                {
-                                    
+                if (i == 4) {
+
                 }
-                if (i == 5)
-                {
-                                    
+                if (i == 5) {
+
                 }
-                
+
             }
         }
-        
+
     }
 
     /*check availability after each of the following steps
@@ -247,7 +232,7 @@ public class Division {
      CD or CD or DE or EF
         
      */
-            //umpiring schedule
+    //umpiring schedule
         /*
      Most Optimal
      3 2
