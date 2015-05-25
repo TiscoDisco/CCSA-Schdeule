@@ -2,17 +2,17 @@ package classes;
 
 /**
  *
- * @author TonyChen
- * comments made by Trent and Naomi
+ * @author TonyChen comments made by Trent and Naomi
  */
 /*teams,match, league, parks, 
  */
 import java.util.*;
 
 public class Division {
-    
+
     private SoftDate startDate;
     private SoftDate endDate;
+    private String divisionCode;
     private ArrayList<Team> teamList = new ArrayList<>();
     private ArrayList<Match> matchList = new ArrayList<>();
     private ArrayList<SoftDate> dateList = new ArrayList<>();
@@ -20,10 +20,14 @@ public class Division {
     public Division(SoftDate s, SoftDate e, String dc) {
         startDate = s;
         endDate = e;
+        divisionCode = dc;
+        if (dc.length() == 1) {
+            dc = "0" + dc;
+        }
     }
-    
-    public void addTeam(String n, String c, String d){
-        
+
+    public void addTeam(String n, String c, String d) {
+
     }
 
     public ArrayList<Team> getTeamList() {
