@@ -24,9 +24,9 @@ public class Main {
         Scanner in = new Scanner(System.in);
         Calendar startCal = Calendar.getInstance();
         System.out.println("start year");
-        int sy = Integer.parseInt(in.nextLine());
+        int sy = Integer.parseInt(in.nextLine())-2015;
         System.out.println("start month");
-        int sm = Integer.parseInt(in.nextLine());
+        int sm = Integer.parseInt(in.nextLine())-1;
         System.out.println("start day");
         int sd = Integer.parseInt(in.nextLine());
         startCal.set(sy, sm, sd);

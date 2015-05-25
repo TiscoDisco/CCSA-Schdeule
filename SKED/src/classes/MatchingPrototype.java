@@ -6,7 +6,7 @@ import java.util.*;
 /**
  *
  * @author TonyChen
- * comments made by Trent and Naomi
+ * 
  */
 public class MatchingPrototype {
 

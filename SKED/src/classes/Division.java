@@ -3,22 +3,27 @@ package classes;
 /**
  *
  * @author TonyChen
+ * comments made by Trent and Naomi
  */
 /*teams,match, league, parks, 
  */
 import java.util.*;
 
 public class Division {
-
+    
     private SoftDate startDate;
     private SoftDate endDate;
     private ArrayList<Team> teamList = new ArrayList<>();
     private ArrayList<Match> matchList = new ArrayList<>();
     private ArrayList<SoftDate> dateList = new ArrayList<>();
 
-    public Division(SoftDate s, SoftDate e) {
+    public Division(SoftDate s, SoftDate e, String dc) {
         startDate = s;
         endDate = e;
+    }
+    
+    public void addTeam(String n, String c, String d){
+        
     }
 
     public ArrayList<Team> getTeamList() {
@@ -165,12 +170,6 @@ public class Division {
             }
         }
         return true;
-    }
-
-    private long dateToLong(int y, int m, int d) {
-        Calendar thisCal = Calendar.getInstance();
-        thisCal.set(y, m, d);
-        return thisCal.getTimeInMillis();
     }
 
     public void schedule(ArrayList<Park> pList) {

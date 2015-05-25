@@ -14,11 +14,10 @@ public class Team {
     private String league;
     private ArrayList<SoftDate> noPlays = new ArrayList<>();
 
-    public Team(String n, String c, String t, String d) { // constructor
+    public Team(String n, String c, String tc) { // constructor
         name = n;
         church = c;
-        teamCode = t;
-        league = d;
+        teamCode = tc;
     }
 
     public String getChurch() { // return church name
