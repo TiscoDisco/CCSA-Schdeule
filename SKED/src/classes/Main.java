@@ -7,7 +7,7 @@ package classes;
 import java.util.*;
 
 public class Main {
-
+    static int year;
     static SoftDate startDate;
     static SoftDate endDate;
 
@@ -18,30 +18,37 @@ public class Main {
     ArrayList<Park> seniorParkList = new ArrayList<>();
     ArrayList<Park> varsityParkList = new ArrayList<>();
 
-    @SuppressWarnings("empty-statement")
     public static void main(String[] args) {
         //list of playable days
         Scanner in = new Scanner(System.in);
-        Calendar startCal = Calendar.getInstance();
-        startCal.clear();
-        System.out.println("start year");
-        int sy = Integer.parseInt(in.nextLine()) - 2015;
-        System.out.println("start month");
-        int sm = Integer.parseInt(in.nextLine()) - 1;
-        System.out.println("start day");
-        int sd = Integer.parseInt(in.nextLine());
-        startCal.set(sy, sm, sd);
-        Calendar endCal = Calendar.getInstance();
-        endCal.clear();
-        startDate = new SoftDate(startCal.getTimeInMillis());
-        System.out.println("end year");
-        int ey = Integer.parseInt(in.nextLine());
-        System.out.println("end month");
-        int em = Integer.parseInt(in.nextLine());
-        System.out.println("end day");
-        int ed = Integer.parseInt(in.nextLine());
-        endCal.set(ey, em, ed);
-        startDate = new SoftDate(endCal.getTimeInMillis());
+        Calendar juniorCal = Calendar.getInstance();
+        juniorCal.clear();
+        juniorCal.set(Calendar.YEAR, year);
+        juniorCal.set(Calendar.MONTH, Calendar.JUNE);
+        juniorCal.set(Calendar.DAY_OF_MONTH, juniorCal.get(Calendar.));
+        Calendar seniorCal = Calendar.getInstance();
+        Calendar VarsityCal = Calendar.getInstance();
+        
+//        Calendar startCal = Calendar.getInstance();
+//        startCal.clear();
+//        System.out.println("start year");
+//        int sy = Integer.parseInt(in.nextLine()) - 2015;
+//        System.out.println("start month");
+//        int sm = Integer.parseInt(in.nextLine()) - 1;
+//        System.out.println("start day");
+//        int sd = Integer.parseInt(in.nextLine());
+//        startCal.set(sy, sm, sd);
+//        Calendar endCal = Calendar.getInstance();
+//        endCal.clear();
+//        startDate = new SoftDate(startCal.getTimeInMillis());
+//        System.out.println("end year");
+//        int ey = Integer.parseInt(in.nextLine());
+//        System.out.println("end month");
+//        int em = Integer.parseInt(in.nextLine());
+//        System.out.println("end day");
+//        int ed = Integer.parseInt(in.nextLine());
+//        endCal.set(ey, em, ed);
+//        startDate = new SoftDate(endCal.getTimeInMillis());
 
         //create list of days
         Calendar doCal = Calendar.getInstance();

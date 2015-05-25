@@ -24,10 +24,19 @@ public class Division {
         if (dc.length() == 1) {
             dc = "0" + dc;
         }
+        Calendar doCal = Calendar.getInstance();
+        doCal.clear();
+        doCal.setTime(startDate);
+        while (doCal.getTime().getTime()<= endDate.getTime()) {
+            if (doCal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || doCal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+
+            }
+        }
     }
+//    public Division(){}
 
     public void addTeam(String n, String c, String d) {
-
+        
     }
 
     public ArrayList<Team> getTeamList() {
@@ -178,7 +187,7 @@ public class Division {
 
     public void schedule(ArrayList<Park> pList) {
         while (hasNotScheduled()) {
-
+            
             /*check availability after each of the following steps
              pick park
              saturday
