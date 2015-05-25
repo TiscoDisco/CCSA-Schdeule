@@ -117,6 +117,11 @@ public class TeamsGUI extends javax.swing.JFrame {
         lblTeamCode.setText("Team Code:");
 
         btnDelete.setText("Delete Team");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         lblTeams.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblTeams.setText("Teams");
@@ -291,21 +296,28 @@ public class TeamsGUI extends javax.swing.JFrame {
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
         String teamName = txtfieldTeamname.getText();
         String churchName = txtfieldChurch.getText();
-        String teamCode = jTextField11.getText();
+        String teamCode;
         String league;
         if (jTextField12.getText().length()>0)
         {
             league = jTextField12.getText();
+            teamCode = (txtfieldTeamname.getText()) + (jTextField12.getText());
+            jComboBox1.addItem(teamCode);
         }
         else if (jTextField13.getText().length()>0)
         {
             league = jTextField13.getText();
+            teamCode = (txtfieldTeamname.getText()) + (jTextField13.getText());
+            jComboBox2.addItem(teamCode);
         }
         else
         {
             league = jTextField14.getText();
+            teamCode = (txtfieldTeamname.getText()) + (jTextField14.getText());
+            jComboBox3.addItem(teamCode);
         }
-        Team a = new Team(teamName,churchName,league,teamCode);
+        Team a = new Team(teamName,churchName);
+        
         
         
         
@@ -324,6 +336,10 @@ public class TeamsGUI extends javax.swing.JFrame {
     private void btnNoPlayDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoPlayDateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNoPlayDateActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
      * @param args the command line arguments
