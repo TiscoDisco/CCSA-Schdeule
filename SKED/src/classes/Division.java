@@ -16,10 +16,10 @@ public class Division {
     
     public Division(String dc) {
         divisionCode = dc;
-        if (dc.length() == 1) {
-            dc = "0" + dc;
-        }
-
+    }
+    
+    public Division(String path){
+        
     }
 //    public Division(){}
 

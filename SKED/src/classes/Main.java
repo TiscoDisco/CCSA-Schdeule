@@ -50,7 +50,17 @@ public class Main {
     }
     
     public void fileInit(String parent){
-        File index = new File(parent+".index.dat");
+        File index = new File(parent,".index.dat");
+        //park lists
+        File jParks = new File(parent,"junior\\parkList.dat");
+        File sParks = new File(parent,"senior\\parkList.dat");
+        File vParks = new File(parent,"varsity\\parkList.dat");
+        //division lists
+        File jDivs = new File(parent,"junior\\divList.dat");
+        File sDivs = new File(parent,"senior\\divList.dat");
+        File vDivs = new File(parent,"varsity\\divList.dat");
+        //
+        
         
         
     }
