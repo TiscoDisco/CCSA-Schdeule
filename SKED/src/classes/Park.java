@@ -35,5 +35,9 @@ public class Park {
     public String getName() {
         return name;
     }
+    
+    public ArrayList<SoftDate> getDateList(){
+        return dateList;
+    }
 
 }

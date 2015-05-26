@@ -19,11 +19,28 @@ public class SoftDate extends Date {
     }
     
     public boolean equals(SoftDate d){
-        return d.toString().equals(super.toString());
+        return(d.getTime()==this.getTime());
     }
     
     public int getWeek(){
         return weekNum;
+    }
+    
+    public boolean hasTeam(Team t){
+        return(slot1.hasTeam(t)||slot2.hasTeam(t)||slot3.hasTeam(t));
+    }
+    
+    public boolean hasTeam(Team t, int s){
+        switch (s){
+            case 1:
+                return slot1.hasTeam(t);
+            case 2:
+                return slot2.hasTeam(t);
+            case 3:
+                return slot3.hasTeam(t);
+            default:
+                return false;
+        }
     }
     
 }
