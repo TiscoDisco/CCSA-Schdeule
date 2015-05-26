@@ -4,6 +4,7 @@ package classes;
  *
  * @author TonyChen
  */
+import java.io.*;
 import java.util.*;
 
 public class Main {
@@ -21,9 +22,9 @@ public class Main {
 
     public static void main(String[] args) {
         //list of playable day
-        Scanner in = new Scanner(System.in);
-        System.out.println("Enter year");
-        year = Integer.parseInt(in.nextLine());
+        
+    }
+    public void blankInit(int year){
         Calendar juniorCal = Calendar.getInstance();
         juniorCal.clear();
         juniorCal.set(Calendar.YEAR, year);
@@ -46,48 +47,24 @@ public class Main {
         endCal.set(Calendar.MONTH, Calendar.SEPTEMBER);
         endCal.set(Calendar.WEEK_OF_MONTH, 1);
         endCal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-//        Calendar startCal = Calendar.getInstance();
-//        startCal.clear();
-//        System.out.println("start year");
-//        int sy = Integer.parseInt(in.nextLine()) - 2015;
-//        System.out.println("start month");
-//        int sm = Integer.parseInt(in.nextLine()) - 1;
-//        System.out.println("start day");
-//        int sd = Integer.parseInt(in.nextLine());
-//        startCal.set(sy, sm, sd);
-//        Calendar endCal = Calendar.getInstance();
-//        endCal.clear();
-//        startDate = new SoftDate(startCal.getTimeInMillis());
-//        System.out.println("end year");
-//        int ey = Integer.parseInt(in.nextLine());
-//        System.out.println("end month");
-//        int em = Integer.parseInt(in.nextLine());
-//        System.out.println("end day");
-//        int ed = Integer.parseInt(in.nextLine());
-//        endCal.set(ey, em, ed);
-//        startDate = new SoftDate(endCal.getTimeInMillis());
-
-        //create list of days
-//        Calendar doCal = Calendar.getInstance();
-//        doCal.clear();
-//        doCal.set(sy, sm, sd);
-//        while (doCal.compareTo(endCal) <= 0) {
-//            if (doCal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || doCal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
-//
-//            }
-//        }
+    }
+    
+    public void fileInit(String parent){
+        File index = new File(parent+".index.dat");
+        
+        
     }
 
-    public void addDivision(String l) {
+    public void addDivision(String l, String dc) {
         switch (l) {
             case "j":
-                juniorDivs.add(new Division(startDate, endDate, String.valueOf(juniorDivs.size())));
+                juniorDivs.add(new Division(dc));
                 break;
             case "s":
-                seniorDivs.add(new Division(startDate, endDate, String.valueOf(seniorDivs.size())));
+                seniorDivs.add(new Division(dc));
                 break;
             case "v":
-                varsityDivs.add(new Division(startDate, endDate, String.valueOf(varsityDivs.size())));
+                varsityDivs.add(new Division(dc));
                 break;
         }
     }
