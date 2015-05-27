@@ -5,7 +5,7 @@ package classes;
  * @author 12akimr
  */
 import java.util.*;
-
+import java.io.*;
 public class Team {
 
     private String church;
@@ -23,8 +23,8 @@ public class Team {
         noPlays = np;
     }
     
-    public Team(String parent){
-        
+    public Team(String path){
+        File tf = new File(path);
     }
     public String getChurch() { // return church name
         return church;
