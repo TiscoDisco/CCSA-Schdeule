@@ -32,7 +32,7 @@ public class Park {
         
     }
 
-    public void addNoPlay(SoftDate d) {
+    public void addNoPlay(SoftDate d, int slot) {
         noPlays.add(d);
     }
 

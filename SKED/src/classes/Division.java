@@ -185,7 +185,14 @@ public class Division {
         while (hasNotScheduled()) {
             for (Park assignPark : pList) {
                 for (SoftDate assignDate : assignPark.getDateList()) {
-                    if (assignDate.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY) {
+                    
+                    if (assignDate.getDayOfWeek() == Calendar.SATURDAY) {
+                        //saturday
+                        //pick anything
+                        //copy 1 team if possible
+                        //
+                    }
+                    if (assignDate.getDayOfWeek() == Calendar.SUNDAY) {
                         //saturday
                         //pick anything
                         //copy 1 team if possible

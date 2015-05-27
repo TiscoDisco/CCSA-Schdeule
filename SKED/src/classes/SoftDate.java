@@ -49,7 +49,8 @@ public class SoftDate extends Date {
     
     public int getDayOfWeek(){
         Calendar thisCal = Calendar.getInstance();
-        thisCal.setTime(this.getTime());
+        thisCal.setTime(this);
+        return thisCal.get(Calendar.DAY_OF_WEEK);
         
     }
     
