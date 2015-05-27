@@ -10,25 +10,29 @@ import java.util.*;
 
 public class Division {
 
+    private SoftDate startDate;
+    private SoftDate endDate;
     private String divisionCode;
     private ArrayList<Team> teamList = new ArrayList<>();
     private ArrayList<Match> matchList = new ArrayList<>();
-    
-    public Division(String dc) {
+
+    public Division(String dc, SoftDate s, SoftDate e) {
         divisionCode = dc;
+        startDate = s;
+        endDate = e;
     }
-    
-    public Division(String path){
-        
+
+    public Division(String path) {
+
     }
 //    public Division(){}
 
     public void addTeam(String n, String c, ArrayList<SoftDate> np) {
         String name = String.valueOf(teamList.size());
-        if(name.length()<2){
-            name = "0"+name;
+        if (name.length() < 2) {
+            name = "0" + name;
         }
-        teamList.add(new Team(n,c,divisionCode+name,np));
+        teamList.add(new Team(n, c, divisionCode + name, np));
     }
 
     public ArrayList<Team> getTeamList() {
@@ -179,7 +183,7 @@ public class Division {
 
     public void schedule(ArrayList<Park> pList) {
         while (hasNotScheduled()) {
-            
+
             for (int i = 0; i <= 5; i++) {
                 if (i == 0) {
 
