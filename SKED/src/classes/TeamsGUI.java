@@ -308,8 +308,10 @@ public class TeamsGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
+
         String teamName = txtfieldTeamname.getText();
         String churchName = txtfieldChurch.getText();
+        String year = jTextField1.getText();
         String teamCode;
         String league;
         if (jTextField12.getText().length()>0)
@@ -353,6 +355,9 @@ public class TeamsGUI extends javax.swing.JFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         String teamCode = jTextField11.getText();
+        jComboBox1.removeItem(teamCode);
+        jComboBox3.removeItem(teamCode);
+        jComboBox4.removeItem(teamCode);
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
