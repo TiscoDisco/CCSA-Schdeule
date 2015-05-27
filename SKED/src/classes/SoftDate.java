@@ -14,6 +14,10 @@ public class SoftDate extends Date {
     private Match slot2;
     private Match slot3;
     
+    private boolean play1 = true;
+    private boolean play2 = true;
+    private boolean play3 = true;
+    
     public SoftDate(long t) {
         super(t);
     }
