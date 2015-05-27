@@ -6,6 +6,7 @@ package classes;
  */
 /*teams,match, league, parks, 
  */
+import java.io.*;
 import java.util.*;
 
 public class Division {
@@ -22,7 +23,21 @@ public class Division {
         endDate = e;
     }
 
-    public Division(String path) {
+    public Division(String path) throws FileNotFoundException, IOException {
+        File index = new File(path, "index.dat");
+        FileReader indexRead = new FileReader(index);
+        BufferedReader indexBuff = new BufferedReader(indexRead);
+        divisionCode = indexBuff.readLine();
+        startDate = new SoftDate(Long.parseLong(indexBuff.readLine()));
+        endDate = new SoftDate(Long.parseLong(indexBuff.readLine()));
+        int numTeams = Integer.parseInt(indexBuff.readLine());
+        for (int i = 0; i < numTeams; i++) {
+            teamList.add(new Team(path + "teams\\" + indexBuff.readLine()));
+        }
+        int numMatches = Integer.parseInt(indexBuff.readLine());
+        for (int i = 0; i < numMatches; i++) {
+            matchList.add();
+        }
 
     }
 //    public Division(){}
@@ -185,7 +200,7 @@ public class Division {
         while (hasNotScheduled()) {
             for (Park assignPark : pList) {
                 for (SoftDate assignDate : assignPark.getDateList()) {
-                    
+
                     if (assignDate.getDayOfWeek() == Calendar.SATURDAY) {
                         //saturday
                         //pick anything
