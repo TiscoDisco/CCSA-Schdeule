@@ -23,7 +23,7 @@ public class Division {
     }
 
     public Division(String path) {
-        
+
     }
 //    public Division(){}
 
@@ -183,31 +183,21 @@ public class Division {
 
     public void schedule(ArrayList<Park> pList) {
         while (hasNotScheduled()) {
-
-            for (int i = 0; i <= 5; i++) {
-                if (i == 0) {
-
+            for (Park assignPark : pList) {
+                for (SoftDate assignDate : assignPark.getDateList()) {
+                    if (assignDate.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY) {
+                        //saturday
+                        //pick anything
+                        //copy 1 team if possible
+                        //
+                    }
                 }
-                if (i == 1) {
-
-                }
-                if (i == 2) {
-
-                }
-                if (i == 3) {
-
-                }
-                if (i == 4) {
-
-                }
-                if (i == 5) {
-
-                }
-
             }
+
         }
 
     }
+
 
     /*check availability after each of the following steps
      pick park
