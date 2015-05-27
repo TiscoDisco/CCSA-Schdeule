@@ -16,15 +16,16 @@ public class Main {
     ArrayList<Division> juniorDivs = new ArrayList<>();
     ArrayList<Division> seniorDivs = new ArrayList<>();
     ArrayList<Division> varsityDivs = new ArrayList<>();
-    ArrayList<Park> juniorParkList = new ArrayList<>();
-    ArrayList<Park> seniorParkList = new ArrayList<>();
-    ArrayList<Park> varsityParkList = new ArrayList<>();
+    ArrayList<Park> juniorParks = new ArrayList<>();
+    ArrayList<Park> seniorParks = new ArrayList<>();
+    ArrayList<Park> varsityParks = new ArrayList<>();
 
     public static void main(String[] args) {
         //list of playable day
-        
+
     }
-    public void blankInit(int year){
+
+    public void blankInit(int year) {
         Calendar juniorCal = Calendar.getInstance();
         juniorCal.clear();
         juniorCal.set(Calendar.YEAR, year);
@@ -48,21 +49,55 @@ public class Main {
         endCal.set(Calendar.WEEK_OF_MONTH, 1);
         endCal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
     }
-    
-    public void fileInit(String parent){
-        File index = new File(parent,".index.dat");
-        //park lists
-        File jParks = new File(parent,"junior\\parkList.dat");
-        File sParks = new File(parent,"senior\\parkList.dat");
-        File vParks = new File(parent,"varsity\\parkList.dat");
+
+    public void fileInit(String parent) throws FileNotFoundException, IOException {
+        File index = new File(parent, ".index.dat");
         //division lists
-        File jDivs = new File(parent,"junior\\divList.dat");
-        File sDivs = new File(parent,"senior\\divList.dat");
-        File vDivs = new File(parent,"varsity\\divList.dat");
+        File jDivs = new File(parent, "junior\\divList.dat");
+        File sDivs = new File(parent, "senior\\divList.dat");
+        File vDivs = new File(parent, "varsity\\divList.dat");
+        FileReader jDivsRead = new FileReader(jDivs);
+        FileReader sDivsRead = new FileReader(sDivs);
+        FileReader vDivsRead = new FileReader(vDivs);
+        BufferedReader jDivsBuff = new BufferedReader(jDivsRead);
+        BufferedReader sDivsBuff = new BufferedReader(sDivsRead);
+        BufferedReader vDivsBuff = new BufferedReader(vDivsRead);
+        int jNumDivs = Integer.parseInt(jDivsBuff.readLine());
+        for (int i = 0; i < jNumDivs; i++) {
+            juniorDivs.add(new Division(parent + "junior\\divs\\" + jDivsBuff.readLine()));
+        }
+        int sNumDivs = Integer.parseInt(sDivsBuff.readLine());
+        for (int i = 0; i < sNumDivs; i++) {
+            seniorDivs.add(new Division(parent + "senior\\divs\\" + jDivsBuff.readLine()));
+        }
+        int vNumDivs = Integer.parseInt(vDivsBuff.readLine());
+        for (int i = 0; i < vNumDivs; i++) {
+            varsityDivs.add(new Division(parent + "varsity\\divs\\" + jDivsBuff.readLine()));
+        }
+
+        //park lists
+        File jParks = new File(parent, "junior\\parkList.dat");
+        File sParks = new File(parent, "senior\\parkList.dat");
+        File vParks = new File(parent, "varsity\\parkList.dat");
+        FileReader jParksRead = new FileReader(jParks);
+        FileReader sParksRead = new FileReader(sParks);
+        FileReader vParksRead = new FileReader(vParks);
+        BufferedReader jParksBuff = new BufferedReader(jParksRead);
+        BufferedReader sParksBuff = new BufferedReader(sParksRead);
+        BufferedReader vParksBuff = new BufferedReader(vParksRead);
+        int jNumParks = Integer.parseInt(jParksBuff.readLine());
+        for (int i = 0; i < jNumParks; i++) {
+            juniorParks.add(new Park(parent + "junior\\divs\\" + jParksBuff.readLine()));
+        }
+        int sNumParks = Integer.parseInt(sParksBuff.readLine());
+        for (int i = 0; i < sNumParks; i++) {
+            seniorParks.add(new Park(parent + "senior\\divs\\" + jParksBuff.readLine()));
+        }
+        int vNumParks = Integer.parseInt(vParksBuff.readLine());
+        for (int i = 0; i < vNumParks; i++) {
+            varsityParks.add(new Park(parent + "varsity\\divs\\" + jParksBuff.readLine()));
+        }
         //
-        
-        
-        
     }
 
     public void addDivision(String l, String dc) {
