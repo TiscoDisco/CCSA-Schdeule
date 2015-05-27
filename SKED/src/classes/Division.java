@@ -23,7 +23,7 @@ public class Division {
     }
 
     public Division(String path) {
-
+        
     }
 //    public Division(){}
 
@@ -32,7 +32,7 @@ public class Division {
         if (name.length() < 2) {
             name = "0" + name;
         }
-        teamList.add(new Team(n, c, divisionCode + name, np));
+        teamList.add(new Team(n, c, divisionCode, name, np));
     }
 
     public ArrayList<Team> getTeamList() {
