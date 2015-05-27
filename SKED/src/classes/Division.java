@@ -159,8 +159,8 @@ public class Division {
                 i < matchMatchList.size();
                 i++) { //checking if an index of the noPlayList array is equal to an index of the playList array
             boolean contains = false;
-            for (int j = 0; j < noPlayList.size(); j++) {
-                if (matchMatchList.get(i).equals(noPlayList.get(j))) {
+            for (Match check : noPlayList) {
+                if (matchMatchList.get(i).equals(check)) {
                     contains = true;
                 }
             }

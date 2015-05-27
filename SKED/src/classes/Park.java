@@ -27,6 +27,10 @@ public class Park {
             }
         }
     }
+    
+    public Park(String path){
+        
+    }
 
     public void addNoPlay(SoftDate d) {
         noPlays.add(d);
