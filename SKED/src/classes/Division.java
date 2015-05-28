@@ -204,16 +204,28 @@ public class Division {
                 for (SoftDate assignDate : assignPark.getDateList()) {
 
                     if (assignDate.getDayOfWeek() == Calendar.SATURDAY) {
-                        //saturday
-                        //pick anything
-                        //copy 1 team if possible
-                        //
+                        if(assignDate.getPlay(1)){
+                            matchList.get(0)
+                           
+                        }
+                        if(assignDate.getPlay(2)){
+                            
+                        }
+                        if(assignDate.getPlay(3)){
+                            
+                        }
+                        
                     }
                     if (assignDate.getDayOfWeek() == Calendar.SUNDAY) {
-                        //saturday
-                        //pick anything
-                        //copy 1 team if possible
-                        //
+                        if(assignDate.getPlay(1)){
+                            
+                        }
+                        if(assignDate.getPlay(2)){
+                            
+                        }
+                        if(assignDate.getPlay(3)){
+                            
+                        }
                     }
                 }
             }
