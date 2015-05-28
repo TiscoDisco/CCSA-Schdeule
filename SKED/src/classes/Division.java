@@ -210,7 +210,7 @@ public class Division {
                     if (assignDate.getDayOfWeek() == Calendar.SATURDAY) {
                         if(assignDate.getPlay(1)){
                             assignDate.setMatch(1,tempMatchList.get(0));
-                           
+                            tempMatchList.remove(0);                           
                         }
                         if(assignDate.getPlay(2)){
                             
