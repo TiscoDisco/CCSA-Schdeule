@@ -25,6 +25,18 @@ public class SoftDate extends Date {
     public boolean equals(SoftDate d){
         return(d.getTime()==this.getTime());
     }
+    public boolean getPlay(int s){
+        switch(s){
+            case 1:
+                return play1;
+            case 2:
+                return play2;
+            case 3:
+                return play3;
+            
+        }
+        return false;
+    }
     
     public int getWeek(){
         return weekNum;
@@ -32,6 +44,21 @@ public class SoftDate extends Date {
     
     public boolean hasTeam(Team t){
         return(slot1.hasTeam(t)||slot2.hasTeam(t)||slot3.hasTeam(t));
+    }
+    
+    public boolean hasTeam(Match m){
+        return(hasTeam(m.getTeamA())||hasTeam(m.getTeamB()));
+    }
+    
+    public void setMatch(int s, Match m){
+        switch(s){
+            case 1:
+                slot1 = m;
+            case 2:
+                slot2 = m;
+            case 3:
+                slot3 = m;
+        }
     }
     
     public boolean hasTeam(Team t, int s){
@@ -53,5 +80,7 @@ public class SoftDate extends Date {
         return thisCal.get(Calendar.DAY_OF_WEEK);
         
     }
+    
+    
     
 }
