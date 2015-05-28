@@ -32,11 +32,13 @@ public class Division {
         endDate = new SoftDate(Long.parseLong(indexBuff.readLine()));
         int numTeams = Integer.parseInt(indexBuff.readLine());
         for (int i = 0; i < numTeams; i++) {
-            teamList.add(new Team(path + "teams\\" + indexBuff.readLine()));
+            teamList.add(new Team(path + "\\teams\\" + indexBuff.readLine()));
         }
         int numMatches = Integer.parseInt(indexBuff.readLine());
         for (int i = 0; i < numMatches; i++) {
-            matchList.add();
+            String[] m = new String[2];
+            m=(indexBuff.readLine().split(","));
+            matchList.add(new Match(teamList.get(Integer.parseInt(m[0])),teamList.get(Integer.parseInt(m[1]))));
         }
 
     }

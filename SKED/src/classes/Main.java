@@ -103,13 +103,13 @@ public class Main {
     public void addDivision(String l, String dc) {
         switch (l) {
             case "j":
-                juniorDivs.add(new Division(dc));
+                juniorDivs.add(new Division(dc, startDate, endDate));
                 break;
             case "s":
-                seniorDivs.add(new Division(dc));
+                seniorDivs.add(new Division(dc, startDate, endDate));
                 break;
             case "v":
-                varsityDivs.add(new Division(dc));
+                varsityDivs.add(new Division(dc, startDate, endDate));
                 break;
         }
     }
