@@ -118,7 +118,11 @@
                                                   <Component id="jTextField16" max="32767" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                                              <Component id="btnNoPlayDate" min="-2" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="btnNoPlayDate" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
@@ -234,12 +238,14 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblMonth" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTextField15" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnNoPlayDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnNoPlayDate" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblDay" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTextField16" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -430,6 +436,13 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Year:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="No Play Dates:"/>
       </Properties>
     </Component>
   </SubComponents>
