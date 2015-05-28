@@ -199,13 +199,17 @@ public class Division {
     }
 
     public void schedule(ArrayList<Park> pList) {
+        
+        ArrayList<Match> tempMatchList = new ArrayList();
+        tempMatchList.addAll(matchList);
+        
         while (hasNotScheduled()) {
             for (Park assignPark : pList) {
                 for (SoftDate assignDate : assignPark.getDateList()) {
 
                     if (assignDate.getDayOfWeek() == Calendar.SATURDAY) {
                         if(assignDate.getPlay(1)){
-                            matchList.get(0)
+                            slot1 = tempMatchList.get(0);
                            
                         }
                         if(assignDate.getPlay(2)){
