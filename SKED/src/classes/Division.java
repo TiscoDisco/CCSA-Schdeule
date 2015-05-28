@@ -209,7 +209,7 @@ public class Division {
 
                     if (assignDate.getDayOfWeek() == Calendar.SATURDAY) {
                         if(assignDate.getPlay(1)){
-                            slot1 = tempMatchList.get(0);
+                            assignDate.slot1 = tempMatchList.get(0);
                            
                         }
                         if(assignDate.getPlay(2)){
