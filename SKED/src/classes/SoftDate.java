@@ -33,7 +33,9 @@ public class SoftDate extends Date {
                 return play2;
             case 3:
                 return play3;
+            
         }
+        return false;
     }
     
     public int getWeek(){
@@ -49,7 +51,14 @@ public class SoftDate extends Date {
     }
     
     public void setMatch(int s, Match m){
-        
+        switch(s){
+            case 1:
+                slot1 = m;
+            case 2:
+                slot2 = m;
+            case 3:
+                slot3 = m;
+        }
     }
     
     public boolean hasTeam(Team t, int s){
