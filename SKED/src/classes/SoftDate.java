@@ -38,6 +38,10 @@ public class SoftDate extends Date {
     
     }
     
+    public void setMatch(int s, Match m){
+        
+    }
+    
     public boolean hasTeam(Team t, int s){
         switch (s){
             case 1:
