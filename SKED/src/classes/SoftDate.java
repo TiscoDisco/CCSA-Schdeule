@@ -34,6 +34,10 @@ public class SoftDate extends Date {
         return(slot1.hasTeam(t)||slot2.hasTeam(t)||slot3.hasTeam(t));
     }
     
+    public boolean hasTeam(Match m){
+    
+    }
+    
     public boolean hasTeam(Team t, int s){
         switch (s){
             case 1:
@@ -53,5 +57,7 @@ public class SoftDate extends Date {
         return thisCal.get(Calendar.DAY_OF_WEEK);
         
     }
+    
+    
     
 }
