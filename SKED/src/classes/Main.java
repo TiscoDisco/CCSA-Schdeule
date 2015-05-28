@@ -20,9 +20,22 @@ public class Main {
     ArrayList<Park> seniorParks = new ArrayList<>();
     ArrayList<Park> varsityParks = new ArrayList<>();
 
-    public static void main(String[] args) {
+    public void main(String[] args) throws IOException {
         //list of playable day
-
+        Scanner in = new Scanner(System.in);
+        System.out.println("file or blank");
+        String select = in.nextLine();
+        switch (select.charAt(0)) {
+            case 'f':
+                System.out.println("What is the path to index.dat?");
+                fileInit(in.nextLine());
+                break;
+            case 'b':
+                System.out.println("What is the year?");
+                year=Integer.parseInt(in.nextLine());
+                blankInit(year);
+                break;
+        }
     }
 
     public void blankInit(int year) {
