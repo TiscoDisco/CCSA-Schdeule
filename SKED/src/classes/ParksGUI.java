@@ -189,7 +189,7 @@ public class ParksGUI extends javax.swing.JFrame {
                             .addComponent(comboJunior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(comboSenior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(comboVarsity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(129, 129, 129)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel6)
                             .addComponent(jLabel5))
@@ -202,7 +202,7 @@ public class ParksGUI extends javax.swing.JFrame {
                                         .addComponent(jLabel4)
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabel7)))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap(256, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(lblAddParks, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -261,7 +261,7 @@ public class ParksGUI extends javax.swing.JFrame {
                         .addComponent(lblParks)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCancelParks)
-                        .addGap(43, 43, 43))))
+                        .addGap(154, 154, 154))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -375,7 +375,7 @@ public class ParksGUI extends javax.swing.JFrame {
        String startday = jTextField4.getText();
        String endmonth = jTextField5.getText();
        String endday = jTextField6.getText();
-       String startdate = startmonth + startday;
+       String startdate = startmonth + startday;  
        String enddate = endmonth + endday;
       String parkname = txtFieldPark.getText();
       String league;
