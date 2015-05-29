@@ -12,6 +12,8 @@ public class Main {
     static int year;
     static SoftDate startDate;
     static SoftDate endDate;
+    static ArrayList<SoftDate> dateList = new ArrayList<>(); 
+    
 
     ArrayList<Division> juniorDivs = new ArrayList<>();
     ArrayList<Division> seniorDivs = new ArrayList<>();
@@ -61,6 +63,14 @@ public class Main {
         endCal.set(Calendar.MONTH, Calendar.SEPTEMBER);
         endCal.set(Calendar.WEEK_OF_MONTH, 1);
         endCal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+        Calendar doCal = Calendar.getInstance();
+        doCal.clear();
+        doCal.setTime(startDate);
+        while (doCal.getTime().compareTo(endDate) <= 0) {
+            if (doCal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || doCal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+                dateList.add(new SoftDate(doCal.getTime().getTime()));
+            }
+        }
     }
 
     public void fileInit(String parent) throws FileNotFoundException, IOException {
