@@ -37,8 +37,8 @@ public class Division {
         int numMatches = Integer.parseInt(indexBuff.readLine());
         for (int i = 0; i < numMatches; i++) {
             String[] m = new String[2];
-            m=(indexBuff.readLine().split(","));
-            matchList.add(new Match(teamList.get(Integer.parseInt(m[0])),teamList.get(Integer.parseInt(m[1]))));
+            m = (indexBuff.readLine().split(","));
+            matchList.add(new Match(teamList.get(Integer.parseInt(m[0])), teamList.get(Integer.parseInt(m[1]))));
         }
 
     }
@@ -198,37 +198,40 @@ public class Division {
         return true;
     }
 
-    public void schedule(ArrayList<Park> pList) {
-        
+    public void schedule(ArrayList<Park> pList, int numDates) {
+
         ArrayList<Match> tempMatchList = new ArrayList();
         tempMatchList.addAll(matchList);
-        
-        while (hasNotScheduled()) {
-            for (Park assignPark : pList) {
-                for (SoftDate assignDate : assignPark.getDateList()) {
 
-                    if (assignDate.getDayOfWeek() == Calendar.SATURDAY) {
-                        if(assignDate.getPlay(1)){
-                            assignDate.setMatch(1,tempMatchList.get(0));
-                            tempMatchList.remove(0);                           
-                        }
-                        if(assignDate.getPlay(2)){
-                            
-                        }
-                        if(assignDate.getPlay(3)){
-                            
-                        }
+        while (hasNotScheduled()) {
+
+            for (int i = 0; i < numDates; i++) {
+                for (Park assignPark : pList) {
+                    
+                    if (assignPark.getDateList().get(i).getDayOfWeek() == Calendar.SATURDAY) {
                         
+                        if (assignPark.getDateList().get(i).getPlay(1)) {
+                            assignPark.getDateList().get(i).setMatch(1, tempMatchList.get(0));
+                            tempMatchList.remove(0);
+                        }
+                        if (assignPark.getDateList().get(i).getPlay(2)) {
+                            int j = 0;
+                            //while (tempMatchList.get(j))
+                        }
+                        if (assignPark.getDateList().get(i).getPlay(3)) {
+
+                        }
                     }
-                    if (assignDate.getDayOfWeek() == Calendar.SUNDAY) {
-                        if(assignDate.getPlay(1)){
-                            
+
+                    if (assignPark.getDateList().get(i).getDayOfWeek() == Calendar.SUNDAY) {
+                        if (assignPark.getDateList().get(i).getPlay(1)) {
+
                         }
-                        if(assignDate.getPlay(2)){
-                            
+                        if (assignPark.getDateList().get(i).getPlay(2)) {
+
                         }
-                        if(assignDate.getPlay(3)){
-                            
+                        if (assignPark.getDateList().get(i).getPlay(3)) {
+
                         }
                     }
                 }
@@ -237,47 +240,47 @@ public class Division {
         }
 
     }
+}
 
 
-    /*check availability after each of the following steps
-     pick park
-     saturday
-     pick match
-     pick match with one of the two teams
-     pick match with another one of the two teams
-     sunday
-     pick match
-     pick match with one of the two teams
-     pick match with another one of the two teams
-     */
+/*check availability after each of the following steps
+ pick park
+ saturday
+ pick match
+ pick match with one of the two teams
+ pick match with another one of the two teams
+ sunday
+ pick match
+ pick match with one of the two teams
+ pick match with another one of the two teams
+ */
 
-    /*
-     Possible Matchings
-     Most Optimal
-     AB AC CD
-     EF EG GH
-     least optimal
-     AB CD EF
-     GH IJ LM
+/*
+ Possible Matchings
+ Most Optimal
+ AB AC CD
+ EF EG GH
+ least optimal
+ AB CD EF
+ GH IJ LM
         
-     day 1
-     AB 
-     AC or BC or CD
-     CD or CD or DE or EF
+ day 1
+ AB 
+ AC or BC or CD
+ CD or CD or DE or EF
         
-     */
+ */
     //umpiring schedule
         /*
-     Most Optimal
-     3 2
-     and
-     3 1 1
+ Most Optimal
+ 3 2
+ and
+ 3 1 1
             
-     Make sure every team gets a triple header
-     Some teams will get another double header
-     Other teams will get two singles
-     */
-}
+ Make sure every team gets a triple header
+ Some teams will get another double header
+ Other teams will get two singles
+ */
 //        Scanner in = new Scanner(System.in);
 //        int numTeams = teamList.size();
 //        int lenArray = 0;
