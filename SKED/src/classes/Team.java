@@ -31,7 +31,11 @@ public class Team {
         teamCode = tfBuff.readLine();
         name = tfBuff.readLine();
         church = tfBuff.readLine();
-        addAll()
+        String[] tempDates = tfBuff.readLine().split(",");
+        
+        for(String a:tempDates){
+            noPlays.add(new SoftDate(Long.parseLong(a)));
+        }
         
     }
     
