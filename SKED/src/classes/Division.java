@@ -206,12 +206,14 @@ public class Division {
         Team teamA1;
         Team teamB1;
         int j = 0;
+        int lol = 0;
 
         while (hasNotScheduled()) {
-
+            Day:
             for (int i = 0; i < numDates; i++) {
+                Park:
                 for (Park assignPark : pList) {
-                    Saturday:
+
                     if (assignPark.getDateList().get(i).getDayOfWeek() == Calendar.SATURDAY) {
                         for (int k = 0; k < tempMatchList.size(); k++) {
                             if (tempMatchList.get(k).getTeamA().canPlay(assignPark.getDateList().get(i), pList, assignPark)
@@ -221,12 +223,11 @@ public class Division {
                                 break;
 
                             }
-                            if (k==tempMatchList.size()-1)
-                            {
+                            if (k == tempMatchList.size() - 1) {
                                 //assignPark.getDateList().get(i).setDayOfWeek() = Calendar.SUNDAY;
-                                break Saturday;
+                                continue Park;
                             }
-                            
+
                         }
 
                         if (assignPark.getDateList().get(i).getPlay(1)) {
@@ -235,16 +236,27 @@ public class Division {
                             teamA1 = tempGameList.get(p).getTeamA();
                             teamB1 = tempGameList.get(p).getTeamB();
                             tempMatchList.remove(p);
-                        }
-                        if (assignPark.getDateList().get(i).getPlay(2)) {
-                            
+                            if (assignPark.getDateList().get(i).getPlay(2)) {
+                                for (int k = 0; k < tempMatchList.size(); k++) {
+                                    if ((tempMatchList.get(k).getTeamA().equals(teamA1) && !(tempMatchList.get(k).getTeamB().equals(teamB1)))
+                                            || (tempMatchList.get(k).getTeamB().equals(teamB1)) && !(tempMatchList.get(k).getTeamA().equals(teamA1))) {
+                                        tempGameList.add(tempMatchList.get(k));
 
-                            //while (hasTeam(, 1)) {
+                                    }
+                                    lol = k;
+
+                                }
+                                
+
+                                if (assignPark.getDateList().get(i).getPlay(3)) {
+
+                                }
+
+                                //while (hasTeam(, 1)) {
+                            }
+
                         }
 
-                        if (assignPark.getDateList().get(i).getPlay(3)) {
-
-                        }
                     }
 
                     if (assignPark.getDateList().get(i).getDayOfWeek() == Calendar.SUNDAY) {
@@ -256,7 +268,7 @@ public class Division {
                                 break;
 
                             }
-                        }+
+                        }
                         if (assignPark.getDateList().get(i).getPlay(1)) {
 
                         }
