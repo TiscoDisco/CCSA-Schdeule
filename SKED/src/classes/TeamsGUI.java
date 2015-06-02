@@ -5,6 +5,8 @@
  */
 package classes;
 
+import java.util.*;
+
 /**
  *
  * @author tim
@@ -323,6 +325,9 @@ public class TeamsGUI extends javax.swing.JFrame {
         String teamCode;
         String league;
         String divisionCode;
+        ArrayList<Division> jdivs;
+        ArrayList<Division> sdivs;
+        ArrayList<Division> vdivs;
         if (jTextField12.getText().length()>0)
         {
             league = jTextField12.getText();
@@ -346,7 +351,7 @@ public class TeamsGUI extends javax.swing.JFrame {
         }
         
         
-        Team a = new Team(teamName,churchName,teamCode,divisionCode);
+        //Team a = new Team(teamName,churchName,teamCode,divisionCode);
         
         
         
@@ -354,8 +359,7 @@ public class TeamsGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEnterActionPerformed
 
     private void btnCancelteamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelteamsActionPerformed
-        HomeGUI h =new HomeGUI();
-        h.main(null);
+
         this.dispose();
     }//GEN-LAST:event_btnCancelteamsActionPerformed
 
@@ -379,7 +383,8 @@ public class TeamsGUI extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[],ArrayList<Division> jDivs,ArrayList<Division> sDivs,
+            ArrayList<Division> vDivs) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
