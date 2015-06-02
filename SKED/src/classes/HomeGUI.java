@@ -21,7 +21,9 @@ public class HomeGUI extends javax.swing.JFrame {
     public HomeGUI() {
         initComponents();
     }
-
+    private ArrayList<Division> jDivs;
+    private ArrayList<Division> sDivs;
+    private ArrayList<Division> vDivs;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -128,7 +130,7 @@ public class HomeGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void btnTeamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTeamActionPerformed
         TeamsGUI t = new TeamsGUI();
         t.main(null);

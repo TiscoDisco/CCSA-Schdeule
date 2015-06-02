@@ -325,6 +325,9 @@ public class TeamsGUI extends javax.swing.JFrame {
         String teamCode;
         String league;
         String divisionCode;
+        ArrayList<Division> jdivs;
+        ArrayList<Division> sdivs;
+        ArrayList<Division> vdivs;
         if (jTextField12.getText().length()>0)
         {
             league = jTextField12.getText();
