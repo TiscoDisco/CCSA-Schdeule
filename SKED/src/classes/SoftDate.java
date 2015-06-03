@@ -54,10 +54,16 @@ public class SoftDate extends Date {
         switch(s){
             case 1:
                 slot1 = m;
+                play1 = true;
+                break;
             case 2:
                 slot2 = m;
+                play2 = true;
+                break;
             case 3:
                 slot3 = m;
+                play3 = true;
+                break;
         }
     }
     
