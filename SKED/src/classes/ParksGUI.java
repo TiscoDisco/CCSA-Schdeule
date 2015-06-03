@@ -8,6 +8,7 @@ package classes;
 /**
  *
  * @author 12achent
+ * Comments made by Trent and Naomi
  */
 public class ParksGUI extends javax.swing.JFrame {
 
@@ -374,16 +375,16 @@ public class ParksGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    // This class closes the park GUI
     private void btnCancelParksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelParksActionPerformed
 
         this.dispose();
     }//GEN-LAST:event_btnCancelParksActionPerformed
 
     private void txtDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDayActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDayActionPerformed
 
+    }//GEN-LAST:event_txtDayActionPerformed
+    //This class adds a park by collecting all of the necessary data from the convener
     private void btnAddParkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddParkActionPerformed
        String startmonth = jTextField2.getText();
        String startday = jTextField4.getText();
@@ -394,23 +395,24 @@ public class ParksGUI extends javax.swing.JFrame {
       String parkname = txtFieldPark.getText();
       String league;
       String parkcode;
+      
       if (txtFieldj.getText().length()>0)
         {
             league = txtFieldj.getText();
             parkcode = "J" + league + parkname;
-            comboJunior.addItem(parkcode);
+            comboJunior.addItem(parkcode); //Adds a junior park based on the park code
         }
         else if (jTextField1.getText().length()>0)
         {
             league = jTextField1.getText();
             parkcode = "S" + parkname + league;
-            comboSenior.addItem(parkcode);
+            comboSenior.addItem(parkcode); //Adds a senior park based on the park code
         }
         else
         {
             league = jTextField3.getText();
             parkcode = "V" + parkname + league;
-            comboVarsity.addItem(parkcode);
+            comboVarsity.addItem(parkcode); //Adds a varsity park based on the park code
         }
     
                
@@ -418,14 +420,14 @@ public class ParksGUI extends javax.swing.JFrame {
               
                
     }//GEN-LAST:event_btnAddParkActionPerformed
-
+    //This class deletes a park based on the convener's input
     private void btnDeleteParkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteParkActionPerformed
         String parkname = txtParkNameDelete.getText();
         comboJunior.removeItem(parkname);
         comboSenior.removeItem(parkname);
         comboVarsity.removeItem(parkname);
     }//GEN-LAST:event_btnDeleteParkActionPerformed
-
+    //This class takes input from the convener (via text box) on the no play days of the park 
     private void btnAddDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDayActionPerformed
         String noplaymonth = jTextField7.getText();
         String noplayday = txtDay.getText();
