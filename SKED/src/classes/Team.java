@@ -36,7 +36,24 @@ public class Team {
         for(String a:tempDates){
             noPlays.add(new SoftDate(Long.parseLong(a)));
         }
-        
+    }
+    
+    public void save(String path) throws IOException{
+        File tf = new File(path);
+        tf.createNewFile();
+        FileWriter tfWrite = new FileWriter(tf);
+        BufferedWriter tfBuff = new BufferedWriter(tfWrite);
+        tfBuff.write(divisionCode);
+        tfBuff.newLine();
+        tfBuff.write(teamCode);
+        tfBuff.newLine();
+        tfBuff.write(name);
+        tfBuff.newLine();
+        tfBuff.write(church);
+        tfBuff.newLine();
+        for (SoftDate np : noPlays) {
+            tfBuff.write(String.valueOf(np.getTime()));
+        }
     }
     
     public String getChurch() { // return church name
@@ -52,7 +69,7 @@ public class Team {
     }
 
     public boolean equals(Team t) { // tells if the teams are the same
-        return t.teamCode.equals(teamCode);
+        return t.getCode().equals(teamCode);
     }
 
     public boolean hasPlayDate(SoftDate d) {
