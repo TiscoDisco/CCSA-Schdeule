@@ -43,5 +43,14 @@ public class Park {
     public ArrayList<SoftDate> getDateList(){
         return dateList;
     }
+    
+    public boolean hasPlayDate(SoftDate d){
+        for(SoftDate np:noPlays){
+            if(np.equals(d)){
+                return false;
+            }
+        }
+        return true;
+    }
 
 }
