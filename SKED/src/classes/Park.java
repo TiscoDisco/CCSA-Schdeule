@@ -27,9 +27,9 @@ public class Park {
             }
         }
     }
-    
-    public Park(String path){
-        
+
+    public Park(String path) {
+
     }
 
     public void addNoPlay(SoftDate d, int slot) {
@@ -39,9 +39,31 @@ public class Park {
     public String getName() {
         return name;
     }
-    
-    public ArrayList<SoftDate> getDateList(){
+
+    public ArrayList<SoftDate> getDateList() {
         return dateList;
+    }
+
+    public boolean hasPlayDate(SoftDate d) {
+        for (SoftDate np : noPlays) {
+            if (np.equals(d)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean canPlay(SoftDate d, int s) {
+        if (hasPlayDate(d)) {
+            for (SoftDate checkDate : dateList) {
+                if(checkDate.equals(d)){
+                    if(!checkDate.getPlay(s)){
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 
 }

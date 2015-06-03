@@ -23,9 +23,22 @@ public class Team {
         noPlays = np;
     }
     
-    public Team(String path){
+    public Team(String path) throws FileNotFoundException, IOException{
         File tf = new File(path);
+        FileReader tfRead = new FileReader(tf);
+        BufferedReader tfBuff = new BufferedReader(tfRead);
+        divisionCode = tfBuff.readLine();
+        teamCode = tfBuff.readLine();
+        name = tfBuff.readLine();
+        church = tfBuff.readLine();
+        String[] tempDates = tfBuff.readLine().split(",");
+        
+        for(String a:tempDates){
+            noPlays.add(new SoftDate(Long.parseLong(a)));
+        }
+        
     }
+    
     public String getChurch() { // return church name
         return church;
     }
