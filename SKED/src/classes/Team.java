@@ -6,6 +6,7 @@ package classes;
  */
 import java.util.*;
 import java.io.*;
+
 public class Team {
 
     private String church;
@@ -22,8 +23,8 @@ public class Team {
         divisionCode = dc;
         noPlays = np;
     }
-    
-    public Team(String path) throws FileNotFoundException, IOException{
+
+    public Team(String path) throws FileNotFoundException, IOException {
         File tf = new File(path);
         FileReader tfRead = new FileReader(tf);
         BufferedReader tfBuff = new BufferedReader(tfRead);
@@ -32,13 +33,13 @@ public class Team {
         name = tfBuff.readLine();
         church = tfBuff.readLine();
         String[] tempDates = tfBuff.readLine().split(",");
-        
-        for(String a:tempDates){
+
+        for (String a : tempDates) {
             noPlays.add(new SoftDate(Long.parseLong(a)));
         }
     }
-    
-    public void save(String path) throws IOException{
+
+    public void save(String path) throws IOException {
         File tf = new File(path);
         tf.createNewFile();
         FileWriter tfWrite = new FileWriter(tf);
@@ -55,7 +56,7 @@ public class Team {
             tfBuff.write(String.valueOf(np.getTime()));
         }
     }
-    
+
     public String getChurch() { // return church name
         return church;
     }
@@ -63,8 +64,8 @@ public class Team {
     public String getName() { // return team name
         return name;
     }
-    
-    public String getCode(){
+
+    public String getCode() {
         return teamCode;
     }
 
@@ -86,18 +87,14 @@ public class Team {
             for (Park p : pList) {
                 if (!p.equals(thisp)) {
                     for (SoftDate pd : p.getDateList()) {
-                        if (pd.equals(d)) {
-                            if (pd.hasTeam(this)){
-                                
-                            }
+                        if (pd.equals(d) && !pd.hasTeam(this)) {
+                            return true;
                         }
-
                     }
                 }
-
             }
         }
         return false;
-
     }
+    
 }
