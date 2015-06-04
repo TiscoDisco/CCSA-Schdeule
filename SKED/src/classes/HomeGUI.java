@@ -9,7 +9,6 @@ package classes;
  *
  * @author tim
  */
-import static classes.Main.startDate;
 import java.io.*;
 import java.util.*;
 
@@ -21,12 +20,8 @@ public class HomeGUI extends javax.swing.JFrame {
     public HomeGUI() {
         initComponents();
     }
-    private ArrayList<Division> jDivs;
-    private ArrayList<Division> sDivs;
-    private ArrayList<Division> vDivs;
-    
-     // This method is called from within the constructor to initialize the form.
-    
+
+    // This method is called from within the constructor to initialize the form.
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -128,7 +123,7 @@ public class HomeGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
     private void btnTeamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTeamActionPerformed
         TeamsGUI t = new TeamsGUI();
         t.main(null);
@@ -144,24 +139,16 @@ public class HomeGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnParksActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
-        
+
     }//GEN-LAST:event_btnCreateActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    static int year;
-    static SoftDate startDate;
-    static SoftDate endDate;
-    static ArrayList<SoftDate> dateList = new ArrayList<>();
-    ArrayList<Division> juniorDivs = new ArrayList<>();
-    ArrayList<Division> seniorDivs = new ArrayList<>();
-    ArrayList<Division> varsityDivs = new ArrayList<>();
-    ArrayList<Park> juniorParks = new ArrayList<>();
-    ArrayList<Park> seniorParks = new ArrayList<>();
-    ArrayList<Park> varsityParks = new ArrayList<>();
 
-    public void main(String[] args) throws IOException {
+    public void main(ArrayList<Division> jd, ArrayList<Division> sd, ArrayList<Division> vd, ArrayList<Park> jp, ArrayList<Division> sp, ArrayList<Division> vp,
+            int y, SoftDate js, SoftDate ss, SoftDate vs, SoftDate ed) throws IOException {
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -208,6 +195,7 @@ public class HomeGUI extends javax.swing.JFrame {
                 break;
         }
     }
+
     //this class generates the schedule for all of the teams based on all of the factors inputed by the convener
     public void blankInit(int year) {
         Calendar juniorCal = Calendar.getInstance();
@@ -296,9 +284,10 @@ public class HomeGUI extends javax.swing.JFrame {
     public void saveAll() {
 
     }
+
     //This class adds a division when needed
     public void addDivision(String l, String dc) {
-        
+
         switch (l) {
             case "j":
                 juniorDivs.add(new Division(dc, startDate, endDate));

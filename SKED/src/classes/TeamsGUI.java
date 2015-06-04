@@ -308,42 +308,34 @@ public class TeamsGUI extends javax.swing.JFrame {
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
         //store values of a team inputed by user
-        String teamName = txtfieldTeamname.getText();
-        String churchName = txtfieldChurch.getText();
-        String year = jTextField1.getText();
+        String teamName;
+        String churchName;
+        int year;
         String teamCode;
-        String league;
         String divisionCode;
-        ArrayList<Division> jdivs;
-        ArrayList<Division> sdivs;
-        ArrayList<Division> vdivs;
-        
+
+
         /*
-        * generate the team code from the league input and the team name 
-        * and display in its appropriate list
-        */
-        if (jTextField12.getText().length()>0)
-        {
-            league = jTextField12.getText();
-            teamCode = (txtfieldTeamname.getText()) + (jTextField12.getText());
-            jComboBox1.addItem(teamCode);
+         * generate the team code from the league input and the team name 
+         * and display in its appropriate list
+         */
+        if (jTextField12.getText().length() > 0) {
             divisionCode = jTextField12.getText();
-        }
-        else if (jTextField13.getText().length()>0)
-        {
-            league = jTextField13.getText();
+            teamCode = (jTextField12.getText()) + (txtfieldTeamname.getText());
+            jComboBox1.addItem(teamCode);
+
+        } else if (jTextField13.getText().length() > 0) {
+            divisionCode = jTextField13.getText();
             teamCode = (txtfieldTeamname.getText()) + (jTextField13.getText());
             jComboBox2.addItem(teamCode);
-            divisionCode = jTextField13.getText();
-        }
-        else
-        {
-            league = jTextField14.getText();
+
+        } else {
+            divisionCode = jTextField14.getText();
             teamCode = (txtfieldTeamname.getText()) + (jTextField14.getText());
             jComboBox3.addItem(teamCode);
-            divisionCode = jTextField14.getText();
+
         }
-        
+
     }//GEN-LAST:event_btnEnterActionPerformed
     //close the team GUI
     private void btnCancelteamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelteamsActionPerformed
@@ -355,8 +347,8 @@ public class TeamsGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField14ActionPerformed
     //collect and store the team's no-play date
     private void btnNoPlayDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoPlayDateActionPerformed
-       String month = jTextField15.getText();
-       String day = jTextField16.getText();
+        String month = jTextField15.getText();
+        String day = jTextField16.getText();
     }//GEN-LAST:event_btnNoPlayDateActionPerformed
     //delete a team if its team code appears in any list
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -367,10 +359,11 @@ public class TeamsGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
-     * @param args the command line arguments
+     *
      */
-    public static void main(String args[],ArrayList<Division> jDivs,ArrayList<Division> sDivs,
-            ArrayList<Division> vDivs) {
+    public static void main(ArrayList<Division> jd, ArrayList<Division> sd, ArrayList<Division> vd, ArrayList<Park> jp, ArrayList<Division> sp, ArrayList<Division> vp,
+            SoftDate js, SoftDate ss, SoftDate vs, SoftDate ed) {
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -402,7 +395,7 @@ public class TeamsGUI extends javax.swing.JFrame {
             }
         });
     }
-
+//<editor-fold>
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelteams;
     private javax.swing.JButton btnDelete;
@@ -443,4 +436,5 @@ public class TeamsGUI extends javax.swing.JFrame {
     private javax.swing.JTextField txtfieldChurch;
     private javax.swing.JTextField txtfieldTeamname;
     // End of variables declaration//GEN-END:variables
+//</editor-fold>
 }
