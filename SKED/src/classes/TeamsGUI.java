@@ -308,8 +308,8 @@ public class TeamsGUI extends javax.swing.JFrame {
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
         //store values of a team inputed by user
-        String teamName;
-        String churchName;
+        String teamName = txtfieldTeamname.getText();
+        String churchName = txtfieldChurch.getText();
         int year;
         String teamCode;
         String divisionCode;
