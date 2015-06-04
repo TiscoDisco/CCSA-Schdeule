@@ -24,15 +24,14 @@ public class Division {
     }
 
     public Division(String path) throws FileNotFoundException, IOException {
-        File index = new File(path, "index.dat");
         FileReader indexRead = new FileReader(index);
         BufferedReader indexBuff = new BufferedReader(indexRead);
         divisionCode = indexBuff.readLine();
         startDate = new SoftDate(Long.parseLong(indexBuff.readLine()));
         endDate = new SoftDate(Long.parseLong(indexBuff.readLine()));
-        int numTeams = Integer.parseInt(indexBuff.readLine());
-        for (int i = 0; i < numTeams; i++) {
-            teamList.add(new Team(path + "\\teams\\" + indexBuff.readLine()));
+        String[] tList = indexBuff.readLine().split(",");
+        for (String tPath : tList) {
+            teamList.add(new Team(String.valueOf(y) + "\\teams\\" + indexBuff.readLine()));
         }
         int numMatches = Integer.parseInt(indexBuff.readLine());
         for (int i = 0; i < numMatches; i++) {
@@ -41,6 +40,25 @@ public class Division {
             matchList.add(new Match(teamList.get(Integer.parseInt(m[0])), teamList.get(Integer.parseInt(m[1]))));
         }
 
+    }
+    
+    public Division(int y) throws FileNotFoundException, IOException{
+        File index = new File(String.valueOf(y), "index.dat");
+        FileReader indexRead = new FileReader(index);
+        BufferedReader indexBuff = new BufferedReader(indexRead);
+        divisionCode = indexBuff.readLine();
+        startDate = new SoftDate(Long.parseLong(indexBuff.readLine()));
+        endDate = new SoftDate(Long.parseLong(indexBuff.readLine()));
+        String[] tList = indexBuff.readLine().split(",");
+        for (String tPath : tList) {
+            teamList.add(new Team(String.valueOf(y) + "\\teams\\" + indexBuff.readLine()));
+        }
+        int numMatches = Integer.parseInt(indexBuff.readLine());
+        for (int i = 0; i < numMatches; i++) {
+            String[] m = new String[2];
+            m = (indexBuff.readLine().split(","));
+            matchList.add(new Match(teamList.get(Integer.parseInt(m[0])), teamList.get(Integer.parseInt(m[1]))));
+        }
     }
 //    public Division(){}
 

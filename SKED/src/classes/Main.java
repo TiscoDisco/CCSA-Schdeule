@@ -9,11 +9,12 @@ import java.util.*;
 
 public class Main {
 
-    static int year;
-    static SoftDate startDate;
-    static SoftDate endDate;
-    static ArrayList<SoftDate> dateList = new ArrayList<>(); 
-    
+    int year;
+
+    SoftDate juniorStartDate;
+    SoftDate seniorStartDate;
+    SoftDate varsityStartDate;
+    SoftDate endDate;
 
     ArrayList<Division> juniorDivs = new ArrayList<>();
     ArrayList<Division> seniorDivs = new ArrayList<>();
@@ -34,7 +35,7 @@ public class Main {
                 break;
             case 'b':
                 System.out.println("What is the year?");
-                year=Integer.parseInt(in.nextLine());
+                year = Integer.parseInt(in.nextLine());
                 blankInit(year);
                 break;
         }
@@ -47,30 +48,29 @@ public class Main {
         juniorCal.set(Calendar.MONTH, Calendar.JULY);
         juniorCal.set(Calendar.DAY_OF_MONTH, 1);
         juniorCal.add(Calendar.DAY_OF_YEAR, -7);
+        juniorStartDate.setTime(juniorCal.getTimeInMillis());
+
         Calendar seniorCal = Calendar.getInstance();
         seniorCal.set(Calendar.YEAR, year);
         seniorCal.set(Calendar.MONTH, Calendar.JUNE);
         seniorCal.set(Calendar.DAY_OF_MONTH, 1);
         seniorCal.add(Calendar.DAY_OF_YEAR, -7);
+        seniorStartDate.setTime(seniorCal.getTimeInMillis());
+
         Calendar varsityCal = Calendar.getInstance();
         varsityCal.set(Calendar.YEAR, year);
         varsityCal.set(Calendar.MONTH, Calendar.JULY);
         varsityCal.set(Calendar.DAY_OF_MONTH, 1);
         varsityCal.add(Calendar.DAY_OF_YEAR, -7);
+        varsityStartDate.setTime(varsityCal.getTimeInMillis());
+
         Calendar endCal = Calendar.getInstance();
         endCal.clear();
         endCal.set(Calendar.YEAR, year);
         endCal.set(Calendar.MONTH, Calendar.SEPTEMBER);
         endCal.set(Calendar.WEEK_OF_MONTH, 1);
         endCal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-        Calendar doCal = Calendar.getInstance();
-        doCal.clear();
-        doCal.setTime(startDate);
-        while (doCal.getTime().compareTo(endDate) <= 0) {
-            if (doCal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || doCal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
-                dateList.add(new SoftDate(doCal.getTime().getTime()));
-            }
-        }
+        endDate.setTime(endCal.getTimeInMillis());
     }
 
     public void fileInit(String parent) throws FileNotFoundException, IOException {
@@ -122,21 +122,21 @@ public class Main {
         }
         //
     }
-    
-    public void saveAll(){
+
+    public void saveAll() {
         
     }
-    
+
     public void addDivision(String l, String dc) {
         switch (l) {
             case "j":
-                juniorDivs.add(new Division(dc, startDate, endDate));
+                juniorDivs.add(new Division(dc, juniorStartDate, endDate));
                 break;
             case "s":
-                seniorDivs.add(new Division(dc, startDate, endDate));
+                seniorDivs.add(new Division(dc, seniorStartDate, endDate));
                 break;
             case "v":
-                varsityDivs.add(new Division(dc, startDate, endDate));
+                varsityDivs.add(new Division(dc, varsityStartDate, endDate));
                 break;
         }
     }
