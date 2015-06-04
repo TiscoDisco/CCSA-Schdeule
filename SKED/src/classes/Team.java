@@ -24,38 +24,38 @@ public class Team {
         noPlays = np;
     }
 
-    public Team(String path) throws FileNotFoundException, IOException {
-        File tf = new File(path);
-        FileReader tfRead = new FileReader(tf);
-        BufferedReader tfBuff = new BufferedReader(tfRead);
-        divisionCode = tfBuff.readLine();
-        teamCode = tfBuff.readLine();
-        name = tfBuff.readLine();
-        church = tfBuff.readLine();
-        String[] tempDates = tfBuff.readLine().split(",");
-
-        for (String a : tempDates) {
-            noPlays.add(new SoftDate(Long.parseLong(a)));
-        }
-    }
-
-    public void save(String path) throws IOException {
-        File tf = new File(path);
-        tf.createNewFile();
-        FileWriter tfWrite = new FileWriter(tf);
-        BufferedWriter tfBuff = new BufferedWriter(tfWrite);
-        tfBuff.write(divisionCode);
-        tfBuff.newLine();
-        tfBuff.write(teamCode);
-        tfBuff.newLine();
-        tfBuff.write(name);
-        tfBuff.newLine();
-        tfBuff.write(church);
-        tfBuff.newLine();
-        for (SoftDate np : noPlays) {
-            tfBuff.write(String.valueOf(np.getTime()));
-        }
-    }
+//    public Team(String path) throws FileNotFoundException, IOException {
+//        File tf = new File(path);
+//        FileReader tfRead = new FileReader(tf);
+//        BufferedReader tfBuff = new BufferedReader(tfRead);
+//        divisionCode = tfBuff.readLine();
+//        teamCode = tfBuff.readLine();
+//        name = tfBuff.readLine();
+//        church = tfBuff.readLine();
+//        String[] tempDates = tfBuff.readLine().split(",");
+//
+//        for (String a : tempDates) {
+//            noPlays.add(new SoftDate(Long.parseLong(a)));
+//        }
+//    }
+//
+//    public void save(String path) throws IOException {
+//        File tf = new File(path);
+//        tf.createNewFile();
+//        FileWriter tfWrite = new FileWriter(tf);
+//        BufferedWriter tfBuff = new BufferedWriter(tfWrite);
+//        tfBuff.write(divisionCode);
+//        tfBuff.newLine();
+//        tfBuff.write(teamCode);
+//        tfBuff.newLine();
+//        tfBuff.write(name);
+//        tfBuff.newLine();
+//        tfBuff.write(church);
+//        tfBuff.newLine();
+//        for (SoftDate np : noPlays) {
+//            tfBuff.write(String.valueOf(np.getTime()));
+//        }
+//    }
 
     public String getChurch() { // return church name
         return church;

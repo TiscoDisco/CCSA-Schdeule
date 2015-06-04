@@ -26,22 +26,18 @@ public class Main {
     public void main(String[] args) throws IOException {
         //list of playable day
         Scanner in = new Scanner(System.in);
-        System.out.println("file or blank");
-        String select = in.nextLine();
-        switch (select.charAt(0)) {
-            case 'f':
-                System.out.println("What is the path to index.dat?");
-                fileInit(in.nextLine());
-                break;
-            case 'b':
-                System.out.println("What is the year?");
-                year = Integer.parseInt(in.nextLine());
-                blankInit(year);
-                break;
+        year = Integer.parseInt(in.nextLine());
+        File yearFile = new File(String.valueOf(year), "index.dat");
+        if(yearFile.exists()){
+            fileInit(String.valueOf(year));
+        }else{
+            yearFile.createNewFile();
+            blankInit();
         }
+        
     }
 
-    public void blankInit(int year) {
+    public void blankInit() {
         Calendar juniorCal = Calendar.getInstance();
         juniorCal.clear();
         juniorCal.set(Calendar.YEAR, year);
@@ -76,8 +72,8 @@ public class Main {
     public void fileInit(String parent) throws FileNotFoundException, IOException {
         File index = new File(parent, ".index.dat");
         //division lists
-        File jDivs = new File(parent, "junior\\divList.dat");
-        File sDivs = new File(parent, "senior\\divList.dat");
+        File jDivs = new File(parent, "junior\\index.dat");
+        File sDivs = new File(parent, "senior\\index.dat");
         File vDivs = new File(parent, "varsity\\divList.dat");
         FileReader jDivsRead = new FileReader(jDivs);
         FileReader sDivsRead = new FileReader(sDivs);
