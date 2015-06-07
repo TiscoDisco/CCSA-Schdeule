@@ -5,18 +5,32 @@
  */
 package classes;
 
+import java.util.*;
+
 /**
  *
- * @author 12achent
- * Comments made by Trent and Naomi
+ * @author 12achent Comments made by Trent and Naomi
  */
 public class ParksGUI extends javax.swing.JFrame {
 
     /**
      * Creates new form Parks
      */
-    public ParksGUI() {
+    int year;
+
+    SoftDate juniorStartDate;
+    SoftDate seniorStartDate;
+    SoftDate varsityStartDate;
+    SoftDate endDate;
+
+    ArrayList<Park> juniorParks;
+    ArrayList<Park> seniorParks;
+    ArrayList<Park> varsityParks;
+
+    public ParksGUI(int y, SoftDate jsd, SoftDate ssd, SoftDate vsd, SoftDate ed,
+            ArrayList<Park> jp, ArrayList<Park> sp, ArrayList<Park> vp) {
         initComponents();
+        setVisible(true);
     }
 
     /**
@@ -402,39 +416,31 @@ public class ParksGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDayActionPerformed
     //This class adds a park by collecting all of the necessary data from the convener
     private void btnAddParkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddParkActionPerformed
-       String startmonth = jTextField2.getText();
-       String startday = jTextField4.getText();
-       String endmonth = jTextField5.getText();
-       String endday = jTextField6.getText();
-       String startdate = startmonth + startday;  
-       String enddate = endmonth + endday;
-      String parkname = txtFieldPark.getText();
-      String league;
-      String parkcode;
-      
-      if (txtFieldj.getText().length()>0)
-        {
+        String startmonth = jTextField2.getText();
+        String startday = jTextField4.getText();
+        String endmonth = jTextField5.getText();
+        String endday = jTextField6.getText();
+        String startdate = startmonth + startday;
+        String enddate = endmonth + endday;
+        String parkname = txtFieldPark.getText();
+        String league;
+        String parkcode;
+
+        if (txtFieldj.getText().length() > 0) {
             league = txtFieldj.getText();
             parkcode = "J" + league + parkname;
             comboJunior.addItem(parkcode); //Adds a junior park based on the park code
-        }
-        else if (jTextField1.getText().length()>0)
-        {
+        } else if (jTextField1.getText().length() > 0) {
             league = jTextField1.getText();
             parkcode = "S" + parkname + league;
             comboSenior.addItem(parkcode); //Adds a senior park based on the park code
-        }
-        else
-        {
+        } else {
             league = jTextField3.getText();
             parkcode = "V" + parkname + league;
             comboVarsity.addItem(parkcode); //Adds a varsity park based on the park code
         }
-    
-               
-                   
-              
-               
+
+
     }//GEN-LAST:event_btnAddParkActionPerformed
     //This class deletes a park based on the convener's input
     private void btnDeleteParkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteParkActionPerformed
@@ -453,38 +459,38 @@ public class ParksGUI extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ParksGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ParksGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ParksGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ParksGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ParksGUI().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(ParksGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(ParksGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(ParksGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(ParksGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new ParksGUI().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddDay;

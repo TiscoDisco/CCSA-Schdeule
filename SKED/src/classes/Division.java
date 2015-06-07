@@ -23,43 +23,7 @@ public class Division {
         endDate = e;
     }
 
-//    public Division(String path) throws FileNotFoundException, IOException {
-//        FileReader indexRead = new FileReader(index);
-//        BufferedReader indexBuff = new BufferedReader(indexRead);
-//        divisionCode = indexBuff.readLine();
-//        startDate = new SoftDate(Long.parseLong(indexBuff.readLine()));
-//        endDate = new SoftDate(Long.parseLong(indexBuff.readLine()));
-//        String[] tList = indexBuff.readLine().split(",");
-//        for (String tPath : tList) {
-//            teamList.add(new Team(String.valueOf(y) + "\\teams\\" + indexBuff.readLine()));
-//        }
-//        int numMatches = Integer.parseInt(indexBuff.readLine());
-//        for (int i = 0; i < numMatches; i++) {
-//            String[] m = new String[2];
-//            m = (indexBuff.readLine().split(","));
-//            matchList.add(new Match(teamList.get(Integer.parseInt(m[0])), teamList.get(Integer.parseInt(m[1]))));
-//        }
-//
-//    }
-//    public Division(int y) throws FileNotFoundException, IOException{
-//        File index = new File(String.valueOf(y), "index.dat");
-//        FileReader indexRead = new FileReader(index);
-//        BufferedReader indexBuff = new BufferedReader(indexRead);
-//        divisionCode = indexBuff.readLine();
-//        startDate = new SoftDate(Long.parseLong(indexBuff.readLine()));
-//        endDate = new SoftDate(Long.parseLong(indexBuff.readLine()));
-//        String[] tList = indexBuff.readLine().split(",");
-//        for (String tPath : tList) {
-//            teamList.add(new Team(String.valueOf(y) + "\\teams\\" + indexBuff.readLine()));
-//        }
-//        int numMatches = Integer.parseInt(indexBuff.readLine());
-//        for (int i = 0; i < numMatches; i++) {
-//            String[] m = new String[2];
-//            m = (indexBuff.readLine().split(","));
-//            matchList.add(new Match(teamList.get(Integer.parseInt(m[0])), teamList.get(Integer.parseInt(m[1]))));
-//        }
-//    }
-//    public Division(){}
+
     public void addTeam(String n, String c, ArrayList<SoftDate> np) {
         String name = String.valueOf(teamList.size());
         if (name.length() < 2) {

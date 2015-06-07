@@ -28,13 +28,13 @@ public class Main {
         Scanner in = new Scanner(System.in);
         year = Integer.parseInt(in.nextLine());
         File yearFile = new File(String.valueOf(year), "index.dat");
-        if(yearFile.exists()){
+        if (yearFile.exists()) {
             fileInit(String.valueOf(year));
-        }else{
+        } else {
             yearFile.createNewFile();
             blankInit();
         }
-        
+
     }
 
     public void blankInit() {
@@ -120,7 +120,7 @@ public class Main {
     }
 
     public void saveAll() {
-        
+
     }
 
     public void addDivision(String l, String dc) {

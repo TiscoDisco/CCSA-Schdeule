@@ -30,8 +30,8 @@ public class GUI {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        HomeGUI form = new HomeGUI();
+    public void main(String[] args) {
+        HomeGUI form = new HomeGUI(year, juniorStartDate, seniorStartDate, varsityStartDate, endDate, juniorDivs, seniorDivs, varsityDivs, juniorParks, seniorParks, varsityParks);
         form.setVisible(true);
     }
 
