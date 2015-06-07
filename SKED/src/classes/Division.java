@@ -11,31 +11,31 @@ import java.util.*;
 
 public class Division {
 
-    private SoftDate startDate;
-    private SoftDate endDate;
     private String divisionCode;
     private ArrayList<Team> teamList = new ArrayList<>();
     private ArrayList<Match> matchList = new ArrayList<>();
 
-    public Division(String dc, SoftDate s, SoftDate e) {
+    public Division(String dc) {
         divisionCode = dc;
-        startDate = s;
-        endDate = e;
+
     }
 
-
-    public void addTeam(String n, String c, ArrayList<SoftDate> np) {
+    public void addTeam(String n, String c) {
         String name = String.valueOf(teamList.size());
         if (name.length() < 2) {
             name = "0" + name;
         }
-        teamList.add(new Team(n, c, divisionCode, name, np));
+        teamList.add(new Team(n, c, divisionCode, name));
     }
 
+    public String getDivCode(){
+        return divisionCode;
+    }
+    
     public ArrayList<Team> getTeamList() {
         return teamList;
     }
-
+    
     public ArrayList<Match> getMatchList() {
         return matchList;
     }
@@ -268,9 +268,8 @@ public class Division {
                                         }
                                     } else {
                                         for (int k = 0; k < tempMatchList.size(); k++) {
-                                            if(!(tempMatchList.get(k).getTeamA().equals(teamA1)||tempMatchList.get(k).getTeamA().equals(teamA2)
-                                                    ||tempMatchList.get(k).getTeamB().equals(teamB1)||tempMatchList.get(k).getTeamB().equals(teamB2)))
-                                            {
+                                            if (!(tempMatchList.get(k).getTeamA().equals(teamA1) || tempMatchList.get(k).getTeamA().equals(teamA2)
+                                                    || tempMatchList.get(k).getTeamB().equals(teamB1) || tempMatchList.get(k).getTeamB().equals(teamB2))) {
                                                 tempGameList.add(tempMatchList.get(k));
                                                 teamA3 = tempMatchList.get(k).getTeamA();
                                                 teamB3 = tempMatchList.get(k).getTeamB();
@@ -355,9 +354,8 @@ public class Division {
                                         }
                                     } else {
                                         for (int k = 0; k < tempMatchList.size(); k++) {
-                                            if(!(tempMatchList.get(k).getTeamA().equals(teamA1)||tempMatchList.get(k).getTeamA().equals(teamA2)
-                                                    ||tempMatchList.get(k).getTeamB().equals(teamB1)||tempMatchList.get(k).getTeamB().equals(teamB2)))
-                                            {
+                                            if (!(tempMatchList.get(k).getTeamA().equals(teamA1) || tempMatchList.get(k).getTeamA().equals(teamA2)
+                                                    || tempMatchList.get(k).getTeamB().equals(teamB1) || tempMatchList.get(k).getTeamB().equals(teamB2))) {
                                                 tempGameList.add(tempMatchList.get(k));
                                                 teamA3 = tempMatchList.get(k).getTeamA();
                                                 teamB3 = tempMatchList.get(k).getTeamB();

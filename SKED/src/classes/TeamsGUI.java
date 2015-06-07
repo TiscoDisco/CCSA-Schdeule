@@ -19,6 +19,10 @@ public class TeamsGUI extends javax.swing.JFrame {
     public TeamsGUI(int y,
             ArrayList<Division> jd, ArrayList<Division> sd, ArrayList<Division> vd) {
         initComponents();
+        year = y;
+        juniorDivs = jd;
+        seniorDivs = sd;
+        varsityDivs = vd;
 
     }
 
@@ -308,19 +312,42 @@ public class TeamsGUI extends javax.swing.JFrame {
         //store values of a team inputed by user
         String teamName = txtfieldTeamname.getText();
         String churchName = txtfieldChurch.getText();
-        int year;
-        String teamCode;
+        boolean hasDiv = false;
+        boolean hasTeam = false;
         String divisionCode;
-
+        String teamCode;
 
         /*
          * generate the team code from the league input and the team name 
          * and display in its appropriate list
          */
         if (jTextField12.getText().length() > 0) {
-            divisionCode = jTextField12.getText();
-            teamCode = (jTextField12.getText()) + (txtfieldTeamname.getText());
-            boxJDivs.addItem(teamCode);
+            divisionCode = "J" + jTextField12.getText();
+            for (Division juniorDiv : juniorDivs) {
+                if (juniorDiv.getDivCode().equals(divisionCode)) {
+                    hasDiv = true;
+                    for (int j = 0; j < juniorDiv.getTeamList().size(); j++) {
+                        if (juniorDiv.getTeamList().get(j).getName().equals(teamName) && juniorDiv.getTeamList().get(j).getChurch().equals(churchName)) {
+                            hasTeam = true;
+                        }
+                    }
+                    if (!hasTeam) {
+                        if (juniorDiv.getTeamList().size() < 10) {
+                            teamCode = divisionCode + "0" + String.valueOf(juniorDiv.getTeamList().size());
+                        } else {
+                            teamCode = divisionCode + String.valueOf(juniorDiv.getTeamList().size());
+                        }
+                        juniorDiv.addTeam(teamCode, churchName);
+                        boxJDivs.addItem(teamCode);
+                    }
+                }
+            }
+            if (!hasDiv) {
+                teamCode = divisionCode + "00";
+                boxJDivs.addItem(teamCode);
+            }
+            
+            
 
         } else if (jTextField13.getText().length() > 0) {
             divisionCode = jTextField13.getText();

@@ -16,12 +16,12 @@ public class Team {
     //private String league;
     private ArrayList<SoftDate> noPlays;
 
-    public Team(String n, String c, String dc, String tc, ArrayList<SoftDate> np) { // constructor
+    public Team(String n, String c, String dc, String tc) { // constructor
         name = n;
         church = c;
         teamCode = tc;
         divisionCode = dc;
-        noPlays = np;
+
     }
 
     public String getChurch() { // return church name
@@ -63,5 +63,5 @@ public class Team {
         }
         return false;
     }
-    
+
 }
