@@ -31,12 +31,8 @@ public class HomeGUI extends javax.swing.JFrame {
     ArrayList<Park> seniorParks;
     ArrayList<Park> varsityParks;
 
-    public HomeGUI(int y, SoftDate jsd, SoftDate ssd, SoftDate vsd, SoftDate ed,
-            ArrayList<Division> jd, ArrayList<Division> sd, ArrayList<Division> vd,
-            ArrayList<Park> jp, ArrayList<Park> sp, ArrayList<Park> vp) {
+    public HomeGUI() {
         initComponents();
-//        year = y;
-
     }
 
     // This method is called from within the constructor to initialize the form.
@@ -152,9 +148,6 @@ public class HomeGUI extends javax.swing.JFrame {
     private void btnParksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnParksActionPerformed
         ParksGUI p = new ParksGUI(year, juniorStartDate, seniorStartDate, varsityStartDate, endDate, juniorParks, seniorParks, varsityParks);
         p.setVisible(true);
-//        p.main(null);
-        //This code creates the parks window and allows it to pop up upon command
-
     }//GEN-LAST:event_btnParksActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
@@ -164,41 +157,41 @@ public class HomeGUI extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-//    public void main() {
-//
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(HomeGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(HomeGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(HomeGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(HomeGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new HomeGUI().setVisible(true);
-//            }
-//        });
-//        //list of playable days
-//
-//    }
+    public static void main() {
+
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(HomeGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(HomeGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(HomeGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(HomeGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new HomeGUI().setVisible(true);
+            }
+        });
+        //list of playable days
+
+    }
     //this class generates the schedule for all of the teams based on all of the factors inputed by the convener
     //This class adds a division when needed
     // Variables declaration - do not modify//GEN-BEGIN:variables
