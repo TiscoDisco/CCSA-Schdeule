@@ -20,12 +20,12 @@ public class Division {
 
     }
 
-    public void addTeam(String n, String c) {
+    public void addTeam(String n, String c, ArrayList<SoftDate> np) {
         String name = String.valueOf(teamList.size());
         if (name.length() < 2) {
             name = "0" + name;
         }
-        teamList.add(new Team(n, c, divisionCode, name));
+        teamList.add(new Team(n, c, divisionCode, name, np));
     }
 
     public String getDivCode(){

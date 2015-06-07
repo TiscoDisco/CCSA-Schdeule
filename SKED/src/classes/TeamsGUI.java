@@ -26,6 +26,8 @@ public class TeamsGUI extends javax.swing.JFrame {
 
     }
 
+    ArrayList<SoftDate> noPlays = new ArrayList<>();
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -316,11 +318,11 @@ public class TeamsGUI extends javax.swing.JFrame {
         boolean hasTeam = false;
         String divisionCode;
         String teamCode;
-
         /*
          * generate the team code from the league input and the team name 
          * and display in its appropriate list
          */
+
         if (jTextField12.getText().length() > 0) {
             divisionCode = "J" + jTextField12.getText();
             for (Division juniorDiv : juniorDivs) {
@@ -337,17 +339,17 @@ public class TeamsGUI extends javax.swing.JFrame {
                         } else {
                             teamCode = divisionCode + String.valueOf(juniorDiv.getTeamList().size());
                         }
-                        juniorDiv.addTeam(teamCode, churchName);
+                        juniorDiv.addTeam(teamCode, churchName, noPlays);
                         boxJDivs.addItem(teamCode);
                     }
                 }
             }
             if (!hasDiv) {
                 teamCode = divisionCode + "00";
+                juniorDivs.add(new Division(divisionCode));
+                juniorDivs.get(juniorDivs.size()).addTeam(teamCode, churchName, noPlays);
                 boxJDivs.addItem(teamCode);
             }
-            
-            
 
         } else if (jTextField13.getText().length() > 0) {
             divisionCode = jTextField13.getText();
@@ -372,8 +374,12 @@ public class TeamsGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField14ActionPerformed
     //collect and store the team's no-play date
     private void btnNoPlayDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoPlayDateActionPerformed
-        String month = jTextField15.getText();
-        String day = jTextField16.getText();
+        int month = Integer.parseInt(jTextField15.getText()) + 1;
+        int day = Integer.parseInt(jTextField16.getText());
+        Calendar thisCal = Calendar.getInstance();
+        thisCal.clear();
+        thisCal.set(year, month, day);
+        noPlays.add(new SoftDate(thisCal.getTimeInMillis()));
     }//GEN-LAST:event_btnNoPlayDateActionPerformed
     //delete a team if its team code appears in any list
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
