@@ -47,6 +47,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -85,9 +86,9 @@
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  <Component id="comboSenior" max="32767" attributes="0"/>
-                  <Component id="comboJunior" alignment="0" max="32767" attributes="0"/>
-                  <Component id="comboVarsity" alignment="0" min="-2" pref="81" max="-2" attributes="0"/>
+                  <Component id="boxSParks" max="32767" attributes="0"/>
+                  <Component id="boxJParks" alignment="0" max="32767" attributes="0"/>
+                  <Component id="boxVParks" alignment="0" min="-2" pref="81" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -223,7 +224,7 @@
                   <Group type="102" attributes="0">
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="comboJunior" min="-2" max="-2" attributes="0"/>
+                      <Component id="boxJParks" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -288,7 +289,7 @@
                               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="comboSenior" min="-2" max="-2" attributes="0"/>
+                              <Component id="boxSParks" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
@@ -302,7 +303,7 @@
                   <Group type="102" attributes="0">
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="comboVarsity" min="-2" max="-2" attributes="0"/>
+                      <Component id="boxVParks" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="lblDeletePark" min="-2" max="-2" attributes="0"/>
@@ -444,7 +445,7 @@
         <Property name="text" type="java.lang.String" value="_______________________________________________________________"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="comboJunior">
+    <Component class="javax.swing.JComboBox" name="boxJParks">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
@@ -456,7 +457,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="comboSenior">
+    <Component class="javax.swing.JComboBox" name="boxSParks">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
@@ -468,7 +469,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="comboVarsity">
+    <Component class="javax.swing.JComboBox" name="boxVParks">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">

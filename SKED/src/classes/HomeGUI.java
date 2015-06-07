@@ -11,6 +11,7 @@ package classes;
  */
 import java.io.*;
 import java.util.*;
+import javax.swing.*;
 
 public class HomeGUI extends javax.swing.JFrame {
 
@@ -48,12 +49,14 @@ public class HomeGUI extends javax.swing.JFrame {
         lblSked = new javax.swing.JLabel();
         lblLine1 = new javax.swing.JLabel();
         btnCreate = new javax.swing.JButton();
-        btnYearChange = new javax.swing.JButton();
+        btnYear = new javax.swing.JButton();
+        txtYear = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SFTBLSKDLR");
         setBackground(new java.awt.Color(255, 255, 204));
         setForeground(new java.awt.Color(255, 255, 204));
+        setResizable(false);
 
         btnTeam.setText("Teams");
         btnTeam.addActionListener(new java.awt.event.ActionListener() {
@@ -89,10 +92,10 @@ public class HomeGUI extends javax.swing.JFrame {
             }
         });
 
-        btnYearChange.setText("Change Year");
-        btnYearChange.addActionListener(new java.awt.event.ActionListener() {
+        btnYear.setText("Select Year");
+        btnYear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnYearChangeActionPerformed(evt);
+                btnYearActionPerformed(evt);
             }
         });
 
@@ -120,7 +123,9 @@ public class HomeGUI extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnCreate)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnYearChange)))))
+                                .addComponent(txtYear, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnYear)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -129,7 +134,8 @@ public class HomeGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCreate)
-                    .addComponent(btnYearChange))
+                    .addComponent(btnYear)
+                    .addComponent(txtYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblSked)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -149,24 +155,38 @@ public class HomeGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTeamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTeamActionPerformed
-        TeamsGUI t = new TeamsGUI(year, juniorDivs, seniorDivs, varsityDivs);
-        t.setVisible(true);
+        if (year > 0) {
+            TeamsGUI t = new TeamsGUI(year, juniorDivs, seniorDivs, varsityDivs);
+            t.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "YEAR IS NOT SPECIFIED");
+        }
+
         //This code creates the team window and allows it to pop up upon command
 
     }//GEN-LAST:event_btnTeamActionPerformed
 
     private void btnParksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnParksActionPerformed
-        ParksGUI p = new ParksGUI(year, juniorStartDate, seniorStartDate, varsityStartDate, endDate, juniorParks, seniorParks, varsityParks);
-        p.setVisible(true);
+        if (year > 0) {
+            ParksGUI p = new ParksGUI(year, juniorStartDate, seniorStartDate, varsityStartDate, endDate, juniorParks, seniorParks, varsityParks);
+            p.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "YEAR IS NOT SPECIFIED");
+        }
+
     }//GEN-LAST:event_btnParksActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
+        if (year > 0) {
 
+        } else {
+            JOptionPane.showMessageDialog(null, "YEAR IS NOT SPECIFIED");
+        }
     }//GEN-LAST:event_btnCreateActionPerformed
 
-    private void btnYearChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYearChangeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnYearChangeActionPerformed
+    private void btnYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYearActionPerformed
+        year = Integer.parseInt(txtYear.getText());
+    }//GEN-LAST:event_btnYearActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,6 +219,7 @@ public class HomeGUI extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new HomeGUI().setVisible(true);
             }
@@ -212,12 +233,13 @@ public class HomeGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnParks;
     private javax.swing.JButton btnTeam;
-    private javax.swing.JButton btnYearChange;
+    private javax.swing.JButton btnYear;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JLabel lblLine1;
     private javax.swing.JLabel lblParks;
     private javax.swing.JLabel lblSked;
     private javax.swing.JLabel lblTeams;
+    private javax.swing.JTextField txtYear;
     // End of variables declaration//GEN-END:variables
 
 }

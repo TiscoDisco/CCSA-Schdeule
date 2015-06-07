@@ -45,6 +45,7 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="Teams"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -74,23 +75,17 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="lblTeams" min="-2" pref="106" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField1" min="-2" pref="44" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="lblTeams" min="-2" pref="106" max="-2" attributes="0"/>
                           <Component id="lblJuniorteams" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="314" pref="343" max="32767" attributes="0"/>
+                      <EmptySpace min="415" pref="444" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jDivsBox" pref="114" max="32767" attributes="0"/>
-                              <Component id="sDivsBox" max="32767" attributes="0"/>
-                              <Component id="vDivsBox" max="32767" attributes="0"/>
+                              <Component id="boxJDivs" pref="114" max="32767" attributes="0"/>
+                              <Component id="boxSDivs" max="32767" attributes="0"/>
+                              <Component id="boxVDivs" max="32767" attributes="0"/>
                           </Group>
                           <Component id="lblSeniorteams" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblVarsityteams" min="-2" max="-2" attributes="0"/>
@@ -187,8 +182,6 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblTeams" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                   <Component id="btnCancelteams" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lblLine3" min="-2" max="-2" attributes="0"/>
@@ -199,7 +192,7 @@
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblAddTeam" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jDivsBox" min="-2" max="-2" attributes="0"/>
+                          <Component id="boxJDivs" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -220,7 +213,7 @@
                       <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                       <Component id="lblSeniorteams" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                      <Component id="sDivsBox" min="-2" max="-2" attributes="0"/>
+                      <Component id="boxSDivs" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -254,7 +247,7 @@
                   <Component id="jTextField11" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-              <Component id="vDivsBox" min="-2" max="-2" attributes="0"/>
+              <Component id="boxVDivs" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnDelete" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -281,7 +274,7 @@
         <Property name="text" type="java.lang.String" value="Varsity Teams"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jDivsBox">
+    <Component class="javax.swing.JComboBox" name="boxJDivs">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
@@ -293,7 +286,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="sDivsBox">
+    <Component class="javax.swing.JComboBox" name="boxSDivs">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
@@ -305,7 +298,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="vDivsBox">
+    <Component class="javax.swing.JComboBox" name="boxVDivs">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
@@ -430,13 +423,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNoPlayDateActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Year:"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
     </Component>

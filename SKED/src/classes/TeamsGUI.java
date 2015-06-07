@@ -33,9 +33,9 @@ public class TeamsGUI extends javax.swing.JFrame {
         lblJuniorteams = new javax.swing.JLabel();
         lblSeniorteams = new javax.swing.JLabel();
         lblVarsityteams = new javax.swing.JLabel();
-        jDivsBox = new javax.swing.JComboBox();
-        sDivsBox = new javax.swing.JComboBox();
-        vDivsBox = new javax.swing.JComboBox();
+        boxJDivs = new javax.swing.JComboBox();
+        boxSDivs = new javax.swing.JComboBox();
+        boxVDivs = new javax.swing.JComboBox();
         lblAddTeam = new javax.swing.JLabel();
         lblnNoPlayDays = new javax.swing.JLabel();
         lblTeamname = new javax.swing.JLabel();
@@ -60,8 +60,6 @@ public class TeamsGUI extends javax.swing.JFrame {
         jTextField15 = new javax.swing.JTextField();
         jTextField16 = new javax.swing.JTextField();
         btnNoPlayDate = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
@@ -78,6 +76,7 @@ public class TeamsGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Teams");
+        setResizable(false);
 
         lblJuniorteams.setText("Junior Teams");
 
@@ -85,11 +84,11 @@ public class TeamsGUI extends javax.swing.JFrame {
 
         lblVarsityteams.setText("Varsity Teams");
 
-        jDivsBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        boxJDivs.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        sDivsBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        boxSDivs.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        vDivsBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        boxVDivs.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         lblAddTeam.setText("Add Team :");
 
@@ -150,8 +149,6 @@ public class TeamsGUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Year:");
-
         jLabel3.setText("No Play Dates:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -166,20 +163,15 @@ public class TeamsGUI extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblTeams, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblTeams, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblJuniorteams))
-                        .addGap(314, 343, Short.MAX_VALUE))
+                        .addGap(415, 444, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jDivsBox, 0, 114, Short.MAX_VALUE)
-                                .addComponent(sDivsBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(vDivsBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(boxJDivs, 0, 114, Short.MAX_VALUE)
+                                .addComponent(boxSDivs, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(boxVDivs, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(lblSeniorteams)
                             .addComponent(lblVarsityteams))
                         .addGap(52, 52, 52)
@@ -247,9 +239,7 @@ public class TeamsGUI extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTeams, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelteams)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(btnCancelteams))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblLine3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -259,7 +249,7 @@ public class TeamsGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblAddTeam, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jDivsBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(boxJDivs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblTeamname)
@@ -276,7 +266,7 @@ public class TeamsGUI extends javax.swing.JFrame {
                         .addGap(7, 7, 7)
                         .addComponent(lblSeniorteams)
                         .addGap(7, 7, 7)
-                        .addComponent(sDivsBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(boxSDivs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(123, 123, 123)
@@ -303,7 +293,7 @@ public class TeamsGUI extends javax.swing.JFrame {
                     .addComponent(lblTeamCode)
                     .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
-                .addComponent(vDivsBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(boxVDivs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDelete)
@@ -330,7 +320,7 @@ public class TeamsGUI extends javax.swing.JFrame {
         if (jTextField12.getText().length() > 0) {
             divisionCode = jTextField12.getText();
             teamCode = (jTextField12.getText()) + (txtfieldTeamname.getText());
-            jDivsBox.addItem(teamCode);
+            boxJDivs.addItem(teamCode);
 
         } else if (jTextField13.getText().length() > 0) {
             divisionCode = jTextField13.getText();
@@ -340,7 +330,7 @@ public class TeamsGUI extends javax.swing.JFrame {
         } else {
             divisionCode = jTextField14.getText();
             teamCode = (txtfieldTeamname.getText()) + (jTextField14.getText());
-            sDivsBox.addItem(teamCode);
+            boxSDivs.addItem(teamCode);
 
         }
 
@@ -361,9 +351,9 @@ public class TeamsGUI extends javax.swing.JFrame {
     //delete a team if its team code appears in any list
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         String teamCode = jTextField11.getText();
-        jDivsBox.removeItem(teamCode);
-        sDivsBox.removeItem(teamCode);
-        vDivsBox.removeItem(teamCode);
+        boxJDivs.removeItem(teamCode);
+        boxSDivs.removeItem(teamCode);
+        boxVDivs.removeItem(teamCode);
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
@@ -405,19 +395,19 @@ public class TeamsGUI extends javax.swing.JFrame {
 //    }
 //<editor-fold>
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox boxJDivs;
+    private javax.swing.JComboBox boxSDivs;
+    private javax.swing.JComboBox boxVDivs;
     private javax.swing.JButton btnCancelteams;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEnter;
     private javax.swing.JButton btnNoPlayDate;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JComboBox jDivsBox;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JList jList1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
@@ -439,10 +429,8 @@ public class TeamsGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblVarsity;
     private javax.swing.JLabel lblVarsityteams;
     private javax.swing.JLabel lblnNoPlayDays;
-    private javax.swing.JComboBox sDivsBox;
     private javax.swing.JTextField txtfieldChurch;
     private javax.swing.JTextField txtfieldTeamname;
-    private javax.swing.JComboBox vDivsBox;
     // End of variables declaration//GEN-END:variables
 //</editor-fold>
 }
