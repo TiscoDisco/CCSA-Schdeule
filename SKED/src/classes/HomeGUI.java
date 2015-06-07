@@ -178,14 +178,19 @@ public class HomeGUI extends javax.swing.JFrame {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         if (year > 0) {
-
+//          schedule
         } else {
             JOptionPane.showMessageDialog(null, "YEAR IS NOT SPECIFIED");
         }
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYearActionPerformed
-        year = Integer.parseInt(txtYear.getText());
+        if (Integer.parseInt(txtYear.getText()) > 0) {
+            year = Integer.parseInt(txtYear.getText());
+        } else {
+            JOptionPane.showMessageDialog(null, "YEAR IS NOT VALID");
+        }
+
     }//GEN-LAST:event_btnYearActionPerformed
 
     /**
