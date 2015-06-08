@@ -19,12 +19,8 @@ public class Division {
         divisionCode = dc;
     }
 
-    public void addTeam(String n, String c, ArrayList<SoftDate> np) {
-        String name = String.valueOf(teamList.size());
-        if (name.length() < 2) {
-            name = "0" + name;
-        }
-        teamList.add(new Team(n, c, divisionCode, name, np));
+    public void addTeam(String n, String c, String tc, ArrayList<SoftDate> np) {
+        teamList.add(new Team(n, c, tc, np));
     }
 
     public boolean codeAvail(int c) {
@@ -50,7 +46,7 @@ public class Division {
 
     public void removeTeam(Team t) {
         for (int i = 0; i < teamList.size(); i++) {
-            if(teamList.get(i).equals(t)){
+            if (teamList.get(i).equals(t)) {
                 teamList.remove(i);
             }
         }

@@ -61,8 +61,8 @@ public class TeamsGUI extends javax.swing.JFrame {
         lblSenior = new javax.swing.JLabel();
         lblVarsity = new javax.swing.JLabel();
         jTextField12 = new javax.swing.JTextField();
-        jTextField13 = new javax.swing.JTextField();
         jTextField14 = new javax.swing.JTextField();
+        jTextField13 = new javax.swing.JTextField();
         lblLine3 = new javax.swing.JLabel();
         jTextField15 = new javax.swing.JTextField();
         jTextField16 = new javax.swing.JTextField();
@@ -227,11 +227,11 @@ public class TeamsGUI extends javax.swing.JFrame {
                                                 .addComponent(lblSenior))
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                                 .addGap(29, 29, 29)
-                                                .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(lblVarsity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jTextField13))))
+                                            .addComponent(jTextField14))))
                                 .addContainerGap())))))
         );
         layout.setVerticalGroup(
@@ -273,8 +273,8 @@ public class TeamsGUI extends javax.swing.JFrame {
                         .addGap(123, 123, 123)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(lblnNoPlayDays)
                         .addGap(17, 17, 17)))
@@ -311,15 +311,15 @@ public class TeamsGUI extends javax.swing.JFrame {
         String churchName = txtfieldChurch.getText();
         boolean hasDiv = false;
         boolean hasTeam = false;
-        String divisionCode = jTextField12.getText() + jTextField13.getText() + jTextField14.getText();
+        String divisionCode = jTextField12.getText() + jTextField14.getText() + jTextField13.getText();
         String teamCode;
         /*
          * generate the team code from the league input and the team name 
          * and display in its appropriate list
          */
         if (!(teamName.length() > 0 && churchName.length() > 0
-                && (jTextField12.getText().length() > 0 ^ jTextField12.getText().length() > 0 ^ jTextField12.getText().length() > 0))) {
-            JOptionPane.showMessageDialog(null, "INPUT INCOMPLETE");
+                && (jTextField12.getText().length() > 0 ^ jTextField14.getText().length() > 0 ^ jTextField13.getText().length() > 0))) {
+            JOptionPane.showMessageDialog(null, "INPUT INCOMPLETE OR INVALID");
         } else {
             if (jTextField12.getText().length() > 0) {
                 divisionCode = "J" + divisionCode;
@@ -341,7 +341,7 @@ public class TeamsGUI extends javax.swing.JFrame {
                                     } else {
                                         teamCode = divisionCode + String.valueOf(juniorDiv.getTeamList().size());
                                     }
-                                    juniorDiv.addTeam(teamCode, churchName, noPlays);
+                                    juniorDiv.addTeam(teamName, churchName, teamCode, noPlays);
 
                                     break;
                                 }
@@ -353,7 +353,7 @@ public class TeamsGUI extends javax.swing.JFrame {
                 if (!hasDiv) {
                     teamCode = divisionCode + "00";
                     juniorDivs.add(new Division(divisionCode));
-                    juniorDivs.get(juniorDivs.size()).addTeam(teamCode, churchName, noPlays);
+                    juniorDivs.get(juniorDivs.size() - 1).addTeam(teamName, churchName, teamCode, noPlays);
 
                 }
 
@@ -377,7 +377,7 @@ public class TeamsGUI extends javax.swing.JFrame {
                                     } else {
                                         teamCode = divisionCode + String.valueOf(seniorDiv.getTeamList().size());
                                     }
-                                    seniorDiv.addTeam(teamCode, churchName, noPlays);
+                                    seniorDiv.addTeam(teamName, churchName, teamCode, noPlays);
 
                                     break;
                                 }
@@ -389,7 +389,7 @@ public class TeamsGUI extends javax.swing.JFrame {
                 if (!hasDiv) {
                     teamCode = divisionCode + "00";
                     seniorDivs.add(new Division(divisionCode));
-                    seniorDivs.get(seniorDivs.size()).addTeam(teamCode, churchName, noPlays);
+                    seniorDivs.get(seniorDivs.size() - 1).addTeam(teamName, churchName, teamCode, noPlays);
 
                 }
             } else {
@@ -412,7 +412,7 @@ public class TeamsGUI extends javax.swing.JFrame {
                                     } else {
                                         teamCode = divisionCode + String.valueOf(varsityDiv.getTeamList().size());
                                     }
-                                    varsityDiv.addTeam(teamCode, churchName, noPlays);
+                                    varsityDiv.addTeam(teamName, churchName, teamCode, noPlays);
 
                                     break;
                                 }
@@ -424,7 +424,7 @@ public class TeamsGUI extends javax.swing.JFrame {
                 if (!hasDiv) {
                     teamCode = divisionCode + "00";
                     varsityDivs.add(new Division(divisionCode));
-                    varsityDivs.get(varsityDivs.size()).addTeam(teamCode, churchName, noPlays);
+                    varsityDivs.get(varsityDivs.size() - 1).addTeam(teamName, churchName, teamCode, noPlays);
 
                 }
             }
@@ -456,16 +456,35 @@ public class TeamsGUI extends javax.swing.JFrame {
                         for (Team t : juniorDiv.getTeamList()) {
                             if (t.getCode().equals(teamCode)) {
                                 juniorDiv.removeTeam(t);
+                                break;
                             }
                         }
                     }
                 }
             }
             if (teamCode.substring(0, 1).equals("S")) {
-
+                for (Division seniorDiv : seniorDivs) {
+                    if (seniorDiv.getDivCode().equals(teamCode.substring(0, teamCode.length() - 2))) {
+                        for (Team t : seniorDiv.getTeamList()) {
+                            if (t.getCode().equals(teamCode)) {
+                                seniorDiv.removeTeam(t);
+                                break;
+                            }
+                        }
+                    }
+                }
             }
             if (teamCode.substring(0, 1).equals("V")) {
-
+                for (Division varsityDiv : varsityDivs) {
+                    if (varsityDiv.getDivCode().equals(teamCode.substring(0, teamCode.length() - 2))) {
+                        for (Team t : varsityDiv.getTeamList()) {
+                            if (t.getCode().equals(teamCode)) {
+                                varsityDiv.removeTeam(t);
+                                break;
+                            }
+                        }
+                    }
+                }
             }
         }
         display();
@@ -475,19 +494,19 @@ public class TeamsGUI extends javax.swing.JFrame {
         boxJDivs.removeAllItems();
         boxSDivs.removeAllItems();
         boxVDivs.removeAllItems();
-        for (int i = 0; i < juniorDivs.size(); i++) {
-            for (int j = 0; j < juniorDivs.get(i).getTeamList().size(); j++) {
-                boxJDivs.addItem(juniorDivs.get(i).getTeamList().get(i).getCode() + " " + juniorDivs.get(i).getTeamList().get(i).getChurch());
+        for (Division juniorDiv : juniorDivs) {
+            for (int j = 0; j < juniorDiv.getTeamList().size(); j++) {
+                boxJDivs.addItem(juniorDiv.getTeamList().get(j).getCode() + " " + juniorDiv.getTeamList().get(j).getName());
             }
         }
-        for (int i = 0; i < seniorDivs.size(); i++) {
-            for (int j = 0; j < seniorDivs.get(i).getTeamList().size(); j++) {
-                boxSDivs.addItem(seniorDivs.get(i).getTeamList().get(i).getCode() + " " + seniorDivs.get(i).getTeamList().get(i).getChurch());
+        for (Division seniorDiv : seniorDivs) {
+            for (int j = 0; j < seniorDiv.getTeamList().size(); j++) {
+                boxSDivs.addItem(seniorDiv.getTeamList().get(j).getCode() + " " + seniorDiv.getTeamList().get(j).getName());
             }
         }
-        for (int i = 0; i < varsityDivs.size(); i++) {
-            for (int j = 0; j < varsityDivs.get(i).getTeamList().size(); j++) {
-                boxVDivs.addItem(varsityDivs.get(i).getTeamList().get(i).getCode() + " " + varsityDivs.get(i).getTeamList().get(i).getChurch());
+        for (Division varsityDiv : varsityDivs) {
+            for (int j = 0; j < varsityDiv.getTeamList().size(); j++) {
+                boxVDivs.addItem(varsityDiv.getTeamList().get(j).getCode() + " " + varsityDiv.getTeamList().get(j).getName());
             }
         }
     }

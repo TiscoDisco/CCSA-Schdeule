@@ -11,16 +11,15 @@ public class Team {
 
     private String church;
     private String name;
-    private String divisionCode;
     private String teamCode;
     //private String league;
     private ArrayList<SoftDate> noPlays;
 
-    public Team(String n, String c, String dc, String tc, ArrayList<SoftDate> np) { // constructor
+    public Team(String n, String c, String tc, ArrayList<SoftDate> np) { // constructor
         name = n;
         church = c;
         teamCode = tc;
-        divisionCode = dc;
+
         noPlays = np;
     }
 
@@ -39,8 +38,8 @@ public class Team {
     public boolean equals(Team t) { // tells if the teams are the same
         return t.getCode().equals(teamCode);
     }
-    
-    public void setNoPlay(ArrayList<SoftDate> np){
+
+    public void setNoPlay(ArrayList<SoftDate> np) {
         noPlays.clear();
         noPlays.addAll(np);
     }
@@ -68,5 +67,5 @@ public class Team {
         }
         return false;
     }
-    
+
 }

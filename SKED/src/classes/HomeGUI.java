@@ -173,11 +173,11 @@ public class HomeGUI extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "YEAR IS NOT SPECIFIED");
         }
-
     }//GEN-LAST:event_btnParksActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         if (year > 0) {
+//          match
 //          schedule
         } else {
             JOptionPane.showMessageDialog(null, "YEAR IS NOT SPECIFIED");
@@ -193,21 +193,21 @@ public class HomeGUI extends javax.swing.JFrame {
             juniorCal.set(Calendar.MONTH, Calendar.JULY);
             juniorCal.set(Calendar.DAY_OF_MONTH, 1);
             juniorCal.add(Calendar.DAY_OF_YEAR, -7);
-            juniorStartDate.setTime(juniorCal.getTimeInMillis());
+            juniorStartDate = new SoftDate(juniorCal.getTimeInMillis());
 
             Calendar seniorCal = Calendar.getInstance();
             seniorCal.set(Calendar.YEAR, year);
             seniorCal.set(Calendar.MONTH, Calendar.JUNE);
             seniorCal.set(Calendar.DAY_OF_MONTH, 1);
             seniorCal.add(Calendar.DAY_OF_YEAR, -7);
-            seniorStartDate.setTime(seniorCal.getTimeInMillis());
+            seniorStartDate = new SoftDate(seniorCal.getTimeInMillis());
 
             Calendar varsityCal = Calendar.getInstance();
             varsityCal.set(Calendar.YEAR, year);
             varsityCal.set(Calendar.MONTH, Calendar.JULY);
             varsityCal.set(Calendar.DAY_OF_MONTH, 1);
             varsityCal.add(Calendar.DAY_OF_YEAR, -7);
-            varsityStartDate.setTime(varsityCal.getTimeInMillis());
+            varsityStartDate = new SoftDate(varsityCal.getTimeInMillis());
 
             Calendar endCal = Calendar.getInstance();
             endCal.clear();
@@ -215,11 +215,10 @@ public class HomeGUI extends javax.swing.JFrame {
             endCal.set(Calendar.MONTH, Calendar.SEPTEMBER);
             endCal.set(Calendar.WEEK_OF_MONTH, 1);
             endCal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-            endDate.setTime(endCal.getTimeInMillis());
+            endDate = new SoftDate(endCal.getTimeInMillis());
         } else {
             JOptionPane.showMessageDialog(null, "YEAR IS NOT VALID");
         }
-
     }//GEN-LAST:event_btnYearActionPerformed
 
     /**
