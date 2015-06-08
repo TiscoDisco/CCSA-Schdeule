@@ -39,6 +39,11 @@ public class Team {
     public boolean equals(Team t) { // tells if the teams are the same
         return t.getCode().equals(teamCode);
     }
+    
+    public void setNoPlay(ArrayList<SoftDate> np){
+        noPlays.clear();
+        noPlays.addAll(np);
+    }
 
     public boolean hasPlayDate(SoftDate d) {
         for (SoftDate a : noPlays) {

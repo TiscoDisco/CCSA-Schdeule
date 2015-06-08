@@ -1,6 +1,7 @@
 package classes;
 
 import java.util.*;
+import javax.swing.*;
 
 /*
  * @author tim
@@ -139,12 +140,6 @@ public class TeamsGUI extends javax.swing.JFrame {
         lblSenior.setText("Senior");
 
         lblVarsity.setText("Varsity");
-
-        jTextField14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField14ActionPerformed(evt);
-            }
-        });
 
         lblLine3.setText("_____________________________________________________________________");
 
@@ -316,62 +311,115 @@ public class TeamsGUI extends javax.swing.JFrame {
         String churchName = txtfieldChurch.getText();
         boolean hasDiv = false;
         boolean hasTeam = false;
-        String divisionCode;
+        String divisionCode = jTextField12.getText() + jTextField13.getText() + jTextField14.getText();
         String teamCode;
         /*
          * generate the team code from the league input and the team name 
          * and display in its appropriate list
          */
-
-        if (jTextField12.getText().length() > 0) {
-            divisionCode = "J" + jTextField12.getText();
-            for (Division juniorDiv : juniorDivs) {
-                if (juniorDiv.getDivCode().equals(divisionCode)) {
-                    hasDiv = true;
-                    for (int j = 0; j < juniorDiv.getTeamList().size(); j++) {
-                        if (juniorDiv.getTeamList().get(j).getName().equals(teamName) && juniorDiv.getTeamList().get(j).getChurch().equals(churchName)) {
-                            hasTeam = true;
+        if (!(teamName.length() > 0 && churchName.length() > 0
+                && (jTextField12.getText().length() > 0 ^ jTextField12.getText().length() > 0 ^ jTextField12.getText().length() > 0))) {
+            JOptionPane.showMessageDialog(null, "INPUT INCOMPLETE");
+        } else {
+            if (jTextField12.getText().length() > 0) {
+                divisionCode = "J" + divisionCode;
+                for (Division juniorDiv : juniorDivs) {
+                    if (juniorDiv.getDivCode().equals(divisionCode)) {
+                        hasDiv = true;
+                        for (Team checkTeam : juniorDiv.getTeamList()) {
+                            if (checkTeam.getName().equals(teamName) && checkTeam.getChurch().equals(churchName)) {
+                                hasTeam = true;
+                                checkTeam.setNoPlay(noPlays);
+                                break;
+                            }
                         }
-                    }
-                    if (!hasTeam) {
-                        if (juniorDiv.getTeamList().size() < 10) {
-                            teamCode = divisionCode + "0" + String.valueOf(juniorDiv.getTeamList().size());
-                        } else {
-                            teamCode = divisionCode + String.valueOf(juniorDiv.getTeamList().size());
+                        if (!hasTeam) {
+                            if (juniorDiv.getTeamList().size() < 10) {
+                                teamCode = divisionCode + "0" + String.valueOf(juniorDiv.getTeamList().size());
+                            } else {
+                                teamCode = divisionCode + String.valueOf(juniorDiv.getTeamList().size());
+                            }
+                            juniorDiv.addTeam(teamCode, churchName, noPlays);
+                            boxJDivs.addItem(teamCode);
                         }
-                        juniorDiv.addTeam(teamCode, churchName, noPlays);
-                        boxJDivs.addItem(teamCode);
+                        break;
                     }
                 }
+                if (!hasDiv) {
+                    teamCode = divisionCode + "00";
+                    juniorDivs.add(new Division(divisionCode));
+                    juniorDivs.get(juniorDivs.size()).addTeam(teamCode, churchName, noPlays);
+                    boxJDivs.addItem(teamCode);
+                }
+
+            } else if (jTextField13.getText().length() > 0) {
+                divisionCode = "S" + divisionCode;
+                for (Division seniorDiv : seniorDivs) {
+                    if (seniorDiv.getDivCode().equals(divisionCode)) {
+                        hasDiv = true;
+                        for (Team checkTeam : seniorDiv.getTeamList()) {
+                            if (checkTeam.getName().equals(teamName) && checkTeam.getChurch().equals(churchName)) {
+                                hasTeam = true;
+                                checkTeam.setNoPlay(noPlays);
+                                break;
+                            }
+                        }
+                        if (!hasTeam) {
+                            if (seniorDiv.getTeamList().size() < 10) {
+                                teamCode = divisionCode + "0" + String.valueOf(seniorDiv.getTeamList().size());
+                            } else {
+                                teamCode = divisionCode + String.valueOf(seniorDiv.getTeamList().size());
+                            }
+                            seniorDiv.addTeam(teamCode, churchName, noPlays);
+                            boxJDivs.addItem(teamCode);
+                        }
+                        break;
+                    }
+                }
+                if (!hasDiv) {
+                    teamCode = divisionCode + "00";
+                    seniorDivs.add(new Division(divisionCode));
+                    seniorDivs.get(seniorDivs.size()).addTeam(teamCode, churchName, noPlays);
+                    boxSDivs.addItem(teamCode + "\t" + teamName);
+                }
+
+            } else {
+                divisionCode = "V" + divisionCode;
+                for (Division varsityDiv : varsityDivs) {
+                    if (varsityDiv.getDivCode().equals(divisionCode)) {
+                        hasDiv = true;
+                        for (Team checkTeam : varsityDiv.getTeamList()) {
+                            if (checkTeam.getName().equals(teamName) && checkTeam.getChurch().equals(churchName)) {
+                                hasTeam = true;
+                                checkTeam.setNoPlay(noPlays);
+                                break;
+                            }
+                        }
+                        if (!hasTeam) {
+                            if (varsityDiv.getTeamList().size() < 10) {
+                                teamCode = divisionCode + "0" + String.valueOf(varsityDiv.getTeamList().size());
+                            } else {
+                                teamCode = divisionCode + String.valueOf(varsityDiv.getTeamList().size());
+                            }
+                            varsityDiv.addTeam(teamCode, churchName, noPlays);
+                            boxJDivs.addItem(teamCode);
+                        }
+                        break;
+                    }
+                }
+                if (!hasDiv) {
+                    teamCode = divisionCode + "00";
+                    varsityDivs.add(new Division(divisionCode));
+                    varsityDivs.get(varsityDivs.size()).addTeam(teamCode, churchName, noPlays);
+                    boxVDivs.addItem(teamCode);
+                }
             }
-            if (!hasDiv) {
-                teamCode = divisionCode + "00";
-                juniorDivs.add(new Division(divisionCode));
-                juniorDivs.get(juniorDivs.size()).addTeam(teamCode, churchName, noPlays);
-                boxJDivs.addItem(teamCode);
-            }
-
-        } else if (jTextField13.getText().length() > 0) {
-            divisionCode = jTextField13.getText();
-            teamCode = (txtfieldTeamname.getText()) + (jTextField13.getText());
-            jComboBox2.addItem(teamCode);
-
-        } else {
-            divisionCode = jTextField14.getText();
-            teamCode = (txtfieldTeamname.getText()) + (jTextField14.getText());
-            boxSDivs.addItem(teamCode);
-
         }
-
     }//GEN-LAST:event_btnEnterActionPerformed
-    //close the team GUI
+//close the team GUI
     private void btnCancelteamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelteamsActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCancelteamsActionPerformed
-
-    private void jTextField14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField14ActionPerformed
-
-    }//GEN-LAST:event_jTextField14ActionPerformed
     //collect and store the team's no-play date
     private void btnNoPlayDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoPlayDateActionPerformed
         int month = Integer.parseInt(jTextField15.getText()) + 1;
@@ -384,6 +432,13 @@ public class TeamsGUI extends javax.swing.JFrame {
     //delete a team if its team code appears in any list
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         String teamCode = jTextField11.getText();
+        if (teamCode.substring(0, 1).equals("J")) {
+            
+        }
+        if (teamCode.substring(0, 1).equals("S")) {
+        }
+        if (teamCode.substring(0, 1).equals("V")) {
+        }
         boxJDivs.removeItem(teamCode);
         boxSDivs.removeItem(teamCode);
         boxVDivs.removeItem(teamCode);
