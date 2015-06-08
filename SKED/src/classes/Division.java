@@ -15,15 +15,15 @@ public class Division {
     private ArrayList<Team> teamList = new ArrayList<>();
     private ArrayList<Match> matchList = new ArrayList<>();
 
-    public Division(String dc) {
+    public Division(String dc) { // creates a new Division
         divisionCode = dc;
     }
 
-    public void addTeam(String n, String c, String tc, ArrayList<SoftDate> np) {
+    public void addTeam(String n, String c, String tc, ArrayList<SoftDate> np) {//adds a team to this division
         teamList.add(new Team(n, c, tc, np));
     }
 
-    public boolean codeAvail(int c) {
+    public boolean codeAvail(int c) { // checks to see if a team code is available
         for (Team t : teamList) {
             if (Integer.parseInt(t.getCode().substring(t.getCode().length() - 2)) == c) {
                 return false;
@@ -32,19 +32,19 @@ public class Division {
         return true;
     }
 
-    public String getDivCode() {
+    public String getDivCode() { // returns the division code
         return divisionCode;
     }
 
-    public ArrayList<Team> getTeamList() {
+    public ArrayList<Team> getTeamList() { // returns the list of teams
         return teamList;
     }
 
-    public ArrayList<Match> getMatchList() {
+    public ArrayList<Match> getMatchList() { // returns the list of matches
         return matchList;
     }
 
-    public void removeTeam(Team t) {
+    public void removeTeam(Team t) { // removes a team from the division
         for (int i = 0; i < teamList.size(); i++) {
             if (teamList.get(i).equals(t)) {
                 teamList.remove(i);
@@ -52,7 +52,7 @@ public class Division {
         }
     }
 
-    public void matching() {
+    public void matching() { //puts the teams into matches
         ArrayList<Team> matchTeamList = new ArrayList<>();
         matchTeamList.addAll(teamList);
         ArrayList<String> churchList = new ArrayList<>();
@@ -181,7 +181,7 @@ public class Division {
 
     }
 
-    public boolean hasNotScheduled() {
+    public boolean hasNotScheduled() { // checks to see if there are still unscheduled matches
         for (Match m : matchList) {
             if (!m.isScheduled()) {
                 return false;
@@ -190,7 +190,7 @@ public class Division {
         return true;
     }
 
-    public void schedule(ArrayList<Park> pList, int numDates) {
+    public void schedule(ArrayList<Park> pList, ArrayList<SoftDate> dList) { //schedules all matches in a division
         int p = 0;
         ArrayList<Match> tempMatchList = new ArrayList();
         ArrayList<Match> tempGameList = new ArrayList();
@@ -210,188 +210,185 @@ public class Division {
 
         while (hasNotScheduled()) {
             Day:
-            for (int i = 0; i < numDates; i++) {
+            for (SoftDate dSelect : dList) {
                 Park:
                 for (Park assignPark : pList) {
-
-                    if (assignPark.getDateList().get(i).getDayOfWeek() == Calendar.SATURDAY) {
-                        for (int k = 0; k < tempMatchList.size(); k++) {
-                            if (tempMatchList.get(k).getTeamA().canPlay(assignPark.getDateList().get(i), pList, assignPark)
-                                    && (tempMatchList.get(k).getTeamB().canPlay(assignPark.getDateList().get(i), pList, assignPark))) {
-                                p = k;
-
-                                break;
-
-                            }
-                            if (k == tempMatchList.size() - 1) {
-                                //assignPark.getDateList().get(i).setDayOfWeek() = Calendar.SUNDAY;
-                                skipSaturday = true;
-                                continue Park;
-
-                            }
-
-                        }
-
-                        if (assignPark.getDateList().get(i).getPlay(1)) {
-                            assignPark.getDateList().get(i).setMatch(1, tempMatchList.get(0));
-                            tempGameList.add(tempMatchList.get(p));
-                            teamA1 = tempMatchList.get(p).getTeamA();
-                            teamB1 = tempMatchList.get(p).getTeamB();
-                            tempMatchList.remove(p);
-                            if (assignPark.getDateList().get(i).getPlay(2)) {
+                    DayPark:
+                    for (int i = 0; i < assignPark.getDateList().size(); i++) {
+                        if (dSelect.compareTo(assignPark.getDateList().get(i)) == 0) {
+                            if (assignPark.getDateList().get(i).getDayOfWeek() == Calendar.SATURDAY) {
                                 for (int k = 0; k < tempMatchList.size(); k++) {
-                                    if ((tempMatchList.get(k).getTeamA().equals(teamA1) && !(tempMatchList.get(k).getTeamB().equals(teamB1)))
-                                            || (tempMatchList.get(k).getTeamB().equals(teamB1)) && !(tempMatchList.get(k).getTeamA().equals(teamA1))
-                                            && k < tempMatchList.size()) {
-                                        tempGameList.add(tempMatchList.get(k));
-                                        teamA2 = tempMatchList.get(k).getTeamA();
-                                        teamB2 = tempMatchList.get(k).getTeamB();
-                                        tempMatchList.remove(k);
-                                        lol = 0;
+                                    if (tempMatchList.get(k).getTeamA().canPlay(assignPark.getDateList().get(i), pList, assignPark)
+                                            && (tempMatchList.get(k).getTeamB().canPlay(assignPark.getDateList().get(i), pList, assignPark))) {
+                                        p = k;
+
                                         break;
 
-                                    } else {
-                                        for (int t = 0; t < tempMatchList.size(); t++) {
-                                            if (!(tempMatchList.get(t).getTeamA().equals(teamA1)) && !(tempMatchList.get(t).getTeamB().equals(teamB1))) {
-                                                tempGameList.add(tempMatchList.get(t));
+                                    }
+                                    if (k == tempMatchList.size() - 1) {
+                                        //assignPark.getDateList().get(i).setDayOfWeek() = Calendar.SUNDAY;
+                                        skipSaturday = true;
+                                        continue Park;
+
+                                    }
+
+                                }
+
+                                if (assignPark.getDateList().get(i).getPlay(1)) {
+                                    assignPark.getDateList().get(i).setMatch(1, tempMatchList.get(0));
+                                    tempGameList.add(tempMatchList.get(p));
+                                    teamA1 = tempMatchList.get(p).getTeamA();
+                                    teamB1 = tempMatchList.get(p).getTeamB();
+                                    tempMatchList.remove(p);
+                                    if (assignPark.getDateList().get(i).getPlay(2)) {
+                                        for (int k = 0; k < tempMatchList.size(); k++) {
+                                            if ((tempMatchList.get(k).getTeamA().equals(teamA1) && !(tempMatchList.get(k).getTeamB().equals(teamB1)))
+                                                    || (tempMatchList.get(k).getTeamB().equals(teamB1)) && !(tempMatchList.get(k).getTeamA().equals(teamA1))
+                                                    && k < tempMatchList.size()) {
+                                                tempGameList.add(tempMatchList.get(k));
                                                 teamA2 = tempMatchList.get(k).getTeamA();
                                                 teamB2 = tempMatchList.get(k).getTeamB();
                                                 tempMatchList.remove(k);
-                                                lol = 1;
+                                                lol = 0;
                                                 break;
+
+                                            } else {
+                                                for (int t = 0; t < tempMatchList.size(); t++) {
+                                                    if (!(tempMatchList.get(t).getTeamA().equals(teamA1)) && !(tempMatchList.get(t).getTeamB().equals(teamB1))) {
+                                                        tempGameList.add(tempMatchList.get(t));
+                                                        teamA2 = tempMatchList.get(k).getTeamA();
+                                                        teamB2 = tempMatchList.get(k).getTeamB();
+                                                        tempMatchList.remove(k);
+                                                        lol = 1;
+                                                        break;
+                                                    }
+
+                                                }
                                             }
 
                                         }
+
+                                        if (assignPark.getDateList().get(i).getPlay(3)) {
+                                            if (lol == 0) {
+                                                for (int k = 0; k < tempMatchList.size(); k++) {
+                                                    if (teamA1.equals(teamA2) && teamB2.equals(tempMatchList.get(k).getTeamB())
+                                                            || teamB1.equals(teamB2) && teamA2.equals(tempMatchList.get(k).getTeamA())) {
+                                                        tempGameList.add(tempMatchList.get(k));
+                                                        teamA3 = tempMatchList.get(k).getTeamA();
+                                                        teamB3 = tempMatchList.get(k).getTeamB();
+                                                        tempMatchList.remove(k);
+
+                                                    }
+                                                }
+                                            } else {
+                                                for (int k = 0; k < tempMatchList.size(); k++) {
+                                                    if (!(tempMatchList.get(k).getTeamA().equals(teamA1) || tempMatchList.get(k).getTeamA().equals(teamA2)
+                                                            || tempMatchList.get(k).getTeamB().equals(teamB1) || tempMatchList.get(k).getTeamB().equals(teamB2))) {
+                                                        tempGameList.add(tempMatchList.get(k));
+                                                        teamA3 = tempMatchList.get(k).getTeamA();
+                                                        teamB3 = tempMatchList.get(k).getTeamB();
+                                                        tempMatchList.remove(k);
+
+                                                    }
+                                                }
+                                            }
+
+                                        }
+
+                                        //while (hasTeam(, 1)) {
                                     }
 
                                 }
 
-                                if (assignPark.getDateList().get(i).getPlay(3)) {
-                                    if (lol == 0) {
-                                        for (int k = 0; k < tempMatchList.size(); k++) {
-                                            if (teamA1.equals(teamA2) && teamB2.equals(tempMatchList.get(k).getTeamB())
-                                                    || teamB1.equals(teamB2) && teamA2.equals(tempMatchList.get(k).getTeamA())) {
-                                                tempGameList.add(tempMatchList.get(k));
-                                                teamA3 = tempMatchList.get(k).getTeamA();
-                                                teamB3 = tempMatchList.get(k).getTeamB();
-                                                tempMatchList.remove(k);
-
-                                            }
-                                        }
-                                    } else {
-                                        for (int k = 0; k < tempMatchList.size(); k++) {
-                                            if (!(tempMatchList.get(k).getTeamA().equals(teamA1) || tempMatchList.get(k).getTeamA().equals(teamA2)
-                                                    || tempMatchList.get(k).getTeamB().equals(teamB1) || tempMatchList.get(k).getTeamB().equals(teamB2))) {
-                                                tempGameList.add(tempMatchList.get(k));
-                                                teamA3 = tempMatchList.get(k).getTeamA();
-                                                teamB3 = tempMatchList.get(k).getTeamB();
-                                                tempMatchList.remove(k);
-
-                                            }
-                                        }
-                                    }
-
-                                }
-
-                                //while (hasTeam(, 1)) {
                             }
 
-                        }
-
-                    }
-
-                    if (assignPark.getDateList().get(i).getDayOfWeek() == Calendar.SUNDAY) {
-                        for (int k = 0; k < tempMatchList.size(); k++) {
-                            if (tempMatchList.get(k).getTeamA().canPlay(assignPark.getDateList().get(i), pList, assignPark)
-                                    && (tempMatchList.get(k).getTeamB().canPlay(assignPark.getDateList().get(i), pList, assignPark))) {
-                                p = k;
-
-                                break;
-
-                            }
-                        }
-                        for (int k = 0; k < tempMatchList.size(); k++) {
-                            if (skipSaturday == false) {
-                                while (tempMatchList.get(k).getTeamA().equals(teamA1) || tempMatchList.get(k).getTeamA().equals(teamA2) || tempMatchList.get(k).getTeamA().equals(teamA3)
-                                        || tempMatchList.get(k).getTeamA().equals(teamB1) || tempMatchList.get(k).getTeamA().equals(teamB2) || tempMatchList.get(k).getTeamA().equals(teamB3)) {
-
-                                }
-                            }
-
-                        }
-                        if (assignPark.getDateList().get(i).getPlay(1)) {
-                            assignPark.getDateList().get(i).setMatch(1, tempMatchList.get(0));
-                            tempGameList.add(tempMatchList.get(p));
-                            teamA1 = tempMatchList.get(p).getTeamA();
-                            teamB1 = tempMatchList.get(p).getTeamB();
-                            tempMatchList.remove(p);
-                            if (assignPark.getDateList().get(i).getPlay(2)) {
+                            if (assignPark.getDateList().get(i).getDayOfWeek() == Calendar.SUNDAY) {
                                 for (int k = 0; k < tempMatchList.size(); k++) {
-                                    if ((tempMatchList.get(k).getTeamA().equals(teamA1) && !(tempMatchList.get(k).getTeamB().equals(teamB1)))
-                                            || (tempMatchList.get(k).getTeamB().equals(teamB1)) && !(tempMatchList.get(k).getTeamA().equals(teamA1))
-                                            && k < tempMatchList.size()) {
-                                        tempGameList.add(tempMatchList.get(k));
-                                        teamA2 = tempMatchList.get(k).getTeamA();
-                                        teamB2 = tempMatchList.get(k).getTeamB();
-                                        tempMatchList.remove(k);
-                                        lol = 0;
+                                    if (tempMatchList.get(k).getTeamA().canPlay(assignPark.getDateList().get(i), pList, assignPark)
+                                            && (tempMatchList.get(k).getTeamB().canPlay(assignPark.getDateList().get(i), pList, assignPark))) {
+                                        p = k;
+
                                         break;
 
-                                    } else {
-                                        for (int t = 0; t < tempMatchList.size(); t++) {
-                                            if (!(tempMatchList.get(t).getTeamA().equals(teamA1)) && !(tempMatchList.get(t).getTeamB().equals(teamB1))) {
-                                                tempGameList.add(tempMatchList.get(t));
+                                    }
+                                }
+                                for (int k = 0; k < tempMatchList.size(); k++) {
+                                    if (skipSaturday == false) {
+                                        while (tempMatchList.get(k).getTeamA().equals(teamA1) || tempMatchList.get(k).getTeamA().equals(teamA2) || tempMatchList.get(k).getTeamA().equals(teamA3)
+                                                || tempMatchList.get(k).getTeamA().equals(teamB1) || tempMatchList.get(k).getTeamA().equals(teamB2) || tempMatchList.get(k).getTeamA().equals(teamB3)) {
+
+                                        }
+                                    }
+
+                                }
+                                if (assignPark.getDateList().get(i).getPlay(1)) {
+                                    assignPark.getDateList().get(i).setMatch(1, tempMatchList.get(0));
+                                    tempGameList.add(tempMatchList.get(p));
+                                    teamA1 = tempMatchList.get(p).getTeamA();
+                                    teamB1 = tempMatchList.get(p).getTeamB();
+                                    tempMatchList.remove(p);
+                                    if (assignPark.getDateList().get(i).getPlay(2)) {
+                                        for (int k = 0; k < tempMatchList.size(); k++) {
+                                            if ((tempMatchList.get(k).getTeamA().equals(teamA1) && !(tempMatchList.get(k).getTeamB().equals(teamB1)))
+                                                    || (tempMatchList.get(k).getTeamB().equals(teamB1)) && !(tempMatchList.get(k).getTeamA().equals(teamA1))
+                                                    && k < tempMatchList.size()) {
+                                                tempGameList.add(tempMatchList.get(k));
                                                 teamA2 = tempMatchList.get(k).getTeamA();
                                                 teamB2 = tempMatchList.get(k).getTeamB();
                                                 tempMatchList.remove(k);
-                                                lol = 1;
+                                                lol = 0;
                                                 break;
+
+                                            } else {
+                                                for (int t = 0; t < tempMatchList.size(); t++) {
+                                                    if (!(tempMatchList.get(t).getTeamA().equals(teamA1)) && !(tempMatchList.get(t).getTeamB().equals(teamB1))) {
+                                                        tempGameList.add(tempMatchList.get(t));
+                                                        teamA2 = tempMatchList.get(k).getTeamA();
+                                                        teamB2 = tempMatchList.get(k).getTeamB();
+                                                        tempMatchList.remove(k);
+                                                        lol = 1;
+                                                        break;
+                                                    }
+
+                                                }
                                             }
 
+                                        }
+
+                                        if (assignPark.getDateList().get(i).getPlay(3)) {
+                                            if (lol == 0) {
+                                                for (int k = 0; k < tempMatchList.size(); k++) {
+                                                    if (teamA1.equals(teamA2) && teamB2.equals(tempMatchList.get(k).getTeamB())
+                                                            || teamB1.equals(teamB2) && teamA2.equals(tempMatchList.get(k).getTeamA())) {
+                                                        tempGameList.add(tempMatchList.get(k));
+                                                        teamA3 = tempMatchList.get(k).getTeamA();
+                                                        teamB3 = tempMatchList.get(k).getTeamB();
+                                                        tempMatchList.remove(k);
+                                                    }
+                                                }
+                                            } else {
+                                                for (int k = 0; k < tempMatchList.size(); k++) {
+                                                    if (!(tempMatchList.get(k).getTeamA().equals(teamA1) || tempMatchList.get(k).getTeamA().equals(teamA2)
+                                                            || tempMatchList.get(k).getTeamB().equals(teamB1) || tempMatchList.get(k).getTeamB().equals(teamB2))) {
+                                                        tempGameList.add(tempMatchList.get(k));
+                                                        teamA3 = tempMatchList.get(k).getTeamA();
+                                                        teamB3 = tempMatchList.get(k).getTeamB();
+                                                        tempMatchList.remove(k);
+
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
-
                                 }
-
-                                if (assignPark.getDateList().get(i).getPlay(3)) {
-                                    if (lol == 0) {
-                                        for (int k = 0; k < tempMatchList.size(); k++) {
-                                            if (teamA1.equals(teamA2) && teamB2.equals(tempMatchList.get(k).getTeamB())
-                                                    || teamB1.equals(teamB2) && teamA2.equals(tempMatchList.get(k).getTeamA())) {
-                                                tempGameList.add(tempMatchList.get(k));
-                                                teamA3 = tempMatchList.get(k).getTeamA();
-                                                teamB3 = tempMatchList.get(k).getTeamB();
-                                                tempMatchList.remove(k);
-                                            }
-                                        }
-                                    } else {
-                                        for (int k = 0; k < tempMatchList.size(); k++) {
-                                            if (!(tempMatchList.get(k).getTeamA().equals(teamA1) || tempMatchList.get(k).getTeamA().equals(teamA2)
-                                                    || tempMatchList.get(k).getTeamB().equals(teamB1) || tempMatchList.get(k).getTeamB().equals(teamB2))) {
-                                                tempGameList.add(tempMatchList.get(k));
-                                                teamA3 = tempMatchList.get(k).getTeamA();
-                                                teamB3 = tempMatchList.get(k).getTeamB();
-                                                tempMatchList.remove(k);
-
-                                            }
-                                        }
-                                    }
-
-                                }
-
-                                //while (hasTeam(, 1)) {
                             }
-
                         }
                     }
                 }
             }
-
         }
-
     }
 }
-
 
 /*check availability after each of the following steps
  pick park

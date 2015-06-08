@@ -214,16 +214,27 @@ public class HomeGUI extends javax.swing.JFrame {
                 }
                 vCal.add(Calendar.DAY_OF_YEAR, 1);
             }
-//          match
-//          schedule
+            for(Division juniorDiv:juniorDivs){
+                juniorDiv.matching();
+                juniorDiv.schedule(juniorParks, juniorDates);
+            }
+            for(Division seniorDiv:seniorDivs){
+                seniorDiv.matching();
+                seniorDiv.schedule(seniorParks, seniorDates);
+            }
+            for(Division varsityDiv:varsityDivs){
+                varsityDiv.matching();
+                varsityDiv.schedule(varsityParks,varsityDates);
+            }
         } else {
             JOptionPane.showMessageDialog(null, "YEAR IS NOT SPECIFIED");
         }
+
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYearActionPerformed
         if (Integer.parseInt(txtYear.getText()) > 0) {
-//            year = Integer.parseInt(txtYear.getText());
+            year = Integer.parseInt(txtYear.getText());
 //            Calendar juniorCal = Calendar.getInstance();
 //            juniorCal.clear();
 //            juniorCal.set(Calendar.YEAR, year);
