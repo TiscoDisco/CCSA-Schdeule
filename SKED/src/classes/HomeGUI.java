@@ -37,6 +37,8 @@ public class HomeGUI extends javax.swing.JFrame {
     ArrayList<Park> varsityParks = new ArrayList<>();
 
     ArrayList<SoftDate> juniorDates = new ArrayList<>();
+    ArrayList<SoftDate> seniorDates = new ArrayList<>();
+    ArrayList<SoftDate> varsityDates = new ArrayList<>();
 
     public HomeGUI() {
         initComponents();
@@ -185,7 +187,33 @@ public class HomeGUI extends javax.swing.JFrame {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         if (year > 0) {
-            
+            Calendar jCal = Calendar.getInstance();
+            jCal.clear();
+            jCal.setTime(juniorStartDate);
+            while (jCal.getTime().compareTo(juniorEndDate) <= 0) {
+                if (jCal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || jCal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+                    juniorDates.add(new SoftDate(jCal.getTime().getTime()));
+                }
+                jCal.add(Calendar.DAY_OF_YEAR, 1);
+            }
+            Calendar sCal = Calendar.getInstance();
+            sCal.clear();
+            sCal.setTime(seniorStartDate);
+            while (sCal.getTime().compareTo(seniorEndDate) <= 0) {
+                if (sCal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || sCal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+                    seniorDates.add(new SoftDate(sCal.getTime().getTime()));
+                }
+                sCal.add(Calendar.DAY_OF_YEAR, 1);
+            }
+            Calendar vCal = Calendar.getInstance();
+            vCal.clear();
+            vCal.setTime(varsityStartDate);
+            while (vCal.getTime().compareTo(varsityEndDate) <= 0) {
+                if (vCal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || vCal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+                    varsityDates.add(new SoftDate(vCal.getTime().getTime()));
+                }
+                vCal.add(Calendar.DAY_OF_YEAR, 1);
+            }
 //          match
 //          schedule
         } else {

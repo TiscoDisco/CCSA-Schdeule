@@ -21,7 +21,7 @@ public class ParksGUI extends javax.swing.JFrame {
     SoftDate juniorStartDate;
     SoftDate seniorStartDate;
     SoftDate varsityStartDate;
-    
+
     SoftDate juniorEndDate;
     SoftDate seniorEndDate;
     SoftDate varsityEndDate;
@@ -29,6 +29,8 @@ public class ParksGUI extends javax.swing.JFrame {
     ArrayList<Park> juniorParks;
     ArrayList<Park> seniorParks;
     ArrayList<Park> varsityParks;
+
+    ArrayList<SoftDate> noPlays = new ArrayList<>();
 
     public ParksGUI(int y, SoftDate jsd, SoftDate ssd, SoftDate vsd,
             SoftDate jed, SoftDate sed, SoftDate ved,
@@ -38,7 +40,7 @@ public class ParksGUI extends javax.swing.JFrame {
         juniorStartDate = jsd;
         seniorStartDate = ssd;
         varsityStartDate = vsd;
-        juniorEndDate =jed;
+        juniorEndDate = jed;
         juniorParks = jp;
         seniorParks = sp;
         varsityParks = vp;
@@ -131,12 +133,6 @@ public class ParksGUI extends javax.swing.JFrame {
         lblUnavailableDates.setText("Unavailable Dates:");
 
         lblDay.setText("Day");
-
-        txtDay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDayActionPerformed(evt);
-            }
-        });
 
         jLabel10.setText("Start Month:");
 
@@ -419,10 +415,6 @@ public class ParksGUI extends javax.swing.JFrame {
 
         this.dispose();
     }//GEN-LAST:event_btnCancelParksActionPerformed
-
-    private void txtDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDayActionPerformed
-
-    }//GEN-LAST:event_txtDayActionPerformed
     //This class adds a park by collecting all of the necessary data from the convener
     private void btnAddParkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddParkActionPerformed
         String startmonth = jTextField2.getText();

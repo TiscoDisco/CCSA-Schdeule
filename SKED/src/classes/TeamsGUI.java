@@ -17,6 +17,8 @@ public class TeamsGUI extends javax.swing.JFrame {
     ArrayList<Division> seniorDivs;
     ArrayList<Division> varsityDivs;
 
+    ArrayList<SoftDate> noPlays = new ArrayList<>();
+
     public TeamsGUI(int y,
             ArrayList<Division> jd, ArrayList<Division> sd, ArrayList<Division> vd) {
         initComponents();
@@ -26,8 +28,6 @@ public class TeamsGUI extends javax.swing.JFrame {
         varsityDivs = vd;
         display();
     }
-
-    ArrayList<SoftDate> noPlays = new ArrayList<>();
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -425,10 +425,10 @@ public class TeamsGUI extends javax.swing.JFrame {
                     teamCode = divisionCode + "00";
                     varsityDivs.add(new Division(divisionCode));
                     varsityDivs.get(varsityDivs.size() - 1).addTeam(teamName, churchName, teamCode, noPlays);
-
                 }
             }
         }
+        noPlays.clear();
         display();
     }//GEN-LAST:event_btnEnterActionPerformed
 //close the team GUI
@@ -443,6 +443,7 @@ public class TeamsGUI extends javax.swing.JFrame {
         thisCal.clear();
         thisCal.set(year, month, day);
         noPlays.add(new SoftDate(thisCal.getTimeInMillis()));
+        display();
     }//GEN-LAST:event_btnNoPlayDateActionPerformed
     //delete a team if its team code appears in any list
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
