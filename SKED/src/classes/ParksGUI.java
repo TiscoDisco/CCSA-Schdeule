@@ -429,8 +429,15 @@ public class ParksGUI extends javax.swing.JFrame {
                 && (txtFieldj.getText().length() > 0 ^ jTextField1.getText().length() > 0 ^ jTextField3.getText().length() > 0))) {
             JOptionPane.showMessageDialog(null, "INPUT INCOMPLETE OR INVALID");
         } else {
+            Calendar thisCal = Calendar.getInstance();
+            thisCal.clear();
+            thisCal.set(year, startmonth, startday);
+            SoftDate sd = new SoftDate(thisCal.getTimeInMillis());
+            thisCal.set(year, endmonth, endday);
+            SoftDate ed = new SoftDate(thisCal.getTimeInMillis());
             if (txtFieldj.getText().length() > 0) {
                 parkcode = "JP" + parkcode;
+
                 boxJParks.addItem(parkcode); //Adds a junior park based on the park code
 
             } else if (jTextField1.getText().length() > 0) {
@@ -444,7 +451,8 @@ public class ParksGUI extends javax.swing.JFrame {
             fixDates();
         }
     }//GEN-LAST:event_btnAddParkActionPerformed
-    //This class deletes a park based on the convener's input
+
+//This class deletes a park based on the convener's input
     private void btnDeleteParkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteParkActionPerformed
         String parkname = txtParkNameDelete.getText();
         boxJParks.removeItem(parkname);
@@ -490,6 +498,10 @@ public class ParksGUI extends javax.swing.JFrame {
                 varsityEndDate = new SoftDate(checkPark.getEndDate().getTime());
             }
         }
+    }
+
+    private void display() {
+
     }
     /**
      * @param args the command line arguments

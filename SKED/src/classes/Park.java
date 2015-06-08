@@ -28,9 +28,7 @@ public class Park {
         }
     }
 
-    public Park(String path) {
-
-    }
+    
 
     public void addNoPlay(SoftDate d, int slot) {
         noPlays.add(d);
