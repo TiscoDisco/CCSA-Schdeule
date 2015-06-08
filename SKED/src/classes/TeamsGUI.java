@@ -437,7 +437,7 @@ public class TeamsGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelteamsActionPerformed
     //collect and store the team's no-play date
     private void btnNoPlayDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoPlayDateActionPerformed
-        int month = Integer.parseInt(jTextField15.getText()) + 1;
+        int month = Integer.parseInt(jTextField15.getText()) - 1;
         int day = Integer.parseInt(jTextField16.getText());
         Calendar thisCal = Calendar.getInstance();
         thisCal.clear();

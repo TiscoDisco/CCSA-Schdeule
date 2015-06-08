@@ -417,12 +417,10 @@ public class ParksGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelParksActionPerformed
     //This class adds a park by collecting all of the necessary data from the convener
     private void btnAddParkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddParkActionPerformed
-        String startmonth = jTextField2.getText();
-        String startday = jTextField4.getText();
-        String endmonth = jTextField5.getText();
-        String endday = jTextField6.getText();
-        String startdate = startmonth + startday;
-        String enddate = endmonth + endday;
+        int startmonth = Integer.parseInt(jTextField2.getText()) - 1;
+        int startday = Integer.parseInt(jTextField4.getText());
+        int endmonth = Integer.parseInt(jTextField5.getText()) - 1;
+        int endday = Integer.parseInt(jTextField6.getText());
         String parkname = txtFieldPark.getText();
         String league;
         String parkcode;
@@ -441,7 +439,7 @@ public class ParksGUI extends javax.swing.JFrame {
             boxVParks.addItem(parkcode); //Adds a varsity park based on the park code
         }
 
-
+        fixDates();
     }//GEN-LAST:event_btnAddParkActionPerformed
     //This class deletes a park based on the convener's input
     private void btnDeleteParkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteParkActionPerformed
@@ -449,6 +447,7 @@ public class ParksGUI extends javax.swing.JFrame {
         boxJParks.removeItem(parkname);
         boxSParks.removeItem(parkname);
         boxVParks.removeItem(parkname);
+        fixDates();
     }//GEN-LAST:event_btnDeleteParkActionPerformed
     //This class takes input from the convener (via text box) on the no play days of the park 
     private void btnAddDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDayActionPerformed
@@ -456,7 +455,38 @@ public class ParksGUI extends javax.swing.JFrame {
         String noplayday = txtDay.getText();
         String noplaydate = noplaymonth + noplayday;
     }//GEN-LAST:event_btnAddDayActionPerformed
-
+    private void fixDates() {
+        juniorStartDate = new SoftDate(juniorParks.get(0).getStartDate().getTime());
+        seniorStartDate = new SoftDate(seniorParks.get(0).getStartDate().getTime());
+        varsityStartDate = new SoftDate(varsityParks.get(0).getStartDate().getTime());
+        juniorEndDate = new SoftDate(juniorParks.get(0).getEndDate().getTime());
+        seniorEndDate = new SoftDate(seniorParks.get(0).getEndDate().getTime());
+        varsityEndDate = new SoftDate(varsityParks.get(0).getEndDate().getTime());
+        for (Park checkPark : juniorParks) {
+            if (juniorStartDate.compareTo(checkPark.getStartDate()) > 0) {
+                juniorStartDate = new SoftDate(checkPark.getStartDate().getTime());
+            }
+            if (juniorEndDate.compareTo(checkPark.getEndDate()) < 0) {
+                juniorEndDate = new SoftDate(checkPark.getEndDate().getTime());
+            }
+        }
+        for (Park checkPark : seniorParks) {
+            if (seniorStartDate.compareTo(checkPark.getStartDate()) > 0) {
+                seniorStartDate = new SoftDate(checkPark.getStartDate().getTime());
+            }
+            if (seniorEndDate.compareTo(checkPark.getEndDate()) < 0) {
+                seniorEndDate = new SoftDate(checkPark.getEndDate().getTime());
+            }
+        }
+        for (Park checkPark : varsityParks) {
+            if (varsityStartDate.compareTo(checkPark.getStartDate()) > 0) {
+                varsityStartDate = new SoftDate(checkPark.getStartDate().getTime());
+            }
+            if (varsityEndDate.compareTo(checkPark.getEndDate()) < 0) {
+                varsityEndDate = new SoftDate(checkPark.getEndDate().getTime());
+            }
+        }
+    }
     /**
      * @param args the command line arguments
      */

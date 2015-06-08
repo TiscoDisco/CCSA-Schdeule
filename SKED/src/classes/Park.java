@@ -44,6 +44,14 @@ public class Park {
         return dateList;
     }
 
+    public SoftDate getStartDate() {
+        return startDate;
+    }
+
+    public SoftDate getEndDate() {
+        return endDate;
+    }
+
     public boolean hasPlayDate(SoftDate d) {
         for (SoftDate np : noPlays) {
             if (np.equals(d)) {
@@ -56,8 +64,8 @@ public class Park {
     public boolean canPlay(SoftDate d, int s) {
         if (hasPlayDate(d)) {
             for (SoftDate checkDate : dateList) {
-                if(checkDate.equals(d)){
-                    if(!checkDate.getPlay(s)){
+                if (checkDate.equals(d)) {
+                    if (!checkDate.getPlay(s)) {
                         return true;
                     }
                 }
