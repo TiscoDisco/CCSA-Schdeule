@@ -21,20 +21,24 @@ public class ParksGUI extends javax.swing.JFrame {
     SoftDate juniorStartDate;
     SoftDate seniorStartDate;
     SoftDate varsityStartDate;
-    SoftDate endDate;
+    
+    SoftDate juniorEndDate;
+    SoftDate seniorEndDate;
+    SoftDate varsityEndDate;
 
     ArrayList<Park> juniorParks;
     ArrayList<Park> seniorParks;
     ArrayList<Park> varsityParks;
 
-    public ParksGUI(int y, SoftDate jsd, SoftDate ssd, SoftDate vsd, SoftDate ed,
+    public ParksGUI(int y, SoftDate jsd, SoftDate ssd, SoftDate vsd,
+            SoftDate jed, SoftDate sed, SoftDate ved,
             ArrayList<Park> jp, ArrayList<Park> sp, ArrayList<Park> vp) {
         initComponents();
         year = y;
         juniorStartDate = jsd;
         seniorStartDate = ssd;
         varsityStartDate = vsd;
-        endDate = ed;
+        juniorEndDate =jed;
         juniorParks = jp;
         seniorParks = sp;
         varsityParks = vp;
