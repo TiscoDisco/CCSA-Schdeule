@@ -14,7 +14,7 @@ public class Park {
     private String name;
     private ArrayList<SoftDate> noPlays = new ArrayList<>();
 
-    public Park(String n, SoftDate s, SoftDate e) {
+    public Park(String c, String n, SoftDate s, SoftDate e) {
         name = n;
         startDate = s;
         endDate = e;

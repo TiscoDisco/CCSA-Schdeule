@@ -6,6 +6,7 @@
 package classes;
 
 import java.util.*;
+import javax.swing.*;
 
 /**
  *
@@ -422,24 +423,26 @@ public class ParksGUI extends javax.swing.JFrame {
         int endmonth = Integer.parseInt(jTextField5.getText()) - 1;
         int endday = Integer.parseInt(jTextField6.getText());
         String parkname = txtFieldPark.getText();
-        String league;
-        String parkcode;
-
-        if (txtFieldj.getText().length() > 0) {
-            league = txtFieldj.getText();
-            parkcode = "J" + league + parkname;
-            boxJParks.addItem(parkcode); //Adds a junior park based on the park code
-        } else if (jTextField1.getText().length() > 0) {
-            league = jTextField1.getText();
-            parkcode = "S" + parkname + league;
-            boxSParks.addItem(parkcode); //Adds a senior park based on the park code
+        String parkcode = txtFieldj.getText() + jTextField1.getText() + jTextField3.getText();
+        if (!(parkname.length() > 0 && parkcode.length() > 0
+                && startmonth > -1 && startday > 0 && endmonth > -1 && endday > 0
+                && (txtFieldj.getText().length() > 0 ^ jTextField1.getText().length() > 0 ^ jTextField3.getText().length() > 0))) {
+            JOptionPane.showMessageDialog(null, "INPUT INCOMPLETE OR INVALID");
         } else {
-            league = jTextField3.getText();
-            parkcode = "V" + parkname + league;
-            boxVParks.addItem(parkcode); //Adds a varsity park based on the park code
-        }
+            if (txtFieldj.getText().length() > 0) {
+                parkcode = "JP" + parkcode;
+                boxJParks.addItem(parkcode); //Adds a junior park based on the park code
 
-        fixDates();
+            } else if (jTextField1.getText().length() > 0) {
+                parkcode = "SP" + parkcode;
+                boxSParks.addItem(parkcode); //Adds a senior park based on the park code
+            } else {
+                parkcode = "VP" + parkcode;
+                boxVParks.addItem(parkcode); //Adds a varsity park based on the park code
+            }
+
+            fixDates();
+        }
     }//GEN-LAST:event_btnAddParkActionPerformed
     //This class deletes a park based on the convener's input
     private void btnDeleteParkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteParkActionPerformed
@@ -455,6 +458,7 @@ public class ParksGUI extends javax.swing.JFrame {
         String noplayday = txtDay.getText();
         String noplaydate = noplaymonth + noplayday;
     }//GEN-LAST:event_btnAddDayActionPerformed
+
     private void fixDates() {
         juniorStartDate = new SoftDate(juniorParks.get(0).getStartDate().getTime());
         seniorStartDate = new SoftDate(seniorParks.get(0).getStartDate().getTime());

@@ -322,7 +322,7 @@ public class TeamsGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "INPUT INCOMPLETE OR INVALID");
         } else {
             if (jTextField12.getText().length() > 0) {
-                divisionCode = "J" + divisionCode;
+                divisionCode = "JT" + divisionCode;
                 for (Division juniorDiv : juniorDivs) {
                     if (juniorDiv.getDivCode().equals(divisionCode)) {
                         hasDiv = true;
@@ -358,7 +358,7 @@ public class TeamsGUI extends javax.swing.JFrame {
                 }
 
             } else if (jTextField13.getText().length() > 0) {
-                divisionCode = "S" + divisionCode;
+                divisionCode = "ST" + divisionCode;
                 for (Division seniorDiv : seniorDivs) {
                     if (seniorDiv.getDivCode().equals(divisionCode)) {
                         hasDiv = true;
@@ -393,7 +393,7 @@ public class TeamsGUI extends javax.swing.JFrame {
 
                 }
             } else {
-                divisionCode = "V" + divisionCode;
+                divisionCode = "VT" + divisionCode;
                 for (Division varsityDiv : varsityDivs) {
                     if (varsityDiv.getDivCode().equals(divisionCode)) {
                         hasDiv = true;
