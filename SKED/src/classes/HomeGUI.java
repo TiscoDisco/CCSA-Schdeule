@@ -25,12 +25,12 @@ public class HomeGUI extends javax.swing.JFrame {
     SoftDate varsityStartDate;
     SoftDate endDate;
 
-    ArrayList<Division> juniorDivs;
-    ArrayList<Division> seniorDivs;
-    ArrayList<Division> varsityDivs;
-    ArrayList<Park> juniorParks;
-    ArrayList<Park> seniorParks;
-    ArrayList<Park> varsityParks;
+    ArrayList<Division> juniorDivs = new ArrayList<>();
+    ArrayList<Division> seniorDivs = new ArrayList<>();
+    ArrayList<Division> varsityDivs = new ArrayList<>();
+    ArrayList<Park> juniorParks = new ArrayList<>();
+    ArrayList<Park> seniorParks = new ArrayList<>();
+    ArrayList<Park> varsityParks = new ArrayList<>();
 
     public HomeGUI() {
         initComponents();
@@ -187,6 +187,35 @@ public class HomeGUI extends javax.swing.JFrame {
     private void btnYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYearActionPerformed
         if (Integer.parseInt(txtYear.getText()) > 0) {
             year = Integer.parseInt(txtYear.getText());
+            Calendar juniorCal = Calendar.getInstance();
+            juniorCal.clear();
+            juniorCal.set(Calendar.YEAR, year);
+            juniorCal.set(Calendar.MONTH, Calendar.JULY);
+            juniorCal.set(Calendar.DAY_OF_MONTH, 1);
+            juniorCal.add(Calendar.DAY_OF_YEAR, -7);
+            juniorStartDate.setTime(juniorCal.getTimeInMillis());
+
+            Calendar seniorCal = Calendar.getInstance();
+            seniorCal.set(Calendar.YEAR, year);
+            seniorCal.set(Calendar.MONTH, Calendar.JUNE);
+            seniorCal.set(Calendar.DAY_OF_MONTH, 1);
+            seniorCal.add(Calendar.DAY_OF_YEAR, -7);
+            seniorStartDate.setTime(seniorCal.getTimeInMillis());
+
+            Calendar varsityCal = Calendar.getInstance();
+            varsityCal.set(Calendar.YEAR, year);
+            varsityCal.set(Calendar.MONTH, Calendar.JULY);
+            varsityCal.set(Calendar.DAY_OF_MONTH, 1);
+            varsityCal.add(Calendar.DAY_OF_YEAR, -7);
+            varsityStartDate.setTime(varsityCal.getTimeInMillis());
+
+            Calendar endCal = Calendar.getInstance();
+            endCal.clear();
+            endCal.set(Calendar.YEAR, year);
+            endCal.set(Calendar.MONTH, Calendar.SEPTEMBER);
+            endCal.set(Calendar.WEEK_OF_MONTH, 1);
+            endCal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+            endDate.setTime(endCal.getTimeInMillis());
         } else {
             JOptionPane.showMessageDialog(null, "YEAR IS NOT VALID");
         }

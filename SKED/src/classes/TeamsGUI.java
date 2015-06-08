@@ -24,7 +24,7 @@ public class TeamsGUI extends javax.swing.JFrame {
         juniorDivs = jd;
         seniorDivs = sd;
         varsityDivs = vd;
-
+        display();
     }
 
     ArrayList<SoftDate> noPlays = new ArrayList<>();
@@ -451,10 +451,10 @@ public class TeamsGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "INPUT INCOMPLETE");
         } else {
             if (teamCode.substring(0, 1).equals("J")) {
-                for(Division juniorDiv:juniorDivs){
-                    if(juniorDiv.getDivCode().equals(teamCode.substring(0,teamCode.length()-2))){
-                        for(Team t:juniorDiv.getTeamList()){
-                            if(t.getCode().equals(teamCode)){
+                for (Division juniorDiv : juniorDivs) {
+                    if (juniorDiv.getDivCode().equals(teamCode.substring(0, teamCode.length() - 2))) {
+                        for (Team t : juniorDiv.getTeamList()) {
+                            if (t.getCode().equals(teamCode)) {
                                 juniorDiv.removeTeam(t);
                             }
                         }
@@ -468,25 +468,26 @@ public class TeamsGUI extends javax.swing.JFrame {
 
             }
         }
+        display();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void display() {
-        boxJDivs.removeAll();
-        boxSDivs.removeAll();
-        boxVDivs.removeAll();
-        for (Division juniorDiv : juniorDivs) {
-            for (Team t : juniorDiv.getTeamList()) {
-                boxJDivs.addItem(t.getCode() + " " + t.getName());
+        boxJDivs.removeAllItems();
+        boxSDivs.removeAllItems();
+        boxVDivs.removeAllItems();
+        for (int i = 0; i < juniorDivs.size(); i++) {
+            for (int j = 0; j < juniorDivs.get(i).getTeamList().size(); j++) {
+                boxJDivs.addItem(juniorDivs.get(i).getTeamList().get(i).getCode() + " " + juniorDivs.get(i).getTeamList().get(i).getChurch());
             }
         }
-        for (Division seniorDiv : seniorDivs) {
-            for (Team t : seniorDiv.getTeamList()) {
-                boxSDivs.addItem(t.getCode() + " " + t.getName());
+        for (int i = 0; i < seniorDivs.size(); i++) {
+            for (int j = 0; j < seniorDivs.get(i).getTeamList().size(); j++) {
+                boxSDivs.addItem(seniorDivs.get(i).getTeamList().get(i).getCode() + " " + seniorDivs.get(i).getTeamList().get(i).getChurch());
             }
         }
-        for (Division varsityDiv : varsityDivs) {
-            for (Team t : varsityDiv.getTeamList()) {
-                boxVDivs.addItem(t.getCode() + " " + t.getName());
+        for (int i = 0; i < varsityDivs.size(); i++) {
+            for (int j = 0; j < varsityDivs.get(i).getTeamList().size(); j++) {
+                boxVDivs.addItem(varsityDivs.get(i).getTeamList().get(i).getCode() + " " + varsityDivs.get(i).getTeamList().get(i).getChurch());
             }
         }
     }
