@@ -17,7 +17,6 @@ public class Division {
 
     public Division(String dc) {
         divisionCode = dc;
-
     }
 
     public void addTeam(String n, String c, ArrayList<SoftDate> np) {
@@ -28,16 +27,33 @@ public class Division {
         teamList.add(new Team(n, c, divisionCode, name, np));
     }
 
-    public String getDivCode(){
+    public boolean codeAvail(int c) {
+        for (Team t : teamList) {
+            if (Integer.parseInt(t.getCode().substring(t.getCode().length() - 2)) == c) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public String getDivCode() {
         return divisionCode;
     }
-    
+
     public ArrayList<Team> getTeamList() {
         return teamList;
     }
-    
+
     public ArrayList<Match> getMatchList() {
         return matchList;
+    }
+
+    public void removeTeam(Team t) {
+        for (int i = 0; i < teamList.size(); i++) {
+            if(teamList.get(i).equals(t)){
+                teamList.remove(i);
+            }
+        }
     }
 
     public void matching() {
