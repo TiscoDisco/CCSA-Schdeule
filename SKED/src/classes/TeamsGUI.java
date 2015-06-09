@@ -428,7 +428,7 @@ public class TeamsGUI extends javax.swing.JFrame {
                 }
             }
         }
-        noPlays.clear();
+        formClear();
         display();
     }//GEN-LAST:event_btnEnterActionPerformed
 //close the team GUI
@@ -443,6 +443,7 @@ public class TeamsGUI extends javax.swing.JFrame {
         thisCal.clear();
         thisCal.set(year, month, day);
         noPlays.add(new SoftDate(thisCal.getTimeInMillis()));
+
         display();
     }//GEN-LAST:event_btnNoPlayDateActionPerformed
     //delete a team if its team code appears in any list
@@ -488,6 +489,7 @@ public class TeamsGUI extends javax.swing.JFrame {
                 }
             }
         }
+        formClear();
         display();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
@@ -510,6 +512,18 @@ public class TeamsGUI extends javax.swing.JFrame {
                 boxVDivs.addItem(varsityDiv.getTeamList().get(j).getCode() + " " + varsityDiv.getTeamList().get(j).getName());
             }
         }
+    }
+
+    private void formClear() {
+        noPlays.clear();
+        jTextField11.setText(null);
+        jTextField12.setText(null);
+        jTextField13.setText(null);
+        jTextField14.setText(null);
+        jTextField15.setText(null);
+        jTextField16.setText(null);
+        txtfieldChurch.setText(null);
+        txtfieldTeamname.setText(null);
     }
     /**
      *

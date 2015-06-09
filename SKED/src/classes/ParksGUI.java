@@ -422,9 +422,9 @@ public class ParksGUI extends javax.swing.JFrame {
         int startday = Integer.parseInt(jTextField4.getText());
         int endmonth = Integer.parseInt(jTextField5.getText()) - 1;
         int endday = Integer.parseInt(jTextField6.getText());
+        boolean hasPark = false;
         String parkname = txtFieldPark.getText();
-        String parkcode = txtFieldj.getText() + jTextField1.getText() + jTextField3.getText();
-        if (!(parkname.length() > 0 && parkcode.length() > 0
+        if (!(parkname.length() > 0
                 && startmonth > -1 && startday > 0 && endmonth > -1 && endday > 0
                 && (txtFieldj.getText().length() > 0 ^ jTextField1.getText().length() > 0 ^ jTextField3.getText().length() > 0))) {
             JOptionPane.showMessageDialog(null, "INPUT INCOMPLETE OR INVALID");
@@ -435,36 +435,82 @@ public class ParksGUI extends javax.swing.JFrame {
             SoftDate sd = new SoftDate(thisCal.getTimeInMillis());
             thisCal.set(year, endmonth, endday);
             SoftDate ed = new SoftDate(thisCal.getTimeInMillis());
-            if (txtFieldj.getText().length() > 0) {
-                parkcode = "JP" + parkcode;
 
-                boxJParks.addItem(parkcode); //Adds a junior park based on the park code
+            if (txtFieldj.getText().length() > 0) {
+                for (Park jPark : juniorParks) {//Adds a junior park based on the park code
+                    if (jPark.getName().equals(parkname)) {
+                        hasPark = true;
+                        jPark = new Park(parkname, sd, ed);
+                    }
+                }
+                if (!hasPark) {
+                    juniorParks.add(new Park(parkname, sd, ed));
+                }
 
             } else if (jTextField1.getText().length() > 0) {
-                parkcode = "SP" + parkcode;
-                boxSParks.addItem(parkcode); //Adds a senior park based on the park code
-            } else {
-                parkcode = "VP" + parkcode;
-                boxVParks.addItem(parkcode); //Adds a varsity park based on the park code
-            }
 
+                for (Park sPark : seniorParks) {//Adds a senior park based on the park code
+                    if (sPark.getName().equals(parkname)) {
+                        hasPark = true;
+                        sPark = new Park(parkname, sd, ed);
+                    }
+                }
+                if (!hasPark) {
+                    seniorParks.add(new Park(parkname, sd, ed));
+                }
+
+            } else {
+
+                for (Park vPark : varsityParks) {//Adds a varsity park based on the park code
+                    if (vPark.getName().equals(parkname)) {
+                        hasPark = true;
+                        vPark = new Park(parkname, sd, ed);
+                    }
+                }
+                if (!hasPark) {
+                    varsityParks.add(new Park(parkname, sd, ed));
+                }
+
+            }
+            formClear();
             fixDates();
+            display();
         }
     }//GEN-LAST:event_btnAddParkActionPerformed
 
 //This class deletes a park based on the convener's input
     private void btnDeleteParkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteParkActionPerformed
         String parkname = txtParkNameDelete.getText();
-        boxJParks.removeItem(parkname);
-        boxSParks.removeItem(parkname);
-        boxVParks.removeItem(parkname);
+        for (int i = 0; i < juniorParks.size(); i++) {
+            if (juniorParks.get(i).getName().equals(parkname)) {
+                juniorParks.remove(i);
+            }
+        }
+        for (int i = 0; i < seniorParks.size(); i++) {
+            if (seniorParks.get(i).getName().equals(parkname)) {
+                seniorParks.remove(i);
+            }
+        }
+        for (int i = 0; i < varsityParks.size(); i++) {
+            if (varsityParks.get(i).getName().equals(parkname)) {
+                varsityParks.remove(i);
+            }
+        }
+        txtParkNameDelete.setText(parkname);
         fixDates();
+        formClear();
+        display();
     }//GEN-LAST:event_btnDeleteParkActionPerformed
     //This class takes input from the convener (via text box) on the no play days of the park 
     private void btnAddDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDayActionPerformed
-        String noplaymonth = jTextField7.getText();
-        String noplayday = txtDay.getText();
-        String noplaydate = noplaymonth + noplayday;
+        int noplaymonth = Integer.parseInt(jTextField7.getText()) - 1;
+        int noplayday = Integer.parseInt(txtDay.getText());
+        Calendar thisCal = Calendar.getInstance();
+        thisCal.clear();
+        thisCal.set(year, noplaymonth, noplayday);
+        noPlays.add(new SoftDate(thisCal.getTimeInMillis()));
+        display();
+        jTextField7.setText(null);
     }//GEN-LAST:event_btnAddDayActionPerformed
 
     private void fixDates() {
@@ -501,7 +547,32 @@ public class ParksGUI extends javax.swing.JFrame {
     }
 
     private void display() {
+        boxJParks.removeAllItems();
+        boxSParks.removeAllItems();
+        boxVParks.removeAllItems();
+        for (Park juniorPark : juniorParks) {
+            boxJParks.addItem(juniorPark.getName());
+        }
+        for (Park seniorPark : seniorParks) {
+            boxSParks.addItem(seniorPark.getName());
+        }
+        for (Park varsityPark : varsityParks) {
+            boxVParks.addItem(varsityPark.getName());
+        }
+    }
 
+    private void formClear() {
+        noPlays.clear();
+        txtFieldPark.setText(null);
+        txtFieldj.setText(null);
+        txtDay.setText(null);
+        jTextField1.setText(null);
+        jTextField2.setText(null);
+        jTextField3.setText(null);
+        jTextField4.setText(null);
+        jTextField5.setText(null);
+        jTextField6.setText(null);
+        jTextField7.setText(null);
     }
     /**
      * @param args the command line arguments

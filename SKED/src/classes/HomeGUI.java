@@ -57,8 +57,8 @@ public class HomeGUI extends javax.swing.JFrame {
         lblSked = new javax.swing.JLabel();
         lblLine1 = new javax.swing.JLabel();
         btnCreate = new javax.swing.JButton();
-        btnYear = new javax.swing.JButton();
         txtYear = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SFTBLSKDLR");
@@ -100,12 +100,7 @@ public class HomeGUI extends javax.swing.JFrame {
             }
         });
 
-        btnYear.setText("Select Year");
-        btnYear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnYearActionPerformed(evt);
-            }
-        });
+        jLabel1.setText("Select Year:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -131,9 +126,9 @@ public class HomeGUI extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnCreate)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtYear, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnYear)))))
+                                .addComponent(txtYear, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -142,8 +137,8 @@ public class HomeGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCreate)
-                    .addComponent(btnYear)
-                    .addComponent(txtYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblSked)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -163,6 +158,7 @@ public class HomeGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTeamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTeamActionPerformed
+        year = Integer.parseInt(txtYear.getText());
         if (year > 0) {
             TeamsGUI t = new TeamsGUI(year, juniorDivs, seniorDivs, varsityDivs);
             t.setVisible(true);
@@ -175,6 +171,7 @@ public class HomeGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTeamActionPerformed
 
     private void btnParksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnParksActionPerformed
+        year = Integer.parseInt(txtYear.getText());
         if (year > 0) {
             ParksGUI p = new ParksGUI(year, juniorStartDate, seniorStartDate, varsityStartDate,
                     juniorEndDate, seniorEndDate, varsityEndDate,
@@ -186,7 +183,9 @@ public class HomeGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnParksActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
+        year = Integer.parseInt(txtYear.getText());
         if (year > 0) {
+
             Calendar jCal = Calendar.getInstance();
             jCal.clear();
             jCal.setTime(juniorStartDate);
@@ -214,53 +213,23 @@ public class HomeGUI extends javax.swing.JFrame {
                 }
                 vCal.add(Calendar.DAY_OF_YEAR, 1);
             }
-            for(Division juniorDiv:juniorDivs){
+            for (Division juniorDiv : juniorDivs) {
                 juniorDiv.matching();
                 juniorDiv.schedule(juniorParks, juniorDates);
             }
-            for(Division seniorDiv:seniorDivs){
+            for (Division seniorDiv : seniorDivs) {
                 seniorDiv.matching();
                 seniorDiv.schedule(seniorParks, seniorDates);
             }
-            for(Division varsityDiv:varsityDivs){
+            for (Division varsityDiv : varsityDivs) {
                 varsityDiv.matching();
-                varsityDiv.schedule(varsityParks,varsityDates);
+                varsityDiv.schedule(varsityParks, varsityDates);
             }
         } else {
             JOptionPane.showMessageDialog(null, "YEAR IS NOT SPECIFIED");
         }
 
     }//GEN-LAST:event_btnCreateActionPerformed
-
-    private void btnYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYearActionPerformed
-        if (Integer.parseInt(txtYear.getText()) > 0) {
-            year = Integer.parseInt(txtYear.getText());
-//            Calendar juniorCal = Calendar.getInstance();
-//            juniorCal.clear();
-//            juniorCal.set(Calendar.YEAR, year);
-//            juniorCal.set(Calendar.MONTH, Calendar.JULY);
-//            juniorCal.set(Calendar.DAY_OF_MONTH, 1);
-//            juniorCal.add(Calendar.DAY_OF_YEAR, -7);
-//            juniorStartDate = new SoftDate(juniorCal.getTimeInMillis());
-//
-//            Calendar seniorCal = Calendar.getInstance();
-//            seniorCal.set(Calendar.YEAR, year);
-//            seniorCal.set(Calendar.MONTH, Calendar.JUNE);
-//            seniorCal.set(Calendar.DAY_OF_MONTH, 1);
-//            seniorCal.add(Calendar.DAY_OF_YEAR, -7);
-//            seniorStartDate = new SoftDate(seniorCal.getTimeInMillis());
-//
-//            Calendar varsityCal = Calendar.getInstance();
-//            varsityCal.set(Calendar.YEAR, year);
-//            varsityCal.set(Calendar.MONTH, Calendar.JULY);
-//            varsityCal.set(Calendar.DAY_OF_MONTH, 1);
-//            varsityCal.add(Calendar.DAY_OF_YEAR, -7);
-//            varsityStartDate = new SoftDate(varsityCal.getTimeInMillis());
-
-        } else {
-            JOptionPane.showMessageDialog(null, "YEAR IS NOT VALID");
-        }
-    }//GEN-LAST:event_btnYearActionPerformed
 
     /**
      * @param args the command line arguments
@@ -307,7 +276,7 @@ public class HomeGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnParks;
     private javax.swing.JButton btnTeam;
-    private javax.swing.JButton btnYear;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JLabel lblLine1;
     private javax.swing.JLabel lblParks;

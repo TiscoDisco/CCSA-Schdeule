@@ -12,9 +12,10 @@ public class Park {
     private SoftDate endDate;
     private ArrayList<SoftDate> dateList = new ArrayList<>();
     private String name;
+
     private ArrayList<SoftDate> noPlays = new ArrayList<>();
 
-    public Park(String c, String n, SoftDate s, SoftDate e) {
+    public Park(String n, SoftDate s, SoftDate e) {
         name = n;
         startDate = s;
         endDate = e;
@@ -27,8 +28,6 @@ public class Park {
             }
         }
     }
-
-    
 
     public void addNoPlay(SoftDate d, int slot) {
         noPlays.add(d);
