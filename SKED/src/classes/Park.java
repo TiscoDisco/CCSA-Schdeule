@@ -25,8 +25,9 @@ public class Park {
         doCal.setTime(startDate);
         while (doCal.getTime().compareTo(endDate) <= 0) {
             if (doCal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || doCal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
-                dateList.add(new SoftDate(doCal.getTime().getTime()));
+                dateList.add(new SoftDate(doCal.getTimeInMillis()));
             }
+            doCal.add(Calendar.DAY_OF_YEAR, 1);
         }
     }
 

@@ -39,7 +39,8 @@ public class HomeGUI extends javax.swing.JFrame {
     ArrayList<SoftDate> juniorDates = new ArrayList<>();
     ArrayList<SoftDate> seniorDates = new ArrayList<>();
     ArrayList<SoftDate> varsityDates = new ArrayList<>();
-
+    ArrayList<SoftDate> allDates = new ArrayList<>();
+    
     public HomeGUI() {
         initComponents();
     }
@@ -185,7 +186,6 @@ public class HomeGUI extends javax.swing.JFrame {
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         year = Integer.parseInt(txtYear.getText());
         if (year > 0) {
-
             Calendar jCal = Calendar.getInstance();
             jCal.clear();
             jCal.setTime(juniorStartDate);
@@ -228,9 +228,13 @@ public class HomeGUI extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "YEAR IS NOT SPECIFIED");
         }
-
+        
     }//GEN-LAST:event_btnCreateActionPerformed
-
+    
+    public void writeCSV(){
+        
+    }
+    
     /**
      * @param args the command line arguments
      */
