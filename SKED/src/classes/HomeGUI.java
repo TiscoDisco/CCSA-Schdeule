@@ -245,6 +245,10 @@ public class HomeGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCreateActionPerformed
 
     public void writeCSV() throws IOException {
+        ArrayList<Park> allParks = new ArrayList<>();
+        allParks.addAll(juniorParks);
+        allParks.addAll(juniorParks);
+        allParks.addAll(juniorParks);
         allStartDate = new SoftDate(Math.min(juniorStartDate.getTime(), Math.min(seniorStartDate.getTime(), varsityStartDate.getTime())));
         allEndDate = new SoftDate(Math.max(juniorEndDate.getTime(), Math.max(seniorEndDate.getTime(), varsityEndDate.getTime())));
         Calendar aCal = Calendar.getInstance();
@@ -261,9 +265,22 @@ public class HomeGUI extends javax.swing.JFrame {
         FileWriter skedWrite = new FileWriter(sked);
         BufferedWriter skedBuff = new BufferedWriter(skedWrite);
         for (SoftDate outDate : allDates) {
+            skedBuff.write();
             for (int i = 1; i <= 3; i++) {
-
+                switch(i){
+                    case 1:
+                        skedBuff.write();
+                        break;
+                    case 2:
+                        skedBuff.write();
+                        break;
+                    case 3:
+                        skedBuff.write();
+                        break;
+                }
+                skedBuff.write();
             }
+            skedBuff.newLine();
         }
     }
 
