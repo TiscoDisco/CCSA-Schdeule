@@ -11,6 +11,8 @@ package classes;
  */
 import java.io.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 
 public class HomeGUI extends javax.swing.JFrame {
@@ -23,10 +25,12 @@ public class HomeGUI extends javax.swing.JFrame {
     SoftDate juniorStartDate;
     SoftDate seniorStartDate;
     SoftDate varsityStartDate;
+    SoftDate allStartDate;
 
     SoftDate juniorEndDate;
     SoftDate seniorEndDate;
     SoftDate varsityEndDate;
+    SoftDate allEndDate;
 
     ArrayList<Division> juniorDivs = new ArrayList<>();
     ArrayList<Division> seniorDivs = new ArrayList<>();
@@ -40,7 +44,7 @@ public class HomeGUI extends javax.swing.JFrame {
     ArrayList<SoftDate> seniorDates = new ArrayList<>();
     ArrayList<SoftDate> varsityDates = new ArrayList<>();
     ArrayList<SoftDate> allDates = new ArrayList<>();
-    
+
     public HomeGUI() {
         initComponents();
     }
@@ -185,56 +189,84 @@ public class HomeGUI extends javax.swing.JFrame {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         year = Integer.parseInt(txtYear.getText());
-        if (year > 0) {
-            Calendar jCal = Calendar.getInstance();
-            jCal.clear();
-            jCal.setTime(juniorStartDate);
-            while (jCal.getTime().compareTo(juniorEndDate) <= 0) {
-                if (jCal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || jCal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
-                    juniorDates.add(new SoftDate(jCal.getTime().getTime()));
-                }
-                jCal.add(Calendar.DAY_OF_YEAR, 1);
-            }
-            Calendar sCal = Calendar.getInstance();
-            sCal.clear();
-            sCal.setTime(seniorStartDate);
-            while (sCal.getTime().compareTo(seniorEndDate) <= 0) {
-                if (sCal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || sCal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
-                    seniorDates.add(new SoftDate(sCal.getTime().getTime()));
-                }
-                sCal.add(Calendar.DAY_OF_YEAR, 1);
-            }
-            Calendar vCal = Calendar.getInstance();
-            vCal.clear();
-            vCal.setTime(varsityStartDate);
-            while (vCal.getTime().compareTo(varsityEndDate) <= 0) {
-                if (vCal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || vCal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
-                    varsityDates.add(new SoftDate(vCal.getTime().getTime()));
-                }
-                vCal.add(Calendar.DAY_OF_YEAR, 1);
-            }
-            for (Division juniorDiv : juniorDivs) {
-                juniorDiv.matching();
-                juniorDiv.schedule(juniorParks, juniorDates);
-            }
-            for (Division seniorDiv : seniorDivs) {
-                seniorDiv.matching();
-                seniorDiv.schedule(seniorParks, seniorDates);
-            }
-            for (Division varsityDiv : varsityDivs) {
-                varsityDiv.matching();
-                varsityDiv.schedule(varsityParks, varsityDates);
-            }
-        } else {
+        if (year < 1) {
             JOptionPane.showMessageDialog(null, "YEAR IS NOT SPECIFIED");
+        } else if (juniorParks.isEmpty() || seniorParks.isEmpty() || varsityParks.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "FORMS ARE NOT COMPLETE");
+        } else {
+            try {
+                Calendar jCal = Calendar.getInstance();
+                jCal.clear();
+                jCal.setTime(juniorStartDate);
+                while (jCal.getTime().compareTo(juniorEndDate) <= 0) {
+                    if (jCal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || jCal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+                        juniorDates.add(new SoftDate(jCal.getTime().getTime()));
+                    }
+                    jCal.add(Calendar.DAY_OF_YEAR, 1);
+                }
+                Calendar sCal = Calendar.getInstance();
+                sCal.clear();
+                sCal.setTime(seniorStartDate);
+                while (sCal.getTime().compareTo(seniorEndDate) <= 0) {
+                    if (sCal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || sCal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+                        seniorDates.add(new SoftDate(sCal.getTime().getTime()));
+                    }
+                    sCal.add(Calendar.DAY_OF_YEAR, 1);
+                }
+                Calendar vCal = Calendar.getInstance();
+                vCal.clear();
+                vCal.setTime(varsityStartDate);
+                while (vCal.getTime().compareTo(varsityEndDate) <= 0) {
+                    if (vCal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || vCal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+                        varsityDates.add(new SoftDate(vCal.getTime().getTime()));
+                    }
+                    vCal.add(Calendar.DAY_OF_YEAR, 1);
+                }
+
+                for (Division juniorDiv : juniorDivs) {
+                    juniorDiv.matching();
+                    juniorDiv.schedule(juniorParks, juniorDates);
+                }
+                for (Division seniorDiv : seniorDivs) {
+                    seniorDiv.matching();
+                    seniorDiv.schedule(seniorParks, seniorDates);
+                }
+                for (Division varsityDiv : varsityDivs) {
+                    varsityDiv.matching();
+                    varsityDiv.schedule(varsityParks, varsityDates);
+                }
+
+                writeCSV();
+            } catch (IOException ex) {
+                Logger.getLogger(HomeGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        
+
     }//GEN-LAST:event_btnCreateActionPerformed
-    
-    public void writeCSV(){
-        
+
+    public void writeCSV() throws IOException {
+        allStartDate = new SoftDate(Math.min(juniorStartDate.getTime(), Math.min(seniorStartDate.getTime(), varsityStartDate.getTime())));
+        allEndDate = new SoftDate(Math.max(juniorEndDate.getTime(), Math.max(seniorEndDate.getTime(), varsityEndDate.getTime())));
+        Calendar aCal = Calendar.getInstance();
+        aCal.clear();
+        aCal.setTime(allStartDate);
+        while (aCal.getTime().compareTo(allEndDate) <= 0) {
+            if (aCal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || aCal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+                allDates.add(new SoftDate(aCal.getTime().getTime()));
+            }
+            aCal.add(Calendar.DAY_OF_YEAR, 1);
+        }
+        File sked = new File(String.valueOf(year) + ".csv");
+        sked.createNewFile();
+        FileWriter skedWrite = new FileWriter(sked);
+        BufferedWriter skedBuff = new BufferedWriter(skedWrite);
+        for (SoftDate outDate : allDates) {
+            for (int i = 1; i <= 3; i++) {
+
+            }
+        }
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -250,16 +282,21 @@ public class HomeGUI extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HomeGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeGUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HomeGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeGUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HomeGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeGUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HomeGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeGUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>

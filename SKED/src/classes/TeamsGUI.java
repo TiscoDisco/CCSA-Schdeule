@@ -318,7 +318,7 @@ public class TeamsGUI extends javax.swing.JFrame {
          * and display in its appropriate list
          */
         if (!(teamName.length() > 0 && churchName.length() > 0
-                && (jTextField12.getText().length() > 0 ^ jTextField14.getText().length() > 0 ^ jTextField13.getText().length() > 0))) {
+                && (!jTextField12.getText().isEmpty() ^ !jTextField14.getText().isEmpty() ^ !jTextField13.getText().isEmpty()))) {
             JOptionPane.showMessageDialog(null, "INPUT INCOMPLETE OR INVALID");
         } else {
             if (jTextField12.getText().length() > 0) {

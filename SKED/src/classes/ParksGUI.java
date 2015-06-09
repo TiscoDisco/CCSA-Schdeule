@@ -427,7 +427,7 @@ public class ParksGUI extends javax.swing.JFrame {
         String parkname = txtFieldPark.getText();
         if (!(parkname.length() > 0
                 && startmonth > -1 && startday > 0 && endmonth > -1 && endday > 0
-                && (txtFieldj.getText().length() > 0 ^ jTextField1.getText().length() > 0 ^ jTextField3.getText().length() > 0))) {
+                && (!txtFieldj.getText().isEmpty() ^ !jTextField1.getText().isEmpty() ^ !jTextField3.getText().isEmpty()))) {
             JOptionPane.showMessageDialog(null, "INPUT INCOMPLETE OR INVALID");
         } else {
             Calendar thisCal = Calendar.getInstance();
