@@ -437,38 +437,44 @@ public class ParksGUI extends javax.swing.JFrame {
             SoftDate ed = new SoftDate(thisCal.getTimeInMillis());
 
             if (txtFieldj.getText().length() > 0) {
-                for (Park jPark : juniorParks) {//Adds a junior park based on the park code
-                    if (jPark.getName().equals(parkname)) {
+                for (int i = 0; i < juniorParks.size(); i++) {//Adds a junior park based on the park code
+                    if (juniorParks.get(i).getName().equals(parkname)) {
                         hasPark = true;
-                        jPark = new Park(parkname, sd, ed);
+                        juniorParks.remove(i);
+                        juniorParks.add(new Park(parkname, sd, ed, noPlays));
+                        break;
                     }
                 }
                 if (!hasPark) {
-                    juniorParks.add(new Park(parkname, sd, ed));
+                    juniorParks.add(new Park(parkname, sd, ed, noPlays));
                 }
 
             } else if (jTextField1.getText().length() > 0) {
 
-                for (Park sPark : seniorParks) {//Adds a senior park based on the park code
-                    if (sPark.getName().equals(parkname)) {
+                for (int i = 0; i < seniorParks.size(); i++) {//Adds a junior park based on the park code
+                    if (seniorParks.get(i).getName().equals(parkname)) {
                         hasPark = true;
-                        sPark = new Park(parkname, sd, ed);
+                        seniorParks.remove(i);
+                        seniorParks.add(new Park(parkname, sd, ed, noPlays));
+                        break;
                     }
                 }
                 if (!hasPark) {
-                    seniorParks.add(new Park(parkname, sd, ed));
+                    seniorParks.add(new Park(parkname, sd, ed, noPlays));
                 }
 
             } else {
 
-                for (Park vPark : varsityParks) {//Adds a varsity park based on the park code
-                    if (vPark.getName().equals(parkname)) {
+                for (int i = 0; i < varsityParks.size(); i++) {//Adds a junior park based on the park code
+                    if (varsityParks.get(i).getName().equals(parkname)) {
                         hasPark = true;
-                        vPark = new Park(parkname, sd, ed);
+                        varsityParks.remove(i);
+                        varsityParks.add(new Park(parkname, sd, ed, noPlays));
+                        break;
                     }
                 }
                 if (!hasPark) {
-                    varsityParks.add(new Park(parkname, sd, ed));
+                    varsityParks.add(new Park(parkname, sd, ed, noPlays));
                 }
 
             }
@@ -514,36 +520,45 @@ public class ParksGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddDayActionPerformed
 
     private void fixDates() {
-        juniorStartDate = new SoftDate(juniorParks.get(0).getStartDate().getTime());
-        seniorStartDate = new SoftDate(seniorParks.get(0).getStartDate().getTime());
-        varsityStartDate = new SoftDate(varsityParks.get(0).getStartDate().getTime());
-        juniorEndDate = new SoftDate(juniorParks.get(0).getEndDate().getTime());
-        seniorEndDate = new SoftDate(seniorParks.get(0).getEndDate().getTime());
-        varsityEndDate = new SoftDate(varsityParks.get(0).getEndDate().getTime());
-        for (Park checkPark : juniorParks) {
-            if (juniorStartDate.compareTo(checkPark.getStartDate()) > 0) {
-                juniorStartDate = new SoftDate(checkPark.getStartDate().getTime());
-            }
-            if (juniorEndDate.compareTo(checkPark.getEndDate()) < 0) {
-                juniorEndDate = new SoftDate(checkPark.getEndDate().getTime());
+        if (juniorParks.size() > 0) {
+            juniorStartDate = new SoftDate(juniorParks.get(0).getStartDate().getTime());
+            juniorEndDate = new SoftDate(juniorParks.get(0).getEndDate().getTime());
+            for (Park checkPark : juniorParks) {
+                if (juniorStartDate.compareTo(checkPark.getStartDate()) > 0) {
+                    juniorStartDate = new SoftDate(checkPark.getStartDate().getTime());
+                }
+                if (juniorEndDate.compareTo(checkPark.getEndDate()) < 0) {
+                    juniorEndDate = new SoftDate(checkPark.getEndDate().getTime());
+                }
             }
         }
-        for (Park checkPark : seniorParks) {
-            if (seniorStartDate.compareTo(checkPark.getStartDate()) > 0) {
-                seniorStartDate = new SoftDate(checkPark.getStartDate().getTime());
-            }
-            if (seniorEndDate.compareTo(checkPark.getEndDate()) < 0) {
-                seniorEndDate = new SoftDate(checkPark.getEndDate().getTime());
-            }
-        }
-        for (Park checkPark : varsityParks) {
-            if (varsityStartDate.compareTo(checkPark.getStartDate()) > 0) {
-                varsityStartDate = new SoftDate(checkPark.getStartDate().getTime());
-            }
-            if (varsityEndDate.compareTo(checkPark.getEndDate()) < 0) {
-                varsityEndDate = new SoftDate(checkPark.getEndDate().getTime());
+        if (seniorParks.size() > 0) {
+            seniorStartDate = new SoftDate(seniorParks.get(0).getStartDate().getTime());
+            seniorEndDate = new SoftDate(seniorParks.get(0).getEndDate().getTime());
+            for (Park checkPark : seniorParks) {
+                if (seniorStartDate.compareTo(checkPark.getStartDate()) > 0) {
+                    seniorStartDate = new SoftDate(checkPark.getStartDate().getTime());
+                }
+                if (seniorEndDate.compareTo(checkPark.getEndDate()) < 0) {
+                    seniorEndDate = new SoftDate(checkPark.getEndDate().getTime());
+                }
             }
         }
+        if (varsityParks.size() > 0) {
+            varsityStartDate = new SoftDate(varsityParks.get(0).getStartDate().getTime());
+
+            varsityEndDate = new SoftDate(varsityParks.get(0).getEndDate().getTime());
+
+            for (Park checkPark : varsityParks) {
+                if (varsityStartDate.compareTo(checkPark.getStartDate()) > 0) {
+                    varsityStartDate = new SoftDate(checkPark.getStartDate().getTime());
+                }
+                if (varsityEndDate.compareTo(checkPark.getEndDate()) < 0) {
+                    varsityEndDate = new SoftDate(checkPark.getEndDate().getTime());
+                }
+            }
+        }
+
     }
 
     private void display() {

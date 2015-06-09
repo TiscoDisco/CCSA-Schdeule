@@ -15,10 +15,11 @@ public class Park {
 
     private ArrayList<SoftDate> noPlays = new ArrayList<>();
 
-    public Park(String n, SoftDate s, SoftDate e) {
+    public Park(String n, SoftDate s, SoftDate e, ArrayList<SoftDate> np) {
         name = n;
         startDate = s;
         endDate = e;
+        noPlays = np;
         Calendar doCal = Calendar.getInstance();
         doCal.clear();
         doCal.setTime(startDate);
