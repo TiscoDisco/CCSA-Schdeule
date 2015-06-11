@@ -15,6 +15,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
 
+//COMMENT THIS
+
 public class HomeGUI extends javax.swing.JFrame {
 
     /**
@@ -264,23 +266,52 @@ public class HomeGUI extends javax.swing.JFrame {
         sked.createNewFile();
         FileWriter skedWrite = new FileWriter(sked);
         BufferedWriter skedBuff = new BufferedWriter(skedWrite);
+        skedBuff.write(",");
+        for (Park outPark : allParks) {
+            skedBuff.write(outPark.getName() + ",,,,,,");
+        }
+
+        skedBuff.write(",");
+        skedBuff.newLine();
+        for (Iterator<Park> it = allParks.iterator(); it.hasNext();) {
+            skedBuff.write("2PM,4PM,6PM,");
+        }
+
+        skedBuff.write(",");
+        skedBuff.newLine();
+        for (Iterator<Park> it = allParks.iterator(); it.hasNext();) {
+            skedBuff.write("Team A,Team B,Team A,Team B,Team A,Team B,");
+        }
+
         for (SoftDate outDate : allDates) {
-            skedBuff.write();
-            for (int i = 1; i <= 3; i++) {
-                switch(i){
-                    case 1:
-                        skedBuff.write();
-                        break;
-                    case 2:
-                        skedBuff.write();
-                        break;
-                    case 3:
-                        skedBuff.write();
-                        break;
-                }
-                skedBuff.write();
-            }
             skedBuff.newLine();
+            Calendar writeCal = Calendar.getInstance();
+            writeCal.clear();
+            writeCal.setTimeInMillis(outDate.getTime());
+            skedBuff.write(writeCal.get(Calendar.MONTH) + 1 + "/" + writeCal.get(Calendar.DATE) + ",");
+            for (Park outPark : allParks) {
+                for (SoftDate parkDate : outPark.getDateList()) {
+                    if (parkDate.compareTo(outDate) == 0) {
+                        if (parkDate.getPlay(1)) {
+                            skedBuff.write(parkDate.getMatch(1).getTeamA().getCode() + "," + parkDate.getMatch(1).getTeamB().getCode() + ",");
+                        } else {
+                            skedBuff.write(",,");
+                        }
+                        if (parkDate.getPlay(2)) {
+                            skedBuff.write(parkDate.getMatch(2).getTeamA().getCode() + "," + parkDate.getMatch(2).getTeamB().getCode() + ",");
+                        } else {
+                            skedBuff.write(",,");
+                        }
+                        if (parkDate.getPlay(3)) {
+                            skedBuff.write(parkDate.getMatch(3).getTeamA().getCode() + "," + parkDate.getMatch(3).getTeamB().getCode() + ",");
+                        } else {
+                            skedBuff.write(",,");
+                        }
+                    }
+
+                }
+            }
+
         }
     }
 

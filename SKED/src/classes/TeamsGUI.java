@@ -6,6 +6,9 @@ import javax.swing.*;
 /*
  * @author tim
  */
+
+//COMMENT THIS
+
 public class TeamsGUI extends javax.swing.JFrame {
 
     /*
