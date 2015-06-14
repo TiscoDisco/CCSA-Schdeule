@@ -279,7 +279,7 @@ public class HomeGUI extends javax.swing.JFrame {
         skedBuff.write(",");
         skedBuff.newLine();
         for (Iterator<Park> it = allParks.iterator(); it.hasNext();) {
-            skedBuff.write("2PM,4PM,6PM,");
+            skedBuff.write("2PM,,4PM,,6PM,,");
         }
 //this outputs the matchup section of the schedule in the file
         skedBuff.write(",");
