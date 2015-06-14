@@ -12,10 +12,10 @@ import java.util.*;
  * @author tim
  */
 
-//COMMENT THIS
+
 
 public class GUI {
-
+// variables declared
     static int year;
 
     static SoftDate juniorStartDate;
@@ -30,12 +30,6 @@ public class GUI {
     static ArrayList<Park> seniorParks = new ArrayList<>();
     static ArrayList<Park> varsityParks = new ArrayList<>();
 
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String[] args) {
-//        HomeGUI form = new HomeGUI(year, juniorStartDate, seniorStartDate, varsityStartDate, endDate, juniorDivs, seniorDivs, varsityDivs, juniorParks, seniorParks, varsityParks);
-//        form.setVisible(true);
-//    }
+
 
 }
