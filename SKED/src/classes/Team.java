@@ -7,7 +7,7 @@ package classes;
 import java.util.*;
 import java.io.*;
 
-//COMMENT THIS
+
 
 public class Team {
 
@@ -17,7 +17,7 @@ public class Team {
     //private String league;
     private ArrayList<SoftDate> noPlays;
 
-    public Team(String n, String c, String tc, ArrayList<SoftDate> np) { // constructor
+    public Team(String n, String c, String tc, ArrayList<SoftDate> np) { // this is the constructor
         name = n;
         church = c;
         teamCode = tc;
@@ -25,28 +25,28 @@ public class Team {
         noPlays = np;
     }
 
-    public String getChurch() { // return church name
+    public String getChurch() { // this returns the church name
         return church;
     }
 
-    public String getName() { // return team name
+    public String getName() { // this returns the team name
         return name;
     }
 
-    public String getCode() {
+    public String getCode() { // this gets the team code
         return teamCode;
     }
 
-    public boolean equals(Team t) { // tells if the teams are the same
+    public boolean equals(Team t) { // this tells if the teams are the same
         return t.getCode().equals(teamCode);
     }
 
-    public void setNoPlay(ArrayList<SoftDate> np) {
+    public void setNoPlay(ArrayList<SoftDate> np) { // this sets the no play days 
         noPlays.clear();
         noPlays.addAll(np);
     }
 
-    public boolean hasPlayDate(SoftDate d) {
+    public boolean hasPlayDate(SoftDate d) { // this checks to see if the team is available to play based on their no play days
         for (SoftDate a : noPlays) {
             if (a.equals(d)) {
                 return false;
@@ -54,7 +54,7 @@ public class Team {
         }
         return true;
     }
-
+    // this code checks to see if the team can play
     public boolean canPlay(SoftDate d, ArrayList<Park> pList, Park thisp) {
         if (hasPlayDate(d)) {
             for (Park p : pList) {
