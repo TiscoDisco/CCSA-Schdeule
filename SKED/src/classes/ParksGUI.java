@@ -13,7 +13,6 @@ import javax.swing.*;
  * @author 12achent Comments made by Trent and Naomi
  */
 
-//COMMENT THIS
 
 public class ParksGUI extends javax.swing.JFrame {
 
@@ -21,15 +20,15 @@ public class ParksGUI extends javax.swing.JFrame {
      * Creates new form Parks
      */
     int year;
-
+    // creates start date
     SoftDate juniorStartDate;
     SoftDate seniorStartDate;
     SoftDate varsityStartDate;
-
+    // creates end date
     SoftDate juniorEndDate;
     SoftDate seniorEndDate;
     SoftDate varsityEndDate;
-
+    // creates list of parks
     ArrayList<Park> juniorParks;
     ArrayList<Park> seniorParks;
     ArrayList<Park> varsityParks;
@@ -59,7 +58,7 @@ public class ParksGUI extends javax.swing.JFrame {
     //@SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
+        //declaring objects
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
         buttonGroup3 = new javax.swing.ButtonGroup();
@@ -110,7 +109,7 @@ public class ParksGUI extends javax.swing.JFrame {
         jComboBox2 = new javax.swing.JComboBox();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-
+        //setting the objects
         jList4.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -210,7 +209,7 @@ public class ParksGUI extends javax.swing.JFrame {
         jLabel16.setText("Start date to end date:");
 
         jLabel17.setText("Unavailable dates:");
-
+        // this sets the horizontal layout of the form
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -313,6 +312,7 @@ public class ParksGUI extends javax.swing.JFrame {
                             .addComponent(lblDeletePark, javax.swing.GroupLayout.Alignment.LEADING))))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
+         // this sets the vertical layout of the form
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -566,7 +566,7 @@ public class ParksGUI extends javax.swing.JFrame {
 
     }
 
-    private void display() {
+    private void display() { // this is the code for the display boxes
         boxJParks.removeAllItems();
         boxSParks.removeAllItems();
         boxVParks.removeAllItems();
@@ -582,7 +582,7 @@ public class ParksGUI extends javax.swing.JFrame {
         }
     }
 
-    private void formClear() {
+    private void formClear() { // this clears all information from the form
         noPlays.clear();
         txtFieldPark.setText(null);
         txtFieldj.setText(null);
