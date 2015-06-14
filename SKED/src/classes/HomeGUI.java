@@ -23,25 +23,25 @@ public class HomeGUI extends javax.swing.JFrame {
      * Creates new form Home
      */
     int year;
-
+// declaring start date
     SoftDate juniorStartDate;
     SoftDate seniorStartDate;
     SoftDate varsityStartDate;
     SoftDate allStartDate;
-
+// declaring end date
     SoftDate juniorEndDate;
     SoftDate seniorEndDate;
     SoftDate varsityEndDate;
     SoftDate allEndDate;
-
+// creating arrays of divisions
     ArrayList<Division> juniorDivs = new ArrayList<>();
     ArrayList<Division> seniorDivs = new ArrayList<>();
     ArrayList<Division> varsityDivs = new ArrayList<>();
-
+// creating arrays of parks
     ArrayList<Park> juniorParks = new ArrayList<>();
     ArrayList<Park> seniorParks = new ArrayList<>();
     ArrayList<Park> varsityParks = new ArrayList<>();
-
+// creating arrays of dates 
     ArrayList<SoftDate> juniorDates = new ArrayList<>();
     ArrayList<SoftDate> seniorDates = new ArrayList<>();
     ArrayList<SoftDate> varsityDates = new ArrayList<>();
@@ -72,21 +72,21 @@ public class HomeGUI extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 204));
         setForeground(new java.awt.Color(255, 255, 204));
         setResizable(false);
-
+// this is creating a button called teams and telling the button what to do when clicked
         btnTeam.setText("Teams");
         btnTeam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTeamActionPerformed(evt);
             }
         });
-
+// this is creating a button called parks and telling the button what to do when clicked
         btnParks.setText("Parks");
         btnParks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnParksActionPerformed(evt);
             }
         });
-
+// this is creating and placing labels for the interface
         lblTeams.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTeams.setText("Teams");
 
@@ -99,16 +99,16 @@ public class HomeGUI extends javax.swing.JFrame {
 
         lblLine1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLine1.setText("_________________________________________________________");
-
+//this creates a button called create schedule and tells the button what to do when clicked
         btnCreate.setText("Create Schedule");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateActionPerformed(evt);
             }
         });
-
+//this creates a label 
         jLabel1.setText("Select Year:");
-
+//this sets the layout of the home interface for the horizontal group
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -138,6 +138,7 @@ public class HomeGUI extends javax.swing.JFrame {
                                 .addComponent(txtYear, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
+        //this sets the layout of the home interface for the vertical group
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -166,6 +167,7 @@ public class HomeGUI extends javax.swing.JFrame {
 
     private void btnTeamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTeamActionPerformed
         year = Integer.parseInt(txtYear.getText());
+        //This code creates the team window and allows it to pop up upon command
         if (year > 0) {
             TeamsGUI t = new TeamsGUI(year, juniorDivs, seniorDivs, varsityDivs);
             t.setVisible(true);
@@ -173,12 +175,12 @@ public class HomeGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "YEAR IS NOT SPECIFIED");
         }
 
-        //This code creates the team window and allows it to pop up upon command
 
     }//GEN-LAST:event_btnTeamActionPerformed
 
     private void btnParksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnParksActionPerformed
         year = Integer.parseInt(txtYear.getText());
+          // this initializes the parks gui and makes able to pop up upon command or outputs that the year was not specified
         if (year > 0) {
             ParksGUI p = new ParksGUI(year, juniorStartDate, seniorStartDate, varsityStartDate,
                     juniorEndDate, seniorEndDate, varsityEndDate,
@@ -191,6 +193,7 @@ public class HomeGUI extends javax.swing.JFrame {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         year = Integer.parseInt(txtYear.getText());
+        //this is to prevent error, it makes sure that the user input is valid 
         if (year < 1) {
             JOptionPane.showMessageDialog(null, "YEAR IS NOT SPECIFIED");
         } else if (juniorParks.isEmpty() || seniorParks.isEmpty() || varsityParks.isEmpty()) {
@@ -262,27 +265,29 @@ public class HomeGUI extends javax.swing.JFrame {
             }
             aCal.add(Calendar.DAY_OF_YEAR, 1);
         }
+        //this creates the file for the user
         File sked = new File(String.valueOf(year) + ".csv");
         sked.createNewFile();
         FileWriter skedWrite = new FileWriter(sked);
         BufferedWriter skedBuff = new BufferedWriter(skedWrite);
         skedBuff.write(",");
+        //this outputs the park section of the schedule
         for (Park outPark : allParks) {
             skedBuff.write(outPark.getName() + ",,,,,,");
         }
-
+//this outputs the time section of the schedule in the file
         skedBuff.write(",");
         skedBuff.newLine();
         for (Iterator<Park> it = allParks.iterator(); it.hasNext();) {
             skedBuff.write("2PM,4PM,6PM,");
         }
-
+//this outputs the matchup section of the schedule in the file
         skedBuff.write(",");
         skedBuff.newLine();
         for (Iterator<Park> it = allParks.iterator(); it.hasNext();) {
             skedBuff.write("Team A,Team B,Team A,Team B,Team A,Team B,");
         }
-
+//this outputs the date section of the schedule in the file
         for (SoftDate outDate : allDates) {
             skedBuff.newLine();
             Calendar writeCal = Calendar.getInstance();
