@@ -7,7 +7,7 @@ import javax.swing.*;
  * @author tim
  */
 
-//COMMENT THIS
+
 
 public class TeamsGUI extends javax.swing.JFrame {
 
@@ -15,11 +15,11 @@ public class TeamsGUI extends javax.swing.JFrame {
      * Creates new form Teams
      */
     int year;
-
+// this creates a list of divisions
     ArrayList<Division> juniorDivs;
     ArrayList<Division> seniorDivs;
     ArrayList<Division> varsityDivs;
-
+// this creates a list of no play days
     ArrayList<SoftDate> noPlays = new ArrayList<>();
 
     public TeamsGUI(int y,
@@ -35,7 +35,7 @@ public class TeamsGUI extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
+        // declaring objects
         jComboBox2 = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList();
@@ -72,7 +72,7 @@ public class TeamsGUI extends javax.swing.JFrame {
         btnNoPlayDate = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-
+        // setting the objects
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jList1.setModel(new javax.swing.AbstractListModel() {
@@ -154,7 +154,7 @@ public class TeamsGUI extends javax.swing.JFrame {
         });
 
         jLabel3.setText("No Play Dates:");
-
+        //this sets the horizontal layout 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -237,6 +237,7 @@ public class TeamsGUI extends javax.swing.JFrame {
                                             .addComponent(jTextField14))))
                                 .addContainerGap())))))
         );
+        // this sets the vertical layout
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -495,7 +496,7 @@ public class TeamsGUI extends javax.swing.JFrame {
         formClear();
         display();
     }//GEN-LAST:event_btnDeleteActionPerformed
-
+    // this is the display boxes code
     private void display() {
         boxJDivs.removeAllItems();
         boxSDivs.removeAllItems();
@@ -517,7 +518,7 @@ public class TeamsGUI extends javax.swing.JFrame {
         }
     }
 
-    private void formClear() {
+    private void formClear() { // this clears the form
         noPlays.clear();
         jTextField11.setText(null);
         jTextField12.setText(null);
